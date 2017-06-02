@@ -6,7 +6,7 @@ class jobIndex extends Component {
       <div className="App">
         <h3>Add A Job</h3>
       </div>
-    )
+    );
   }
 }
 

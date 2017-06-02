@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import addJob from './components/addJob'
+import addJob from './routes/addJob'
 import jobStore from './stores/jobStore'
-import jobIndex from './components/jobIndex'
+import jobIndex from './routes/jobIndex'
 import RegisterUser from './routes/RegisterUser';
 import Home from './routes/Home';
 
