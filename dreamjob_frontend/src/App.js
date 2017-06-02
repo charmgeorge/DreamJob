@@ -4,6 +4,7 @@ import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import addJob from './components/addJob'
 import jobStore from './stores/jobStore'
+import jobIndex from './components/jobIndex'
 
 class App extends Component {
   constructor(props){
@@ -35,6 +36,7 @@ class App extends Component {
           <Router>
             <div>
               <Route exact path = '/addJob' component={addJob}></Route>
+              <Route exact path = '/jobIndex' component={jobIndex}></Route>
             </div>
           </Router>
         </div>

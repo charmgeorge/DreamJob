@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
 import {createJob} from '../actions'
+import jobStore from '../stores/jobStore'
 
 class addJob extends Component {
   constructor(props){
@@ -22,13 +23,13 @@ class addJob extends Component {
   }
 }
 
-// redirect(){
-//   props.history.push("/jobIndex")
-// }
+redirect(){
+  this.props.history.push("/jobIndex")
+}
 
-// componentWillMount(){
-//   jobStore.on('jobAdded', this.redirect.bind(this))
-// }
+componentWillMount(){
+  jobStore.on('jobAdded', this.redirect.bind(this))
+}
 
 // componentWillUpdate(){
 //   jobStore.on('jobAdded', this.redirect.bind(this))
