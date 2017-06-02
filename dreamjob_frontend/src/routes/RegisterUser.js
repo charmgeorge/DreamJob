@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import '../App.css'
-
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
+import {newUser} from '../actions/actions';
+import userStore from '../stores/UserStore';
+// import '../App.css'
 
 
 class RegisterUser extends Component {
@@ -13,9 +15,20 @@ class RegisterUser extends Component {
         lastname:"",
         email:"",
         password:""
-      }
+      },
+      message: '',
+      redirect: false
     }
   }
+
+  componentWillMount(){
+    userStore.on('user_created', ()=> {
+      this.setState({
+        redirect: true
+      })
+    })
+  }
+
   handleChange(e){
     let target = e.target
     //target.name is the properties of cat??? what is target.value?
@@ -27,7 +40,9 @@ class RegisterUser extends Component {
   }
   handleSubmit(e){
     e.preventDefault()
-    console.log('working');
+    console.log('handle submit with state: ', this.state);
+    newUser(this.state)
+
   }
   render() {
     return (
