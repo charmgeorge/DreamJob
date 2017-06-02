@@ -83,7 +83,7 @@ handleChange(e){
           </div>
           <div className="form-group">
             <label>Date</label>
-            <input type='text' name='date' value={this.state.job.date} onChange={this.handleChange.bind(this)}/>
+            <input type='date' name='date' value={this.state.job.date} onChange={this.handleChange.bind(this)}/>
             <br />
           </div>
           {/* <div className="form-group">
