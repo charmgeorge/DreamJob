@@ -31,9 +31,10 @@ class App extends Component {
       <div>
         <div className="message">{this.state.message}</div>
         <div className="App">
-          <div className="App-header">
-            <h2>Dream Job</h2>
-          </div>
+          <h2>Dream Job</h2>
+          <p className="App-intro">
+            MOTTO TO GO HERE
+          </p>
           <Router>
             <div>
               <Route exact path="/" component={Home}></Route>
