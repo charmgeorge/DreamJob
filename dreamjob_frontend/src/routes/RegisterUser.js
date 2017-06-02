@@ -16,16 +16,13 @@ class RegisterUser extends Component {
         email:"",
         password:""
       },
-      message: '',
-      redirect: false
+      message: ''
     }
   }
 
   componentWillMount(){
     userStore.on('user_created', ()=> {
-      this.setState({
-        redirect: true
-      })
+      this.props.history.push("/")
     })
   }
 
