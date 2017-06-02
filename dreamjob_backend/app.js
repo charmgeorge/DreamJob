@@ -1,20 +1,23 @@
 var express = require('express');
 var bodyParser = require('body-parser')
-var app = express();
 var User = require('./models').User
+var cors = require('cors')
 
+var app = express();
+
+const corsOptions = {
+  origin: 'http://localhost:3000'
+}
 app.use(express.static('public'))
 app.use(bodyParser.json())
-
-
+app.use(cors())
 
 app.get('/', function (request, response) {
-  response.json({message: 'API Example App'})
+  response.json({message: 'hello world!'})
 });
 
 app.post('/create_user', function(request, response){
-  let userParams = request.body.user
-  User.create(userParams).then((user) => {
+  User.create(request.body.user).then((user) => {
     response.status(200)
     response.json({status:'success', user: user})
   })
