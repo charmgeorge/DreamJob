@@ -2,7 +2,13 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var app = express();
 var Job = require('./models').Job
+var cors = require('cors')
 
+const corsOptions = {
+  origin: 'http://localhost:3000'
+}
+
+app.use(cors())
 app.use(express.static('public'))
 app.use(bodyParser.json())
 

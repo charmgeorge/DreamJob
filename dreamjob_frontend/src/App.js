@@ -25,16 +25,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Dream Job</h2>
-        </div>
-        <Router>
-          <div>
-            <Route exact path = '/addJob' component={addJob}></Route>
+      <div>
+        <div>{this.state.message}</div>
+        <div className="App">
+          <div className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h2>Dream Job</h2>
           </div>
-        </Router>
+          <Router>
+            <div>
+              <Route exact path = '/addJob' component={addJob}></Route>
+            </div>
+          </Router>
+        </div>
       </div>
     );
   }
