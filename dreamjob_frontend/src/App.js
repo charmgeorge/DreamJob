@@ -5,6 +5,8 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import addJob from './components/addJob'
 import jobStore from './stores/jobStore'
 import jobIndex from './components/jobIndex'
+import RegisterUser from './routes/RegisterUser';
+import Home from './routes/Home';
 
 class App extends Component {
   constructor(props){
@@ -30,11 +32,12 @@ class App extends Component {
         <div className="message">{this.state.message}</div>
         <div className="App">
           <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
             <h2>Dream Job</h2>
           </div>
           <Router>
             <div>
+              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/register" component={RegisterUser}></Route>
               <Route exact path = '/addJob' component={addJob}></Route>
               <Route exact path = '/jobIndex' component={jobIndex}></Route>
             </div>
