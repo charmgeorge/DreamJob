@@ -3,30 +3,31 @@ import '../App.css'
 
 
 
-class Register extends Component {
+class RegisterUser extends Component {
   constructor(props){
     super(props)
     //the initial state of the website
     this.state={
-      cat:{
-        name:"",
-        color:"",
-        breed:"",
-        gender:"",
-        habitat:"",
-        personality:"",
-        age:""
+      user:{
+        firstname:"",
+        lastname:"",
+        email:"",
+        password:""
       }
     }
   }
-  handleChange(event){
-    let target = event.target
+  handleChange(e){
+    let target = e.target
     //target.name is the properties of cat??? what is target.value?
-    let cat = this.state.cat
-    cat[target.name]= target.value
+    let user = this.state.user
+    user[target.name]= target.value
     this.setState({
-      cat: cat
+      user: user
     })
+  }
+  handleSubmit(e){
+    e.preventDefault()
+    console.log('working');
   }
   render() {
     return (
@@ -37,7 +38,7 @@ class Register extends Component {
               <div className='panel panel-default'>
                 <div className='panel-body'>
                   <h3>Register</h3>
-                  <form>
+                  <form className='form' onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
                       <div className='col-xs-12'>
                         <div>
@@ -46,7 +47,7 @@ class Register extends Component {
                           <input
                             type='text'
                             name='firstname'
-                            value={this.state.cat.name}
+                            value={this.state.user.firstname}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -55,7 +56,7 @@ class Register extends Component {
                           <input
                             type='text'
                             name='lastname'
-                            value={this.state.cat.breed}
+                            value={this.state.user.lastname}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -64,7 +65,7 @@ class Register extends Component {
                           <input
                             type='text'
                             name='email'
-                            value={this.state.cat.color}
+                            value={this.state.user.email}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -73,7 +74,7 @@ class Register extends Component {
                           <input
                             type='password'
                             name='password'
-                            value={this.state.cat.color}
+                            value={this.state.user.password}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -93,4 +94,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default RegisterUser;

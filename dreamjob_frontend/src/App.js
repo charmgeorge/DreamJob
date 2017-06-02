@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Register from './components/Register';
+import RegisterUser from './routes/RegisterUser';
 
 class App extends Component {
   render() {
@@ -10,7 +10,11 @@ class App extends Component {
         <div className="App-header">
           <h2>Welcome to React</h2>
         </div>
-        <Register />
+        <RegisterUser />
+        {/* <Router>
+          <Route to="/register" component={RegisterUser}></Route>
+        </Router> */}
+
       </div>
     );
   }

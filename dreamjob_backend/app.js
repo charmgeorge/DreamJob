@@ -6,6 +6,8 @@ var User = require('./models').User
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
+
+
 app.get('/', function (request, response) {
   response.json({message: 'API Example App'})
 });
