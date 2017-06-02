@@ -16,9 +16,23 @@ class addJob extends Component {
       url:"",
       notes:""
     },
-    message:""
+    message:"",
+    status:"",
+    error:""
   }
 }
+
+// redirect(){
+//   props.history.push("/jobIndex")
+// }
+
+// componentWillMount(){
+//   jobStore.on('jobAdded', this.redirect.bind(this))
+// }
+
+// componentWillUpdate(){
+//   jobStore.on('jobAdded', this.redirect.bind(this))
+// }
 
 handleSubmit(e){
   e.preventDefault()
@@ -71,11 +85,11 @@ handleChange(e){
             <input type='text' name='date' value={this.state.job.date} onChange={this.handleChange.bind(this)}/>
             <br />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <label>Job Posting URL</label>
             <input type='text' name='url' value={this.state.job.url} onChange={this.handleChange.bind(this)}/>
             <br />
-          </div>
+          </div> */}
           <div className="form-group">
             <textarea rows="4" cols="30" type='text' name='notes' placeholder='Notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)}>
             </textarea>
