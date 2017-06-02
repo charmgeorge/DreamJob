@@ -3,8 +3,26 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import addJob from './components/addJob'
+import jobStore from './stores/jobStore'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      message:jobStore.getMessage()
+    }
+  }
+
+  updateMessage(){
+    this.setState({
+      message:jobStore.getMessage()
+    })
+  }
+
+  componentWillMount(){
+    jobStore.on('message', this.updateMessage.bind(this))
+  }
+
   render() {
     return (
       <div className="App">

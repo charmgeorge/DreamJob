@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
+// import logo from '../logo.svg';
 import '../App.css';
+import {createJob} from '../actions'
 
 class addJob extends Component {
   constructor(props){
@@ -14,8 +15,14 @@ class addJob extends Component {
       date:"",
       url:"",
       notes:""
-    }
+    },
+    message:""
   }
+}
+
+handleSubmit(e){
+  e.preventDefault()
+  createJob(this.state)
 }
 
 handleChange(e){
@@ -25,16 +32,15 @@ handleChange(e){
   this.setState({
     job:job
   })
-  console.log(this.state.job)
 }
 
   render() {
     return (
       <div className="App">
         <h3>Add A Job</h3>
-        <form className="form">
+        <form className="form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group inline">
-            <label>Company</label>
+            <label className='control-label'>Company</label>
             <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)} />
               <input type='text' name='url' placeholder="URL" value={this.state.job.url} onChange={this.handleChange.bind(this)}/>
               <br />
