@@ -8,6 +8,9 @@ class JobStore extends EventEmitter{
     this.newJob = {}
     this.message = ""
   }
+  getJobs(){
+    return this.jobs
+  }
 
   getMessage(){
     return this.message
@@ -20,6 +23,7 @@ class JobStore extends EventEmitter{
 
   updateNewJob(attributes){
     this.newJob = attributes
+    this.jobs.push(attributes)
     this.updateMessage('Job has been added!')
     this.emit('jobAdded')
   }
