@@ -33,10 +33,11 @@ handleChange(e){
       <div className="App">
         <h3>Add A Job</h3>
         <form className="form">
-          <div className="form-group">
+          <div className="form-group inline">
             <label>Company</label>
             <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)} />
-            <br />
+              <input type='text' name='url' placeholder="URL" value={this.state.job.url} onChange={this.handleChange.bind(this)}/>
+              <br />
           </div>
           <div className="form-group">
             <label>Job Title</label>
@@ -70,8 +71,8 @@ handleChange(e){
             <br />
           </div>
           <div className="form-group">
-            <label>Notes</label>
-            <input type='textarea' name='notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)}/>
+            <textarea rows="4" cols="30" type='text' name='notes' placeholder='Notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)}>
+            </textarea>
             <br />
           </div>
           <div className="form-group">
