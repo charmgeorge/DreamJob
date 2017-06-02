@@ -17,6 +17,17 @@ class addJob extends Component {
     }
   }
 }
+
+handleChange(e){
+  let target = e.target
+  let job = this.state.job
+  job[target.name] = target.value
+  this.setState({
+    job:job
+  })
+  console.log(this.state.job)
+}
+
   render() {
     return (
       <div className="App">
@@ -24,22 +35,22 @@ class addJob extends Component {
         <form className="form">
           <div className="form-group">
             <label>Company</label>
-            <input type='text' name='company' value={this.state.job.company}/>
+            <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)} />
             <br />
           </div>
           <div className="form-group">
             <label>Job Title</label>
-            <input type='text' name='jobTitle' value={this.state.job.jobTitle}/>
+            <input type='text' name='jobTitle' value={this.state.job.jobTitle} onChange={this.handleChange.bind(this)}/>
             <br />
           </div>
           <div className="form-group">
             <label>City</label>
-            <input type='text' name='city' value={this.state.job.city}/>
+            <input type='text' name='city' value={this.state.job.city} onChange={this.handleChange.bind(this)} />
             <br />
           </div>
           <div className="form-group">
             <label>Status</label>
-            <select name='status' value={this.state.job.status}>
+            <select name='status' value={this.state.job.status} onChange={this.handleChange.bind(this)}>
               <option></option>
               <option>Interested</option>
               <option>Applied</option>
@@ -50,17 +61,17 @@ class addJob extends Component {
           </div>
           <div className="form-group">
             <label>Date</label>
-            <input type='text' name='date' value={this.state.job.date}/>
+            <input type='text' name='date' value={this.state.job.date} onChange={this.handleChange.bind(this)}/>
             <br />
           </div>
           <div className="form-group">
             <label>Job Posting URL</label>
-            <input type='text' name='url' value={this.state.job.url}/>
+            <input type='text' name='url' value={this.state.job.url} onChange={this.handleChange.bind(this)}/>
             <br />
           </div>
           <div className="form-group">
             <label>Notes</label>
-            <input type='textarea' name='notes' value={this.state.job.notes}/>
+            <input type='textarea' name='notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)}/>
             <br />
           </div>
           <div className="form-group">
