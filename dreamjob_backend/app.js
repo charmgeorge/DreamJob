@@ -28,7 +28,7 @@ app.post('/create_job', function (request, response){
     response.json({status:'error', error:err})
   })
 })
-    
+
 app.post('/create_user', function(request, response){
   User.create(request.body.user).then((user) => {
     response.status(200)
@@ -37,6 +37,23 @@ app.post('/create_user', function(request, response){
   .catch((error)=>{
     response.status(400)
     response.json({status: 'error', error: error})
+  })
+})
+
+app.post('/login_user', function(request, response){
+  User.findOne({where: { email: request.body.user.email }}).then((user) => {
+    if(user){
+      response.status(200)
+      response.json({status:'success', user: user })
+      console.log('user = ', user);
+    } else {
+      response.status(401)
+      response.json({status: 'error', error: 'Could not log in' })
+    }
+  })
+  .catch((error)=>{
+    response.status(400)
+    response.json({status: 'error', error: 'Could not log in'})
   })
 })
 

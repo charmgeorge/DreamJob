@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
-import {newUser} from '../actions/actions';
+import {newUser, loginUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
 
 class Login extends Component {
@@ -34,7 +34,7 @@ class Login extends Component {
   handleSubmit(e){
     e.preventDefault()
     console.log('handle submit with state: ', this.state);
-    // newUser(this.state)
+    loginUser(this.state)
   }
   render() {
     return (
