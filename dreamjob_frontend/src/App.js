@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import addJob from './routes/addJob'
-import jobStore from './stores/jobStore'
-import jobIndex from './routes/jobIndex'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import addJob from './routes/addJob';
+import jobStore from './stores/jobStore';
+import jobIndex from './routes/jobIndex';
 import RegisterUser from './routes/RegisterUser';
 import Home from './routes/Home';
+import {updateJobs} from './actions';
 
 class App extends Component {
   constructor(props){
     super(props)
+    updateJobs()
     this.state = {
       message:jobStore.getMessage()
     }

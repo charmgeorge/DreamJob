@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import jobListing from '../components/jobListing'
+import JobListing from '../components/JobListing'
 import jobStore from '../stores/jobStore'
 
 
@@ -7,24 +7,37 @@ class jobIndex extends Component {
   constructor(props){
   super(props)
   this.state = {
-    jobs: jobStore.getJobs()
+    jobs: jobStore.getJobs(),
+    status:""
     }
   }
-  renderJobs(){
-  let jobRender = []
-  for(var i=0; i<this.state.jobs.length; i++){
-    let jobId = "job-" + i
-    jobRender.push(
-      <jobListing key={jobId} job={this.state.jobs[i]}></jobListing>
-    )
+
+  updateJobs(){
+    this.setState({
+      jobs:jobStore.getJobs()
+    })
   }
-  return jobRender
-}
+
+  componentWillMount(){
+    jobStore.on('jobAdded',this.updateJobs.bind(this))
+    jobStore.on('jobsLoaded',this.updateJobs.bind(this))
+  }
+
+  renderJobs(){
+    let jobRender = []
+    for(var i=0; i<this.state.jobs.length; i++){
+      let jobId = "job-" + i
+      jobRender.push(
+        <JobListing key={jobId} job={this.state.jobs[i]}/>
+      )
+    }
+    return jobRender
+  }
 
   render() {
     return (
       <div className="App">
-        <h1>Current Dream Jobs</h1>
+        <h3>Current Dream Jobs</h3>
         <div className="job-list row">
             {this.renderJobs()}
           </div>
