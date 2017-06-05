@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route,Link} from 'react-router-dom';
 import addJob from './routes/addJob';
 import jobStore from './stores/jobStore';
 import jobIndex from './routes/jobIndex';
@@ -48,12 +48,11 @@ class App extends Component {
 
             </div>
           </Router>
-          <div className="buttons">
-            <div className="buttons">
-              <Link to="/register"><button className='btn-primary'>Register</button></Link>
-              <Link to="/login"><button className='btn-primary'>Login</button></Link>
-            </div>
-          </div>
+
+          
+
+
+
         </div>
       </div>
     );
