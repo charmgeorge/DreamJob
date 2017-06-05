@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+ul {
+  list-style-type: none;
+  height: 100px;
+  border: 1px black solid;
+  box-shadow: 2px 2px 2px 2px;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -29,4 +36,31 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#login, #register {
+  float: right;
+  display: block;
+  margin-right: 10px;
+  clear:left;
+}
+#getStartedButton{
+  float: center;
+  position: absolute;
+  bottom: 0;
+}
+
+.divider{
+  width: 0px;
+  height:auto;
+  display:inline-block;
+}
+
+body {
+  text-align: center;
+  background: url(http://blog.coachingassembly.com/wp-content/uploads/2014/12/DreamJob.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
 }

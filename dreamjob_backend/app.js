@@ -38,6 +38,16 @@ app.get('/', function (request, response) {
   response.json({message: 'hello world!'})
 });
 
+app.get('/jobs', function (request, response) {
+  Job.findAll().then(function(jobs){
+    response.status(200)
+    response.json({
+      status:'success',
+      jobs:jobs
+    })
+  })
+})
+
 app.post('/create_job', authorization, function (request, response){
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){

@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import addJob from './components/addJob'
-import jobStore from './stores/jobStore'
-import jobIndex from './components/jobIndex'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import addJob from './routes/addJob';
+import jobStore from './stores/jobStore';
+import jobIndex from './routes/jobIndex';
 import RegisterUser from './routes/RegisterUser';
 import Login from './routes/Login';
 import Home from './routes/Home';
+import {updateJobs} from './actions';
 
 class App extends Component {
   constructor(props){
     super(props)
+    updateJobs()
     this.state = {
       message:jobStore.getMessage()
     }
@@ -32,9 +34,10 @@ class App extends Component {
       <div>
         <div className="message">{this.state.message}</div>
         <div className="App">
-          <div className="App-header">
-            <h2>Dream Job</h2>
-          </div>
+          <h2>Dream Job</h2>
+          <p className="App-intro">
+            MOTTO TO GO HERE
+          </p>
           <Router>
             <div>
               <Route exact path="/" component={Home}></Route>
