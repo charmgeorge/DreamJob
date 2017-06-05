@@ -7,17 +7,9 @@ import jobStore from '../stores/jobStore'
 class jobDetails extends Component {
   constructor(props){
   super(props)
-  getDetails()
+  // getDetails()
   this.state={
-    job: {
-      company:"",
-      jobTitle:"",
-      city:"",
-      status:"",
-      date:"",
-      url:"",
-      notes:""
-    }
+    job: jobStore.getDetails
 //     message:"",
 //     status:"",
 //     error:""

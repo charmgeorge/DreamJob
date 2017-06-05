@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import {getDetails} from '../actions'
 
 class JobListing extends Component {
+
+  //HOW DO WE SEND THE ID WITH THE HANDLECLICK!
+
+  handleClick(){
+    getDetails()
+  }
+
   render(){
     return(
       // <div className="container">
@@ -21,7 +29,7 @@ class JobListing extends Component {
             </li>
             <li>
               <div className="pull-left">
-                <Link to="/jobDetails"><button className='btn-primary'>Job Details</button></Link>
+                <Link to="/jobDetails"><button onClick={this.handleClick.bind(this)} className='btn-primary'>Job Details</button></Link>
               </div>
               {/* {this.props.job.id} */}
             </li>
