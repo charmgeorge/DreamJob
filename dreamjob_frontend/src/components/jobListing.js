@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 import {getDetails} from '../actions'
 
 class JobListing extends Component {
 
-  //HOW DO WE SEND THE ID WITH THE HANDLECLICK!
-
-  handleClick(){
-    getDetails()
+  handleClick(e){
+    e.preventDefault();
+    getDetails(this.props.job.id)
   }
 
   render(){
@@ -28,8 +27,8 @@ class JobListing extends Component {
               {this.props.job.status}
             </li>
             <li>
-              <div className="pull-left">
-                <Link to="/jobDetails"><button onClick={this.handleClick.bind(this)} className='btn-primary'>Job Details</button></Link>
+              <div>
+                <button className='btn-primary' onClick={this.handleClick.bind(this)}>Job Details</button>
               </div>
               {/* {this.props.job.id} */}
             </li>

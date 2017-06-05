@@ -18,6 +18,19 @@ app.get('/', function (request, response) {
   response.json({message: 'hello world!'})
 });
 
+app.get('/getDetails/:id', function (request, response) {
+ var id = request.params["id"];
+  Job.findOne({
+    where:{id:id}
+  }).then(function(job){
+    response.status(200)
+    response.json({
+      status:'success',
+      job:job
+    })
+  })
+})
+
 app.get('/jobs', function (request, response) {
   Job.findAll().then(function(jobs){
     response.status(200)

@@ -3,7 +3,6 @@ import JobListing from '../components/JobListing'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
-
 class jobIndex extends Component {
   constructor(props){
   super(props)
@@ -19,9 +18,14 @@ class jobIndex extends Component {
     })
   }
 
+  redirect(){
+    this.props.history.push('/jobDetails')
+  }
+
   componentWillMount(){
     jobStore.on('jobAdded',this.updateJobs.bind(this))
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.on('jobDetails', this.redirect.bind(this))
   }
 
   renderJobs(){
@@ -34,6 +38,8 @@ class jobIndex extends Component {
     }
     return jobRender
   }
+
+
 
   render() {
     return (

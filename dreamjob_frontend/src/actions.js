@@ -1,12 +1,12 @@
 import Dispatcher from './Dispatcher'
 import jobStore from './stores/jobStore'
 
-export function getDetails(){
+export function getDetails(jobId){
   const params = {
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/getDetails", params).then(function(response){
+  fetch("http://localhost:4000/getDetails/" + jobId, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         Dispatcher.dispatch({
