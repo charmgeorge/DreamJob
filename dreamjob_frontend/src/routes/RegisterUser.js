@@ -49,6 +49,9 @@ class RegisterUser extends Component {
             <div className='col-xs-6 col-xs-offset-3'>
               <div className='panel panel-default'>
                 <div className='panel-body'>
+                  <div className='alert alert-danger'>
+                    Please verify that all fields are filled in below
+                  </div>
                   <h3>Register</h3>
                   <form className='form' onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
