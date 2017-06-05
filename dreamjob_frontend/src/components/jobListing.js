@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class JobListing extends Component {
   render(){
@@ -14,6 +15,12 @@ class JobListing extends Component {
             </li>
             <li>
               {this.props.job.status}
+            </li>
+            <li>
+              <div className="pull-left">
+                <Link to="/jobDetails"><button className='btn-primary'>Job Details</button></Link>
+              </div>
+              {/* {this.props.job.id} */}
             </li>
           </ul>
         </div>
