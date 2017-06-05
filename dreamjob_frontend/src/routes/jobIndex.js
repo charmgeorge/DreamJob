@@ -39,7 +39,7 @@ class jobIndex extends Component {
     return (
       <div className="App">
         <div className="pull-left">
-          <Link to="/addJob"><button className='btn-primary'>Add Job</button></Link>
+          <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
         </div>
         <h3>Current Dream Jobs</h3>
         <div className="job-list row">

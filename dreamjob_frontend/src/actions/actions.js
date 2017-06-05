@@ -10,6 +10,15 @@ export function checkLoginRedir(props){
   return true
 }
 
+export function checkLogin(){
+  dispatcher.dispatch({
+    type: 'CHECK_LOGIN'
+  })
+}
+
+
+
+
 export function newUser(userInfo){
   let success;
   const params = {
