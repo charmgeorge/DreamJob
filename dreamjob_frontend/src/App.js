@@ -6,6 +6,7 @@ import addJob from './routes/addJob';
 import jobStore from './stores/jobStore';
 import jobIndex from './routes/jobIndex';
 import RegisterUser from './routes/RegisterUser';
+import Login from './routes/Login';
 import Home from './routes/Home';
 import {updateJobs} from './actions';
 
@@ -41,8 +42,10 @@ class App extends Component {
             <div>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/register" component={RegisterUser}></Route>
-              <Route exact path = '/addJob' component={addJob}></Route>
-              <Route exact path = '/jobIndex' component={jobIndex}></Route>
+              <Route exact path = '/add_job' component={addJob}></Route>
+              <Route exact path = '/job_index' component={jobIndex}></Route>
+              <Route exact path = '/login' component={Login}></Route>
+
             </div>
           </Router>
         </div>

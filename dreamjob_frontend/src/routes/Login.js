@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
-import {newUser} from '../actions/actions';
+import {newUser, loginUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
-// import '../App.css'
 
-
-class RegisterUser extends Component {
+class Login extends Component {
   constructor(props){
     super(props)
     //the initial state of the website
     this.state={
       user:{
-        firstname:"",
-        lastname:"",
         email:"",
         password:""
       },
       message: ''
     }
   }
-
-  componentWillMount(){
-    userStore.on('user_created', ()=> {
-      this.props.history.push("/")
-    })
-  }
+  //
+  // componentWillMount(){
+  //   userStore.on('user_created', ()=> {
+  //     this.props.history.push("/")  //job_index
+  //   })
+  // }
 
   handleChange(e){
     let target = e.target
@@ -38,9 +34,8 @@ class RegisterUser extends Component {
   handleSubmit(e){
     e.preventDefault()
     console.log('handle submit with state: ', this.state);
-    newUser(this.state)
+    loginUser(this.state)
   }
-
   render() {
     return (
       <div>
@@ -49,28 +44,10 @@ class RegisterUser extends Component {
             <div className='col-xs-6 col-xs-offset-3'>
               <div className='panel panel-default'>
                 <div className='panel-body'>
-                  <h3>Register</h3>
+                  <h3>Login</h3>
                   <form className='form' onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
                       <div className='col-xs-12'>
-                        <div>
-                          <label htmlFor='name'>First Name</label>
-                          <br />
-                          <input
-                            type='text'
-                            name='firstname'
-                            value={this.state.user.firstname}
-                            onChange={this.handleChange.bind(this)}/>
-                        </div>
-                        <div>
-                          <label>Last Name</label>
-                          <br />
-                          <input
-                            type='text'
-                            name='lastname'
-                            value={this.state.user.lastname}
-                            onChange={this.handleChange.bind(this)}/>
-                        </div>
                         <div>
                           <label>Email</label>
                           <br />
@@ -106,4 +83,4 @@ class RegisterUser extends Component {
   }
 }
 
-export default RegisterUser;
+export default Login;
