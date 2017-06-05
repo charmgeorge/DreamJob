@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {createJob, getDetails} from '../actions'
+import {createJob, getDetails, updateJobDetails} from '../actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -25,17 +25,18 @@ class jobDetails extends Component {
 
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this))
+    jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this))
   }
 //
 // // componentWillUpdate(){
 // //   jobStore.on('jobAdded', this.redirect.bind(this))
 // // }
 //
-// handleSubmit(e){
-//   e.preventDefault()
-//   createJob(this.state)
-// }
-//
+  handleSubmit(e){
+    e.preventDefault()
+    updateJobDetails(this.state)
+  }
+
   handleChange(e){
     let target = e.target
     let job = this.state.job
@@ -52,9 +53,7 @@ class jobDetails extends Component {
           <Link to="/jobIndex"><button className='btn-primary'>Back to Job Index</button></Link>
         </div>
         <h3>Job Details</h3>
-        <form className="form"
-          // onSubmit={this.handleSubmit.bind(this)}
-          >
+        <form className="form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group inline">
             <label className='control-label'>Company</label>
             <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)}/>
@@ -98,7 +97,8 @@ class jobDetails extends Component {
             <br />
           </div>
           <div className="form-group">
-            <input type='submit' value='Submit' className="btn btn-primary" />
+            <input type='submit' value='Update Job' className="btn btn-primary" />
+            {/* <input value="Delete" className="btn btn-danger" /> */}
             <br />
           </div>
         </form>

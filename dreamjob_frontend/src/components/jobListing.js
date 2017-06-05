@@ -15,9 +15,6 @@ class JobListing extends Component {
         <div className="col-xs-3 jobs">
           <ul>
             <li>
-              {this.props.job.id}
-            </li>
-            <li>
               {this.props.job.company}
             </li>
             <li>
