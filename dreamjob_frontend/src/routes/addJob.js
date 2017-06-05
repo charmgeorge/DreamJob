@@ -97,7 +97,7 @@ handleChange(e){
             <br />
           </div>
           <div className="form-group">
-            <input type='submit' value='Submit' />
+            <input type='submit' value='Submit' className="btn btn-primary" />
             <br />
           </div>
         </form>

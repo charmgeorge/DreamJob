@@ -9,6 +9,10 @@ class JobStore extends EventEmitter{
     this.message = ""
   }
 
+  getJobs(){
+    return this.jobs
+  }
+
   getMessage(){
     return this.message
   }
@@ -20,14 +24,25 @@ class JobStore extends EventEmitter{
 
   updateNewJob(attributes){
     this.newJob = attributes
+    this.jobs.push(attributes)
     this.updateMessage('Job has been added!')
     this.emit('jobAdded')
+  }
+
+  updateJobs(attributes){
+    this.jobs = attributes
+    this.updateMessage('Jobs are loaded')
+    this.emit('jobsLoaded')
   }
 
   handleActions(action){
    switch(action.type){
      case("CREATE_JOB"):{
        this.updateNewJob(action.job)
+       break
+     }
+     case("UPDATE_JOBS"):{
+       this.updateJobs(action.jobs)
        break
      }
      default:{}
