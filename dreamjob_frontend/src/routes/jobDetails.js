@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import {createJob, getDetails} from '../actions'
 import jobStore from '../stores/jobStore'
+import {Link} from 'react-router-dom'
 
 class jobDetails extends Component {
   constructor(props){
@@ -47,6 +48,9 @@ class jobDetails extends Component {
   render() {
     return (
       <div className="App">
+        <div className="pull-left">
+          <Link to="/jobIndex"><button className='btn-primary'>Back to Job Index</button></Link>
+        </div>
         <h3>Job Details</h3>
         <form className="form"
           // onSubmit={this.handleSubmit.bind(this)}

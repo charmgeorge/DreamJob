@@ -39,8 +39,6 @@ class jobIndex extends Component {
     return jobRender
   }
 
-
-
   render() {
     return (
       <div className="App">
