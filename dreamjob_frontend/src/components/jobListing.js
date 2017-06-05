@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import {getDetails} from '../actions'
 
+
 class JobListing extends Component {
 
   handleClick(e){
