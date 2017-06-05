@@ -8,21 +8,22 @@ export function newUser(userInfo){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userInfo)
       }
-  fetch('http://localhost:4000/create_user', params)
-    .then((response)=>{
+  fetch('http://localhost:4000/create_user', params).then((response)=>{
       success = response.ok
       return response.json()
     })
     .then((body)=>{
+      console.log(body);
       if (success){
+        console.log('in if statement ', body);
         dispatcher.dispatch({
           type: "NEW_USER",
-          user: body.user
+          user: body
         })
-        console.log("success!", body.user)
+        console.log("success!", body)
       }
       else {
-        console.log("failure!", body.user)
+        console.log("failure!", body)
       }
     })
 }

@@ -14,11 +14,31 @@ app.use(cors())
 app.use(express.static('public'))
 app.use(bodyParser.json())
 
+const authorization = function(request, response, next){
+  const token = request.query.authToken || request.body.authToken
+  if(token){
+    User.findOne({
+      where: {authToken: token}
+    }).then((user)=>{
+      if(user){
+        request.currentUser = user
+        next()
+      }else{
+        response.status(401)
+        response.json({message:'Authorization Token Invalid'})
+      }
+    })
+  }else{
+    response.status(401)
+    response.json({message: 'Authorization Token Required'})
+  }
+}
+
 app.get('/', function (request, response) {
   response.json({message: 'hello world!'})
 });
 
-app.post('/create_job', function (request, response){
+app.post('/create_job', authorization, function (request, response){
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){
     response.status(200)
@@ -30,13 +50,16 @@ app.post('/create_job', function (request, response){
 })
 
 app.post('/create_user', function(request, response){
+  console.log(request.body.user)
   User.create(request.body.user).then((user) => {
     response.status(200)
     response.json({status:'success', user: user})
   })
   .catch((error)=>{
     response.status(400)
-    response.json({status: 'error', error: error})
+    response.json({
+      message:"Could not create User",
+      error: error})
   })
 })
 

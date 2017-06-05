@@ -5,15 +5,11 @@ class UserStore extends EventEmitter{
   constructor(){
     super();
     this.user = null
-    this.newUser = {}
-  }
-
-  getNewUser(){
-    return this.newUser;
   }
 
   updateUser(user){
     this.user = user
+    this.emit('login')
   }
 
   getUser(){
@@ -21,9 +17,8 @@ class UserStore extends EventEmitter{
   }
 
   addUser(user){
-    this.newUser = user
+    this.user = user
     console.log("new user set")
-    this.users.push(user)
     this.emit('user_created')
   }
 
