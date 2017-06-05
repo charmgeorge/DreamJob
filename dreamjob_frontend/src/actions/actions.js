@@ -1,5 +1,14 @@
 import dispatcher from '../dispatchers/dispatcher';
+import userStore from '../stores/UserStore';
 
+export function checkLoginRedir(props){
+  let currentUser = userStore.getUser()
+  if(currentUser === null){
+    props.history.push("/login")
+    return false
+  }
+  return true
+}
 
 export function newUser(userInfo){
   let success;
