@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import JobListing from '../components/JobListing'
 import jobStore from '../stores/jobStore'
+import {Link} from 'react-router-dom'
 
 
 class jobIndex extends Component {
@@ -8,7 +9,7 @@ class jobIndex extends Component {
   super(props)
   this.state = {
     jobs: jobStore.getJobs(),
-    status:""
+    // status:""
     }
   }
 
@@ -37,10 +38,13 @@ class jobIndex extends Component {
   render() {
     return (
       <div className="App">
+        <div className="pull-left">
+          <Link to="/addJob"><button className='btn-primary'>Add Job</button></Link>
+        </div>
         <h3>Current Dream Jobs</h3>
         <div className="job-list row">
-            {this.renderJobs()}
-          </div>
+          {this.renderJobs()}
+        </div>
       </div>
     );
   }
