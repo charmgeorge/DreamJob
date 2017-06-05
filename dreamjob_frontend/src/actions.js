@@ -1,6 +1,25 @@
 import Dispatcher from './Dispatcher'
 import jobStore from './stores/jobStore'
 
+export function getDetails(){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/getDetails", params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        Dispatcher.dispatch({
+          type: 'GET_DETAILS',
+          job: body.job
+        })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+}
+
 export function updateJobs(){
   const params = {
       method: 'GET',
