@@ -1,5 +1,6 @@
 import {EventEmitter} from 'events'
 import Dispatcher from '../dispatchers/dispatcher'
+import {updateJobs} from '../actions/actions'
 
 class JobStore extends EventEmitter{
   constructor(){
@@ -57,6 +58,11 @@ class JobStore extends EventEmitter{
    switch(action.type){
      case("CREATE_JOB"):{
        this.updateNewJob(action.job)
+       break
+     }
+     case("DELETE_JOB"):{
+       debugger
+       updateJobs()
        break
      }
      case("UPDATE_JOBS"):{

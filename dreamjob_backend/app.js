@@ -48,6 +48,20 @@ app.get('/jobs', function (request, response) {
   })
 })
 
+app.get('/deleteJob/:id', function (request, response) {
+ var id = request.params["id"];
+  Job.findOne({
+    where:{id:id}
+  }).then(function(job){
+    job.destroy()
+  }).then(function(deletedJob){
+    response.status(200)
+    response.json({
+      status:'success',
+    })
+  })
+})
+
 app.get('/getDetails/:id', function (request, response) {
  var id = request.params["id"];
   Job.findOne({

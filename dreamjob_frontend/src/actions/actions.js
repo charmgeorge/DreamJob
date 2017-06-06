@@ -1,6 +1,8 @@
 import dispatcher from '../dispatchers/dispatcher';
 import jobStore from '../stores/jobStore'
 
+
+
 export function newUser(userInfo){
   let success;
   const params = {
@@ -78,6 +80,25 @@ export function updateJobDetails(attributes){
   })
 }
 
+//the dispatch could be wrong in this one. We're dispatching an existing action as opposed to creating a new one.
+export function deleteJob(jobId){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/deleteJob/" + jobId, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        dispatcher.dispatch({
+          type: 'DELETE_JOB',
+        })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+  }
+
 export function getDetails(jobId){
   const params = {
       method: 'GET',
@@ -104,6 +125,7 @@ export function updateJobs(){
   }
   fetch("http://localhost:4000/jobs", params).then(function(response){
     if(response.status === 200){
+      debugger
       response.json().then(function(body){
         dispatcher.dispatch({
           type: 'UPDATE_JOBS',

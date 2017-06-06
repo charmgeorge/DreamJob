@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {getDetails} from '../actions/actions'
+import {getDetails, deleteJob} from '../actions/actions'
 
 
 class JobListing extends Component {
@@ -8,6 +8,11 @@ class JobListing extends Component {
   handleClick(e){
     e.preventDefault();
     getDetails(this.props.job.id)
+  }
+
+  handleDelete(e){
+    e.preventDefault();
+    deleteJob(this.props.job.id)
   }
 
   render(){
@@ -30,6 +35,7 @@ class JobListing extends Component {
             <li>
               <div>
                 <button className='btn-primary' onClick={this.handleClick.bind(this)}>Job Details</button>
+                <button className='btn-danger' onClick={this.handleDelete.bind(this)}>Delete</button>
               </div>
               {/* {this.props.job.id} */}
             </li>
