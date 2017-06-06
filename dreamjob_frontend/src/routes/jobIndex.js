@@ -26,6 +26,8 @@ class jobIndex extends Component {
     jobStore.on('jobAdded',this.updateJobs.bind(this))
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
     jobStore.on('jobDetails', this.redirect.bind(this))
+    jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
+
   }
 
   renderJobs(){

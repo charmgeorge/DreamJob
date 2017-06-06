@@ -10,7 +10,6 @@ export function updateJobDetails(attributes){
     body: JSON.stringify(attributes)
   }
   fetch('http://localhost:4000/update_job_details/' + attributes.job.id, params).then((response)=>{
-    debugger
     if(response.ok){
       response.json().then((body)=>{
         Dispatcher.dispatch({
