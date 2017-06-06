@@ -17,8 +17,9 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      password: {
-        type: Sequelize.STRING
+      encryptedPassword: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -27,7 +28,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      }
+      },
+      authToken: Sequelize.STRING,
+      authTokenExpiration: Sequelize.DATE,
+      salt: Sequelize.STRING
     });
   },
   down: function(queryInterface, Sequelize) {
