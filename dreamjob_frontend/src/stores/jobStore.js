@@ -41,9 +41,6 @@ class JobStore extends EventEmitter{
   }
 
   updateDetails(attributes){
-    console.log(this.jobs)
-    console.log(this.jobs.find(job => job.id === attributes.id))
-    debugger
     this.details = attributes
     // this.jobs.find(job => job.id === attributes.id)
     this.updateMessage('Job details retrieved!')
@@ -71,7 +68,6 @@ class JobStore extends EventEmitter{
        break
      }
      case("UPDATE_JOB_DETAILS"):{
-       debugger
        this.updateJobDetails(action.job)
        break
      }
