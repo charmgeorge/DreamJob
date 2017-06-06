@@ -1,5 +1,5 @@
 import {EventEmitter} from 'events'
-import Dispatcher from '../Dispatcher'
+import Dispatcher from '../dispatchers/dispatcher'
 
 class JobStore extends EventEmitter{
   constructor(){
@@ -42,6 +42,7 @@ class JobStore extends EventEmitter{
 
   updateDetails(attributes){
     this.details = attributes
+    // this.jobs.find(job => job.id === attributes.id)
     this.updateMessage('Job details retrieved!')
     this.emit('jobDetails')
   }

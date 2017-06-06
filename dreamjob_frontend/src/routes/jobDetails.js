@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {createJob, getDetails, updateJobDetails} from '../actions'
+import {createJob, getDetails, updateJobDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -50,7 +50,7 @@ class jobDetails extends Component {
     return (
       <div className="App">
         <div className="pull-left">
-          <Link to="/jobIndex"><button className='btn-primary'>Back to Job Index</button></Link>
+          <Link to="/job_index"><button className='btn-primary'>Back to Job Index</button></Link>
         </div>
         <h3>Job Details</h3>
         <form className="form" onSubmit={this.handleSubmit.bind(this)}>
