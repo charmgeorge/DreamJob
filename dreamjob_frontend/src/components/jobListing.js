@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import {getDetails, deleteJob} from '../actions/actions'
-
+import {getDetails} from '../actions/actions'
 
 class JobListing extends Component {
 

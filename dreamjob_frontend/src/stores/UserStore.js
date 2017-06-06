@@ -4,7 +4,7 @@ import dispatcher from '../dispatchers/dispatcher';
 class UserStore extends EventEmitter{
   constructor(){
     super();
-    this.user = null,
+    this.user = null
     this.message = ""
   }
 

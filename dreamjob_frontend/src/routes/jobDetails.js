@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-// import logo from '../logo.svg';
 import '../App.css';
-import {checkLoginRedir, createJob, getDetails, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
+import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
 class jobDetails extends Component {
   constructor(props){
     super(props)
-    // getDetails()
     this.state={
       job: jobStore.getDetails()
-      //     message:"",
-      //     status:"",
-      //     error:""
     }
   }
 //
