@@ -92,7 +92,7 @@ app.post('/update_job_details/:id', function (request, response){
   })
 })
 
-app.post('/create_job', function (request, response){
+app.post('/create_job', authorization, function (request, response){
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){
     response.status(200)

@@ -48,13 +48,15 @@ class jobIndex extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="pull-left">
-          <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
-        </div>
-        <h3>Current Dream Jobs</h3>
-        <div className="job-list row">
-          {this.renderJobs()}
+      <div className='container'>
+        <div className="App">
+          <div className="pull-left">
+            <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
+          </div>
+          <h3>Current Dream Jobs</h3>
+          <div className="job-list row">
+            {this.renderJobs()}
+          </div>
         </div>
       </div>
     );

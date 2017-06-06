@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from '../logo.svg';
 import '../App.css';
 import {checkLoginRedir} from '../actions/actions';
 import {createJob} from '../actions/actions';
