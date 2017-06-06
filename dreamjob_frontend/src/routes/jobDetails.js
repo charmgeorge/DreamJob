@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {createJob, getDetails, updateJobDetails} from '../actions/actions'
+import {createJob, getDetails, updateJobDetails, deleteJob} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -23,15 +23,21 @@ class jobDetails extends Component {
     })
   }
 
+  redirect(){
+    this.props.history.push('/job_index');
+  }
+
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this))
     jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this))
+    jobStore.on('jobDeleted', this.redirect.bind(this))
   }
-//
-// // componentWillUpdate(){
-// //   jobStore.on('jobAdded', this.redirect.bind(this))
-// // }
-//
+
+  handleDelete(e){
+    e.preventDefault();
+    deleteJob(this.state.job.id)
+  }
+
   handleSubmit(e){
     e.preventDefault()
     updateJobDetails(this.state)
@@ -98,6 +104,7 @@ class jobDetails extends Component {
           </div>
           <div className="form-group">
             <input type='submit' value='Update Job' className="btn btn-primary" />
+            <button className='btn-danger' onClick={this.handleDelete.bind(this)}>Delete</button>
             {/* <input value="Delete" className="btn btn-danger" /> */}
             <br />
           </div>
