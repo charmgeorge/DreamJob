@@ -28,15 +28,12 @@ class jobIndex extends Component {
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
     jobStore.on('jobDetails', this.redirect.bind(this))
     jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
-
     checkLoginRedir(this.props)
   }
 
   componentWillUpdate(){
     checkLoginRedir(this.props)
   }
-
-
 
   renderJobs(){
     let jobRender = []

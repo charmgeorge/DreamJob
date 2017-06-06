@@ -49,8 +49,6 @@ class JobStore extends EventEmitter{
   }
 
   updateJobDetails(attributes){
-    console.log(attributes)
-    debugger
     this.details = attributes
     this.updateMessage('Job details updated!')
     this.emit('jobDetailsUpdated')
