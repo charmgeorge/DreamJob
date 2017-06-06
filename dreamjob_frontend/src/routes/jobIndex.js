@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import JobListing from '../components/JobListing'
+import JobListing from '../components/jobListing'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 import {checkLoginRedir} from '../actions/actions'
-
 
 class jobIndex extends Component {
   constructor(props){
@@ -20,9 +19,14 @@ class jobIndex extends Component {
     })
   }
 
+  redirect(){
+    this.props.history.push('/job_details')
+  }
+
   componentWillMount(){
     jobStore.on('jobAdded',this.updateJobs.bind(this))
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.on('jobDetails', this.redirect.bind(this))
     checkLoginRedir(this.props)
   }
 
