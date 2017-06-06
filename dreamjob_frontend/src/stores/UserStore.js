@@ -4,27 +4,21 @@ import dispatcher from '../dispatchers/dispatcher';
 class UserStore extends EventEmitter{
   constructor(){
     super();
-    this.users = [{}]
-    this.newUser = {}
+    this.user = null
   }
 
-  getNewUser(){
-    return this.newUser;
+  updateUser(user){
+    this.user = user
+    this.emit('login')
   }
 
-  updateUsers(users, initial){
-    this.users = users
-    if(initial){
-      this.emit('load')
-    } else {
-      this.emit('change')
-    }
+  getUser(){
+    return this.user
   }
 
   addUser(user){
-    this.newUser = user
+    this.user = user
     console.log("new user set")
-    this.users.push(user)
     this.emit('user_created')
   }
 
@@ -33,6 +27,11 @@ class UserStore extends EventEmitter{
       case("NEW_USER"):{
         console.log(action);
         this.addUser(action.user);
+        break;
+      }
+      case("LOGIN_USER"):{
+        console.log(action);
+        this.updateUser(action.user);
         break;
       }
       default:{}
