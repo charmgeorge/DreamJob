@@ -46,15 +46,8 @@ app.post('/update_job_details/:id', function (request, response){
   Job.findOne({
     where:{id:id}
   })
-
-//TODO UPDATING RECORDS IN DB
   .then(function(job){
-    console.log("before", job);
-    job.update({
-      job:request.body.job
-
-
-    }).then(function(update){
+    job.update(request.body.job).then(function(update){
       response.status(200)
       response.json({status:'success', job:update})
       console.log('update');
@@ -64,18 +57,6 @@ app.post('/update_job_details/:id', function (request, response){
     response.json({status:'error', error:error})
   })
 })
-
-
-  //   job:request.body.job
-  //   return job.save()
-  // })
-  // .catch(function(error){
-  //   response.status(400)
-  //   response.json({status:'error', error:error})
-  // })
-  // })
-
-
 
 app.post('/create_job', function (request, response){
   let jobParams = request.body.job

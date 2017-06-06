@@ -67,6 +67,7 @@ class JobStore extends EventEmitter{
        break
      }
      case("UPDATE_JOB_DETAILS"):{
+       debugger
        this.updateJobDetails(action.job)
        break
      }
