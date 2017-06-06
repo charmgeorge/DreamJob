@@ -10,7 +10,7 @@ import RegisterUser from './routes/RegisterUser';
 import Login from './routes/Login';
 import Home from './routes/Home';
 import {updateJobs} from './actions';
-import {checkLogin} from './actions/actions';
+import {checkLogin, userLogout} from './actions/actions';
 // userLogout
 
 class App extends Component {
@@ -22,6 +22,10 @@ class App extends Component {
       message:jobStore.getMessage(),
       currentUser: userStore.getUser()
     }
+  }
+
+  handleLogout(){
+    userLogout()
   }
 
   updateMessage(){
@@ -57,10 +61,6 @@ class App extends Component {
     }
   }
 
-  handleLogout(){
-    console.log('user logout');
-    // userLogout()
-  }
 
   render() {
     return (
@@ -69,7 +69,7 @@ class App extends Component {
         <div className="App">
           <h2>Dream Job</h2>
           <p className="App-intro">
-            {this.state.currentUser.email}
+            {/* {this.state.currentUser.email} */}
 
           </p>
           <Router>

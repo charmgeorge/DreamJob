@@ -17,7 +17,6 @@ class UserStore extends EventEmitter{
   }
 
   getUser(){
-    console.log(this.user);
     return this.user
   }
 
@@ -27,7 +26,6 @@ class UserStore extends EventEmitter{
 
   addUser(user){
     this.user = user
-    console.log("new user set")
     this.emit('user_created')
   }
 
@@ -44,15 +42,25 @@ class UserStore extends EventEmitter{
     }
   }
 
+  logout(){
+    this.user = null
+    localStorage.setItem('authToken', null);
+    localStorage.setItem('authTokenExpiration', null);
+    localStorage.setItem('email', "");
+    this.emit('login')
+  }
+
   handleAction(action){
     switch(action.type){
       case("NEW_USER"):{
-        console.log(action);
         this.addUser(action.user);
         break;
       }
+      case("LOGOUT"):{
+        this.logout()
+        break
+      }
       case("LOGIN_USER"):{
-        console.log(action);
         this.updateUser(action.user);
         break;
       }

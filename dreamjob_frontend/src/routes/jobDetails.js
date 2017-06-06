@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
 import {createJob} from '../actions'
+import {checkLoginRedir} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 
 class jobDetails extends Component {
@@ -16,6 +17,9 @@ class jobDetails extends Component {
       date:"",
       url:"",
       notes:""
+    }
+    componentWillUpdate(){
+      checkLoginRedir(this.props)
     }
 //     message:"",
 //     status:"",
