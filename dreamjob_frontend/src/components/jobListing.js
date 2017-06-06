@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {getDetails} from '../actions/actions'
+import {getDetails, deleteJob} from '../actions/actions'
 
 
 class JobListing extends Component {
@@ -10,13 +10,34 @@ class JobListing extends Component {
     getDetails(this.props.job.id)
   }
 
+  updateClass(){
+    var rightNow = new Date().getTime()
+    var updatedAt = new Date(this.props.job.updatedAt);
+    var result = rightNow-updatedAt
+    var color
+
+    if(result <= 30000){
+      color = "col-xs-3 GREEN"
+    }
+    else if(result <= 60000){
+      color = "col-xs-3 YELLOW"
+    }
+    else {
+      color = "col-xs-3 RED"
+    }
+    return color
+  }
+
   render(){
     return(
       // <div className="container">
-        <div className="col-xs-3 jobs">
+        <div className={this.updateClass()} >
           <ul>
             <li>
               {this.props.job.id}
+            </li>
+            <li>
+              {this.props.job.updatedAt}
             </li>
             <li>
               {this.props.job.company}
@@ -29,7 +50,7 @@ class JobListing extends Component {
             </li>
             <li>
               <div>
-                <button className='btn-primary' onClick={this.handleClick.bind(this)}>Job Details</button>
+                <button className='btn-primary glyphicon glyphicon-edit' onClick={this.handleClick.bind(this)}></button>
               </div>
               {/* {this.props.job.id} */}
             </li>

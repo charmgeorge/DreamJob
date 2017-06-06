@@ -84,7 +84,6 @@ export function updateJobDetails(attributes){
     body: JSON.stringify(attributes)
   }
   fetch('http://localhost:4000/update_job_details/' + attributes.job.id, params).then((response)=>{
-    debugger
     if(response.ok){
       response.json().then((body)=>{
         dispatcher.dispatch({
@@ -94,10 +93,27 @@ export function updateJobDetails(attributes){
       })
     }
   }).catch(function(err){
-    debugger
       jobStore.updateMessage("There was an error: " + err)
   })
 }
+
+export function deleteJob(jobId){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/deleteJob/" + jobId, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        dispatcher.dispatch({
+          type: 'DELETE_JOB',
+        })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+  }
 
 export function getDetails(jobId){
   const params = {

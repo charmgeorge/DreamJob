@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {checkLoginRedir, createJob, getDetails, updateJobs, updateJobDetails} from '../actions/actions'
+import {checkLoginRedir, createJob, getDetails, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -23,21 +23,29 @@ class jobDetails extends Component {
     })
   }
 
+  redirect(){
+    this.props.history.push('/job_index');
+  }
+
   renewJobs(){
     updateJobs()
   }
 
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this))
-    jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
+    // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
+    jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this))
+
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
+    jobStore.on('jobDeleted', this.redirect.bind(this))
     checkLoginRedir(this.props)
   }
-//
-// // componentWillUpdate(){
-// //   jobStore.on('jobAdded', this.redirect.bind(this))
-// // }
-//
+
+  handleDelete(e){
+    e.preventDefault();
+    deleteJob(this.state.job.id)
+  }
+
   handleSubmit(e){
     e.preventDefault()
     updateJobDetails(this.state)
@@ -56,7 +64,7 @@ class jobDetails extends Component {
     return (
       <div className="App">
         <div className="pull-left">
-          <Link to="/job_index"><button className='btn-primary'>Back to Job Index</button></Link>
+          <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
         </div>
         <h3>Job Details</h3>
         <form className="form" onSubmit={this.handleSubmit.bind(this)}>
@@ -103,7 +111,8 @@ class jobDetails extends Component {
             <br />
           </div>
           <div className="form-group">
-            <input type='submit' value='Update Job' className="btn btn-primary" />
+            <input type='submit' value='Update Job' className="btn-primary" />
+            <button className="btn-danger glyphicon glyphicon-trash" onClick={this.handleDelete.bind(this)}></button>
             {/* <input value="Delete" className="btn btn-danger" /> */}
             <br />
           </div>
