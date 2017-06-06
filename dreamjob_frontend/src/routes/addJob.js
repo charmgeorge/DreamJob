@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {createJob} from '../actions'
 import {checkLoginRedir} from '../actions/actions'
+import {createJob} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 
 class addJob extends Component {
@@ -25,7 +25,7 @@ class addJob extends Component {
 }
 
 redirect(){
-  this.props.history.push("/jobIndex")
+  this.props.history.push("/job_index")
 }
 
 componentWillMount(){
