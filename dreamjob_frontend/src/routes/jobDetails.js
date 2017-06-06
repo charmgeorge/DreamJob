@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {createJob, getDetails, updateJobs, updateJobDetails} from '../actions/actions'
+import {checkLoginRedir, createJob, getDetails, updateJobs, updateJobDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
 class jobDetails extends Component {
   constructor(props){
-  super(props)
-  // getDetails()
-  this.state={
-    job: jobStore.getDetails()
-//     message:"",
-//     status:"",
-//     error:""
-  }
+    super(props)
+    // getDetails()
+    this.state={
+      job: jobStore.getDetails()
+      //     message:"",
+      //     status:"",
+      //     error:""
+    }
   }
 //
   updateDetails(){
@@ -31,7 +31,7 @@ class jobDetails extends Component {
     jobStore.on('jobDetails', this.updateDetails.bind(this))
     jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
-
+    checkLoginRedir(this.props)
   }
 //
 // // componentWillUpdate(){

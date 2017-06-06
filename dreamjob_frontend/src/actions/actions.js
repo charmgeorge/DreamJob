@@ -1,5 +1,28 @@
 import dispatcher from '../dispatchers/dispatcher';
+import userStore from '../stores/UserStore';
 import jobStore from '../stores/jobStore'
+
+export function checkLoginRedir(props){
+  let currentUser = userStore.getUser()
+
+  if(currentUser === null){
+    props.history.push("/login")
+    return false
+  }
+  return true
+}
+
+export function userLogout(){
+  dispatcher.dispatch({
+    type: "LOGOUT"
+  })
+}
+
+export function checkLogin(){
+  dispatcher.dispatch({
+    type: 'CHECK_LOGIN'
+  })
+}
 
 export function newUser(userInfo){
   let success;
@@ -13,9 +36,7 @@ export function newUser(userInfo){
       return response.json()
     })
     .then((body)=>{
-      console.log(body);
       if (success){
-        console.log('in if statement ', body);
         dispatcher.dispatch({
           type: "NEW_USER",
           user: body
