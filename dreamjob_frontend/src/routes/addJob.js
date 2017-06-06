@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
+import {checkLoginRedir} from '../actions/actions'
 import {createJob} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 
@@ -29,11 +30,12 @@ redirect(){
 
 componentWillMount(){
   jobStore.on('jobAdded', this.redirect.bind(this))
+  checkLoginRedir(this.props)
 }
 
-// componentWillUpdate(){
-//   jobStore.on('jobAdded', this.redirect.bind(this))
-// }
+componentWillUpdate(){
+  checkLoginRedir(this.props)
+}
 
 handleSubmit(e){
   e.preventDefault()
