@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {checkLoginRedir, createJob, getDetails, updateJobDetails} from '../actions/actions'
+import {checkLoginRedir, createJob, getDetails, updateJobs, updateJobDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -23,9 +23,14 @@ class jobDetails extends Component {
     })
   }
 
+  renewJobs(){
+    updateJobs()
+  }
+
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this))
-    jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this))
+    jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
+    jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     checkLoginRedir(this.props)
   }
 //
