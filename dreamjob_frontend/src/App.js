@@ -51,17 +51,16 @@ class App extends Component {
   login(){
     if(this.state.currentUser){
       return(
-        console.log('user logged in ')
-      )
-        // <a onClick={this.handleLogout.bind(this)}>{this.state.currentUser.email}</a>)
+        <a onClick={this.handleLogout.bind(this)}>Logout</a>)
     } else {
       return(<Link to="/login">Login</Link>)
     }
   }
 
-  // handleLogout(){
-  //   userLogout()
-  // }
+  handleLogout(){
+    console.log('user logout');
+    // userLogout()
+  }
 
   render() {
     return (
@@ -70,16 +69,17 @@ class App extends Component {
         <div className="App">
           <h2>Dream Job</h2>
           <p className="App-intro">
-            MOTTO TO GO HERE
+            {this.state.currentUser.email}
+
           </p>
-          {/* <div className="pull-right">
-            <Link to="/">Home</Link> |
-            <Link to="/add_job">Add Job</Link> |
-            <Link to="/register">Register</Link> |
-            {this.login()}
-          </div> */}
           <Router>
             <div>
+              <div className="pull-right">
+                <Link to="/">Home</Link> |
+                <Link to="/add_job">Add Job</Link> |
+                <Link to="/register">Register</Link> |
+                {this.login()}
+              </div>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/register" component={RegisterUser}></Route>
               <Route exact path = '/add_job' component={addJob}></Route>
