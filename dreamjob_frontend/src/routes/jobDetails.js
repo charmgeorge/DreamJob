@@ -56,7 +56,7 @@ class jobDetails extends Component {
     return (
       <div className="App">
         <div className="pull-left">
-          <Link to="/job_index"><button className='btn-primary'>Back to Job Index</button></Link>
+          <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
         </div>
         <h3>Job Details</h3>
         <form className="form" onSubmit={this.handleSubmit.bind(this)}>
@@ -103,8 +103,8 @@ class jobDetails extends Component {
             <br />
           </div>
           <div className="form-group">
-            <input type='submit' value='Update Job' className="btn btn-primary" />
-            <button className='btn-danger' onClick={this.handleDelete.bind(this)}>Delete</button>
+            <input type='submit' value='Update Job' className="btn-primary" />
+            <button className="btn-danger glyphicon glyphicon-trash" onClick={this.handleDelete.bind(this)}></button>
             {/* <input value="Delete" className="btn btn-danger" /> */}
             <br />
           </div>

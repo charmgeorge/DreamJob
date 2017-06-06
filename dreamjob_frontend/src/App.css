@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+.GREEN {
+  color: green;
+}
+
+.YELLOW {
+  color: yellow;
+}
+
+.RED {
+  color: red;
+}
+
 ul {
   list-style-type: none;
   height: 100px;

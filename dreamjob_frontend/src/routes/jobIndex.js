@@ -28,6 +28,8 @@ class jobIndex extends Component {
     jobStore.on('jobDetails', this.redirect.bind(this))
   }
 
+
+
   renderJobs(){
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){
