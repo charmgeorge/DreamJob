@@ -10,7 +10,7 @@ class RegisterUser extends Component {
     super(props)
     //the initial state of the website
     this.state={
-      User:{
+      user:{
         firstname:"",
         lastname:"",
         email:"",
@@ -22,7 +22,7 @@ class RegisterUser extends Component {
   }
 
   componentWillMount(){
-    userStore.on('User_created', ()=> {
+    userStore.on('user_created', ()=> {
       this.props.history.push("/")
     })
   }
@@ -30,10 +30,10 @@ class RegisterUser extends Component {
   handleChange(e){
     let target = e.target
     //target.name is the properties of cat??? what is target.value?
-    let User = this.state.User
-    User[target.name]= target.value
+    let user = this.state.user
+    user[target.name]= target.value
     this.setState({
-      User: User
+      user: user
     })
   }
 //cg
@@ -76,7 +76,7 @@ class RegisterUser extends Component {
                           <input
                             type='text'
                             name='firstname'
-                            value={this.state.User.firstname}
+                            value={this.state.user.firstname}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -85,7 +85,7 @@ class RegisterUser extends Component {
                           <input
                             type='text'
                             name='lastname'
-                            value={this.state.User.lastname}
+                            value={this.state.user.lastname}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -94,7 +94,7 @@ class RegisterUser extends Component {
                           <input
                             type='text'
                             name='email'
-                            value={this.state.User.email}
+                            value={this.state.user.email}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -103,7 +103,7 @@ class RegisterUser extends Component {
                           <input
                             type='password'
                             name='password'
-                            value={this.state.User.password}
+                            value={this.state.user.password}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>

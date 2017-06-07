@@ -31,7 +31,8 @@ export function newUser(userInfo){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userInfo)
       }
-  fetch('http://localhost:3000/create_user', params).then((response)=>{
+      debugger
+  fetch('http://localhost:4000/create_user', params).then((response)=>{
       success = response.ok
       return response.json()
     })
@@ -56,7 +57,7 @@ export function loginUser(userInfo){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userInfo)
       }
-  fetch('http://localhost:3000/login_user', params)
+  fetch('http://localhost:4000/login_user', params)
     .then((response)=>{
       success = response.ok
       return response.json()
