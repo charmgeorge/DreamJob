@@ -83,7 +83,7 @@ export function updateJobDetails(attributes){
     },
     body: JSON.stringify(attributes)
   }
-  fetch('http://localhost:4000/update_job_details/' + attributes.job.id, params).then((response)=>{
+  fetch('http://localhost:4000/update_job_details/' + attributes.job.id + "/" + attributes.job.company, params).then((response)=>{
     if(response.ok){
       response.json().then((body)=>{
         dispatcher.dispatch({
@@ -113,7 +113,26 @@ export function deleteJob(jobId){
   }).catch(function(err){
       jobStore.updateMessage("There was an error: " + err)
   })
+}
+
+export function glassdoorDetails(company){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
   }
+  fetch("http://localhost:4000/glassdoor/" + company, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(data){
+        dispatcher.dispatch({
+          type: 'GLASSDOOR',
+          data: data
+        })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+}
 
 export function getDetails(jobId){
   const params = {
@@ -161,7 +180,9 @@ export function createJob(attributes){
     body: JSON.stringify(attributes)
   }
   fetch('http://localhost:4000/create_job', params).then((response)=>{
+    debugger
     if(response.ok){
+      debugger
       response.json().then((body)=>{
         dispatcher.dispatch({
           type: 'CREATE_JOB',

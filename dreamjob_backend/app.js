@@ -3,8 +3,12 @@ var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
 var cors = require('cors')
-
 var app = express();
+var Glassdoor = require('node-glassdoor').initGlassdoor({
+    partnerId: 157533,
+    partnerKey: "cE2dvplWMTK"
+});
+
 
 const corsOptions = {
   origin: 'http://localhost:3000'
@@ -34,9 +38,7 @@ const authorization = function(request, response, next){
   }
 }
 
-app.get('/', function (request, response) {
-  response.json({message: 'hello world!'})
-});
+
 
 app.get('/jobs', function (request, response) {
   Job.findAll().then(function(jobs){
@@ -75,7 +77,20 @@ app.get('/getDetails/:id', function (request, response) {
   })
 })
 
-app.post('/update_job_details/:id', function (request, response){
+app.get('/glassdoor/:company', function (request, response) {
+  let company = request.params['company'];
+  Glassdoor.findOneCompany(company,{country:""})
+    .then(function (data) {
+        response.json({
+          data:data
+        })
+    })
+      .catch(function (err) {
+          response.json({error:err});
+      });
+});
+
+app.post('/update_job_details/:id/:company', function (request, response){
   let id = request.params['id'];
   Job.findOne({
     where:{id:id}
@@ -92,7 +107,25 @@ app.post('/update_job_details/:id', function (request, response){
   })
 })
 
-app.post('/create_job', authorization, function (request, response){
+// app.post('/update_job_details/:id/:company', function (request, response){
+//   let id = request.params['id'];
+//   let company = request.params['company'];
+//   Job.findOne({
+//     where:{id:id}
+//   })
+//   .then(function(job){
+//     job.update(request.body.job).then(function(update){
+//       response.status(200)
+//       response.json({status:'success', job:update})
+//       console.log('update');
+//     })
+//   }).catch(function(error){
+//     response.status(400)
+//     response.json({status:'error', error:error})
+//   })
+// })
+
+app.post('/create_job', function (request, response){
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){
     response.status(200)

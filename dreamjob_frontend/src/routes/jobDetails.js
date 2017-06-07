@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
+import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob, glassdoorDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -8,10 +8,10 @@ class jobDetails extends Component {
   constructor(props){
     super(props)
     this.state={
-      job: jobStore.getDetails()
+      job: jobStore.getDetails(),
     }
   }
-//
+
   updateDetails(){
     this.setState({
       job:jobStore.getDetails()
@@ -26,11 +26,15 @@ class jobDetails extends Component {
     updateJobs()
   }
 
+  redirectGlassdoor(){
+    this.props.history.push('/glassdoor')
+  }
+
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this))
+    jobStore.on('glassdoor', this.redirectGlassdoor.bind(this))
     // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
-
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     jobStore.on('jobDeleted', this.redirect.bind(this))
     checkLoginRedir(this.props)
@@ -53,6 +57,11 @@ class jobDetails extends Component {
     this.setState({
       job:job
     })
+  }
+
+  handleGlassdoor(e){
+    e.preventDefault()
+    glassdoorDetails(this.state.job.company)
   }
 
   render() {
@@ -127,6 +136,7 @@ class jobDetails extends Component {
                           <div>
                             <input type='submit' value='Update Job' className="btn-primary" />
                             <button className="btn-danger glyphicon glyphicon-trash" onClick={this.handleDelete.bind(this)}></button>
+                            <button className="btn-success" onClick={this.handleGlassdoor.bind(this)}>Glassdoor</button>
                             {/* <input value="Delete" className="btn btn-danger" /> */}
                             <br />
                           </div>

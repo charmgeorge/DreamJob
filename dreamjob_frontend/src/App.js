@@ -9,6 +9,7 @@ import RegisterUser from './routes/RegisterUser';
 import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
+import glassdoor from './routes/glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import jobDetails from './routes/jobDetails';
 import {updateJobs} from './actions/actions';
@@ -87,6 +88,7 @@ class App extends Component {
                 <Route exact path = '/job_index' component={jobIndex}></Route>
                 <Route exact path = '/job_details' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
+                <Route exact path = '/glassdoor' component={glassdoor}></Route>
                 <Route component={NoMatch} />
               </Switch>
 

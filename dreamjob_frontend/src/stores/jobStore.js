@@ -54,6 +54,12 @@ class JobStore extends EventEmitter{
     this.emit('jobDetailsUpdated')
   }
 
+  updateGlassdoor(alldata){
+    this.details = alldata.data.overallRating
+    this.updateMessage('Glassdoor details retrieved!')
+    this.emit('glassdoor')
+  }
+
   handleActions(action){
    switch(action.type){
      case("CREATE_JOB"):{
@@ -75,6 +81,10 @@ class JobStore extends EventEmitter{
      }
      case("UPDATE_JOB_DETAILS"):{
        this.updateJobDetails(action.job)
+       break
+     }
+     case("GLASSDOOR"):{
+       this.updateGlassdoor(action.data)
        break
      }
      default:{}
