@@ -12,7 +12,6 @@ class UserStore extends EventEmitter{
     this.user = user
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
-    console.log(user.authToken);
     localStorage.setItem('email', user.email);
     this.emit('login')
   }
@@ -32,11 +31,7 @@ class UserStore extends EventEmitter{
 
   setUserFromLocal(){
     let token = localStorage.getItem('authToken')
-    console.log(token);
     let expire = new Date(localStorage.getItem('authTokenExpiration'))
-    console.log(expire);
-    console.log(token && expire >= new Date());
-    console.log( localStorage.getItem('email'));
     if(token && expire >= new Date()){
       this.user = {
         authToken: token,

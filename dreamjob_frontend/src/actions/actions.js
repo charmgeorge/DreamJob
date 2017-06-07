@@ -167,7 +167,6 @@ export function createJob(attributes){
     body: JSON.stringify(attributes)
   }
   fetch('http://localhost:4000/create_job', params).then((response)=>{
-    debugger;
     if(response.ok){
       response.json().then((body)=>{
         dispatcher.dispatch({

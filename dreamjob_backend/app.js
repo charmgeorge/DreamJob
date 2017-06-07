@@ -15,9 +15,6 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 
 const authorization = function(request, response, next){
-  debugger;
-  console.log(request.query);
-  console.log( request.body);
   const token = request.query.authToken || request.body.authToken
   if(token){
     User.findOne({
@@ -87,7 +84,6 @@ app.post('/update_job_details/:id', function (request, response){
     job.update(request.body.job).then(function(update){
       response.status(200)
       response.json({status:'success', job:update})
-      console.log('update');
     })
   }).catch(function(error){
     response.status(400)
@@ -96,7 +92,6 @@ app.post('/update_job_details/:id', function (request, response){
 })
 
 app.post('/create_job', authorization, function (request, response){
-  debugger;
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){
     response.status(200)
@@ -108,7 +103,6 @@ app.post('/create_job', authorization, function (request, response){
 })
 
 app.post('/create_user', function(request, response){
-  console.log(request.body.user)
   User.create(request.body.user).then((user) => {
     response.status(200)
     response.json({status:'success', user: user})
@@ -126,7 +120,6 @@ app.post('/login_user', function(request, response){
     if(user){
       response.status(200)
       response.json({status:'success', user: user })
-      console.log('user = ', user);
     } else {
       response.status(401)
       response.json({status: 'error', error: 'Could not log in' })
