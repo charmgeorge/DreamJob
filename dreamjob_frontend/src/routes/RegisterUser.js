@@ -61,13 +61,11 @@ class RegisterUser extends Component {
             <div className='col-xs-6 col-xs-offset-3'>
               <div className='panel panel-default'>
                 <div className='panel-body'>
-                   { !this.isValid() &&
-                  <div className='alert alert-danger'>
-                    Please verify that all fields are filled in below
                   </div>
-                }
+
                   <h3>Register</h3>
-                  <form className='form' onSubmit={this.handleSubmit.bind(this)}>
+                  <form className='form'
+                    onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
                       <div className='col-xs-12'>
                         <div>
@@ -77,7 +75,11 @@ class RegisterUser extends Component {
                             type='text'
                             name='firstname'
                             value={this.state.user.firstname}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+
+                            // pass in errors for this input
+                            errors={this.state.errors.firstname}
+                          />
                         </div>
                         <div>
                           <label>Last Name</label>
@@ -108,12 +110,10 @@ class RegisterUser extends Component {
                         </div>
                         <div>
                           <br />
-                          <input type='submit' value='Submit' className = 'btn btn-primary' />
                         </div>
                       </div>
                     </div>
                   </form>
-                </div>
               </div>
             </div>
           </div>

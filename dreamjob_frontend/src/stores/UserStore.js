@@ -6,13 +6,14 @@ class UserStore extends EventEmitter{
     super();
     this.user = null
     this.message = ""
-    this.errors = {}
+    // this.errors = {} moving to new line per Antonios code ex
     this.fields = {
       firstName: "",
       lastName: "",
       email: "",
       password: ""
-    }
+    },
+    this.errors = {}
   }
 
   updateUser(user){
@@ -26,7 +27,8 @@ class UserStore extends EventEmitter{
   getUser(){
     return this.user
   }
-  //cg
+
+
   getErrors(){
     // {}
     // or
@@ -49,7 +51,12 @@ class UserStore extends EventEmitter{
     }
   }
 
-  // validateEmail(fieldName)
+  validateEmail(fieldName){
+    const filter = /^\w+([\.-]?\ w+)*@\w+([\.-]?\ w+)*(\.\w{2,3})+$/
+    if(!filter.test(this.fields[fieldName])){
+      this.addError(fieldName, 'is not an email')
+    }
+  }
 
   addError(fieldName, message){
     this.errors[fieldName] = message
