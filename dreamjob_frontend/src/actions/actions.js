@@ -153,6 +153,12 @@ export function updateJobs(){
 }
 
 export function createJob(attributes){
+
+  let currentUser = userStore.getUser()
+  if(currentUser){
+    attributes.authToken = currentUser.authToken
+  }
+
   const params = {
     method: 'POST',
     headers: {
