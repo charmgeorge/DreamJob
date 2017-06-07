@@ -29,7 +29,7 @@ class jobDetails extends Component {
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this))
     // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
-    jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this))
+    jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
 
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     jobStore.on('jobDeleted', this.redirect.bind(this))
@@ -62,7 +62,7 @@ class jobDetails extends Component {
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
               <div className="pull-left">
-                <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
+                <Link to="/job_index"><button onclick={this.handleSubmit.bind(this)} className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
               </div>
                 <div className='panel panel-default'>
                   <div className='panel-body'>
