@@ -55,7 +55,7 @@ class JobStore extends EventEmitter{
   }
 
   updateGlassdoor(alldata){
-    this.details = alldata.data.overallRating
+    this.details = alldata.data
     this.updateMessage('Glassdoor details retrieved!')
     this.emit('glassdoor')
   }
