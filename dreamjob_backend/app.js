@@ -15,9 +15,6 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 
 const authorization = function(request, response, next){
-  debugger;
-  console.log(request.query);
-  console.log( request.body);
   const token = request.query.authToken || request.body.authToken
   if(token){
     User.findOne({
@@ -42,7 +39,16 @@ app.get('/', function (request, response) {
 });
 
 app.get('/jobs', function (request, response) {
-  Job.findAll().then(function(jobs){
+
+  console.log('in jobs route', request.email);
+  Job.findAll(
+  //   {
+  //   where: {
+  //     userId:request.body.user.id
+  //   }
+  // }
+)
+.then(function(jobs){
     response.status(200)
     response.json({
       status:'success',
@@ -96,8 +102,19 @@ app.post('/update_job_details/:id', function (request, response){
 })
 
 app.post('/create_job', authorization, function (request, response){
-  debugger;
   let jobParams = request.body.job
+//  userEmail: currentUser.email
+  console.log('email is : ' , request.body.email);
+  User.findOne({
+    where: {email: request.body.email}
+  })
+  .then(function(user) {
+    debugger
+    console.log('user is: ', user.id);
+    return user.id
+  })
+
+  console.log(jobParams);
   Job.create(jobParams).then(function(job){
     response.status(200)
     response.json({status:'success', job:job})
