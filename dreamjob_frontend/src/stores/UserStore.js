@@ -4,7 +4,8 @@ import dispatcher from '../dispatchers/dispatcher';
 class UserStore extends EventEmitter{
   constructor(){
     super();
-    this.User = null
+    this.user = null
+    this.message = ""
     this.errors = {}
     this.fields = {
       firstName: "",
@@ -14,13 +15,16 @@ class UserStore extends EventEmitter{
     }
   }
 
-  updateUser(User){
-    this.User = User
+  updateUser(user){
+    this.user = user
+    localStorage.setItem('authToken', user.authToken);
+    localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
+    localStorage.setItem('email', user.email);
     this.emit('login')
   }
 
   getUser(){
-    return this.User
+    return this.user
   }
   //cg
   getErrors(){
@@ -51,23 +55,55 @@ class UserStore extends EventEmitter{
     this.errors[fieldName] = message
   }
 
-  addUser(User){
-    this.User = User
+
+  addUser(user){
+    this.user = user
     console.log("new user set")
     this.emit('user_created')
+  }
+
+  getMessage(){
+    return this.message
+  }
+
+  setUserFromLocal(){
+    let token = localStorage.getItem('authToken')
+    let expire = new Date(localStorage.getItem('authTokenExpiration'))
+    if(token && expire >= new Date()){
+      this.user = {
+        authToken: token,
+        authTokenExpiration: expire,
+        email: localStorage.getItem('email')
+      }
+      this.emit('login')
+    }
+  }
+
+  logout(){
+    this.user = null
+    localStorage.setItem('authToken', null);
+    localStorage.setItem('authTokenExpiration', null);
+    localStorage.setItem('email', "");
+    this.emit('login')
   }
 
   handleAction(action){
     switch(action.type){
       case("NEW_USER"):{
-        console.log(action);
-        this.addUser(action.User);
+        this.addUser(action.user);
         break;
       }
+      case("LOGOUT"):{
+        this.logout()
+        break
+      }
       case("LOGIN_USER"):{
-        console.log(action);
-        this.updateUser(action.User);
+        this.updateUser(action.user);
         break;
+      }
+      case("CHECK_LOGIN"):{
+        this.setUserFromLocal()
+        break
       }
       default:{}
     }

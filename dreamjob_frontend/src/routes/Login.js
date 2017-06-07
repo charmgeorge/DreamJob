@@ -21,6 +21,12 @@ class Login extends Component {
   //     this.props.history.push("/")  //job_index
   //   })
   // }
+  handleLogin(){
+    this.props.history.push('/job_index')
+  }
+  componentWillMount(){
+    userStore.on('login', this.handleLogin.bind(this))
+  }
 
   handleChange(e){
     let target = e.target
@@ -33,7 +39,6 @@ class Login extends Component {
   }
   handleSubmit(e){
     e.preventDefault()
-    console.log('handle submit with state: ', this.state);
     loginUser(this.state)
   }
   render() {

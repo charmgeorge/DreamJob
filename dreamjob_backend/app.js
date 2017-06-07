@@ -48,7 +48,51 @@ app.get('/jobs', function (request, response) {
   })
 })
 
-app.post('/create_job', authorization, function (request, response){
+app.get('/deleteJob/:id', function (request, response) {
+ var id = request.params["id"];
+  Job.findOne({
+    where:{id:id}
+  }).then(function(job){
+    job.destroy()
+  }).then(function(deletedJob){
+    response.status(200)
+    response.json({
+      status:'success',
+    })
+  })
+})
+
+app.get('/getDetails/:id', function (request, response) {
+ var id = request.params["id"];
+  Job.findOne({
+    where:{id:id}
+  }).then(function(job){
+    response.status(200)
+    response.json({
+      status:'success',
+      job:job
+    })
+  })
+})
+
+app.post('/update_job_details/:id', function (request, response){
+  let id = request.params['id'];
+  Job.findOne({
+    where:{id:id}
+  })
+  .then(function(job){
+    job.update(request.body.job).then(function(update){
+      response.status(200)
+      response.json({status:'success', job:update})
+      console.log('update');
+    })
+  }).catch(function(error){
+    response.status(400)
+    response.json({status:'error', error:error})
+  })
+})
+
+app.post('/create_job', function (request, response){
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){
     response.status(200)

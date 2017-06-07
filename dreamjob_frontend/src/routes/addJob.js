@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 // import logo from '../logo.svg';
 import '../App.css';
-import {createJob} from '../actions'
-import jobStore from '../stores/jobStore'
+import {checkLoginRedir} from '../actions/actions';
+import {createJob} from '../actions/actions';
+import jobStore from '../stores/jobStore';
+import {Link} from 'react-router-dom';
 
 class addJob extends Component {
   constructor(props){
@@ -24,16 +26,17 @@ class addJob extends Component {
 }
 
 redirect(){
-  this.props.history.push("/jobIndex")
+  this.props.history.push("/job_index")
 }
 
 componentWillMount(){
   jobStore.on('jobAdded', this.redirect.bind(this))
+  checkLoginRedir(this.props)
 }
 
-// componentWillUpdate(){
-//   jobStore.on('jobAdded', this.redirect.bind(this))
-// }
+componentWillUpdate(){
+  checkLoginRedir(this.props)
+}
 
 handleSubmit(e){
   e.preventDefault()
@@ -52,6 +55,9 @@ handleChange(e){
   render() {
     return (
       <div className="App">
+        <div className="pull-left">
+          <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
+        </div>
         <h3>Add A Job</h3>
         <form className="form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="form-group inline">

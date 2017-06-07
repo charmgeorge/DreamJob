@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import JobListing from '../components/jobListing'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
-
+import {checkLoginRedir} from '../actions/actions'
 
 class jobIndex extends Component {
   constructor(props){
@@ -19,9 +19,20 @@ class jobIndex extends Component {
     })
   }
 
+  redirect(){
+    this.props.history.push('/job_details')
+  }
+
   componentWillMount(){
     jobStore.on('jobAdded',this.updateJobs.bind(this))
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.on('jobDetails', this.redirect.bind(this))
+    jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
+    checkLoginRedir(this.props)
+  }
+
+  componentWillUpdate(){
+    checkLoginRedir(this.props)
   }
 
   renderJobs(){
@@ -39,7 +50,7 @@ class jobIndex extends Component {
     return (
       <div className="App">
         <div className="pull-left">
-          <Link to="/addJob"><button className='btn-primary'>Add Job</button></Link>
+          <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
         </div>
         <h3>Current Dream Jobs</h3>
         <div className="job-list row">
