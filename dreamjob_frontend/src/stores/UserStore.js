@@ -4,20 +4,55 @@ import dispatcher from '../dispatchers/dispatcher';
 class UserStore extends EventEmitter{
   constructor(){
     super();
-    this.user = null
+    this.User = null
+    this.errors = {}
+    this.fields = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    }
   }
 
-  updateUser(user){
-    this.user = user
+  updateUser(User){
+    this.User = User
     this.emit('login')
   }
 
   getUser(){
-    return this.user
+    return this.User
+  }
+  //cg
+  getErrors(){
+    // {}
+    // or
+    // {firstName: 'is requires'}
+    return this.errors
+  }
+  //cg
+  validate(){
+    this.errors = {}
+    this.validatePresence('firstName')
+    this.validatePresence('lastName')
+    this.validatePresence('email')
+    this.validatePresence('password')
+    // console.log("the errors", this.errors)
   }
 
-  addUser(user){
-    this.user = user
+  validatePresence(fieldName){
+    if(this.fields[fieldName] === ''){
+      this.addError(fieldName, 'is Required')
+    }
+  }
+
+  // validateEmail(fieldName)
+
+  addError(fieldName, message){
+    this.errors[fieldName] = message
+  }
+
+  addUser(User){
+    this.User = User
     console.log("new user set")
     this.emit('user_created')
   }
@@ -26,12 +61,12 @@ class UserStore extends EventEmitter{
     switch(action.type){
       case("NEW_USER"):{
         console.log(action);
-        this.addUser(action.user);
+        this.addUser(action.User);
         break;
       }
       case("LOGIN_USER"):{
         console.log(action);
-        this.updateUser(action.user);
+        this.updateUser(action.User);
         break;
       }
       default:{}

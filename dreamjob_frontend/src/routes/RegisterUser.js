@@ -10,18 +10,19 @@ class RegisterUser extends Component {
     super(props)
     //the initial state of the website
     this.state={
-      user:{
+      User:{
         firstname:"",
         lastname:"",
         email:"",
         password:""
       },
-      message: ''
+      message: '',
+      errors: {}
     }
   }
 
   componentWillMount(){
-    userStore.on('user_created', ()=> {
+    userStore.on('User_created', ()=> {
       this.props.history.push("/")
     })
   }
@@ -29,16 +30,27 @@ class RegisterUser extends Component {
   handleChange(e){
     let target = e.target
     //target.name is the properties of cat??? what is target.value?
-    let user = this.state.user
-    user[target.name]= target.value
+    let User = this.state.User
+    User[target.name]= target.value
     this.setState({
-      user: user
+      User: User
     })
   }
+//cg
+  validate(){
+    userStore.validate()
+    this.setState({errors: userStore.getErrors()})
+  }
+
   handleSubmit(e){
     e.preventDefault()
+    this.validate()
     console.log('handle submit with state: ', this.state);
     newUser(this.state)
+  }
+
+  isValid(){
+    return Object.keys(this.state.errors).length === 0
   }
 
   render() {
@@ -49,9 +61,11 @@ class RegisterUser extends Component {
             <div className='col-xs-6 col-xs-offset-3'>
               <div className='panel panel-default'>
                 <div className='panel-body'>
+                   { !this.isValid() &&
                   <div className='alert alert-danger'>
                     Please verify that all fields are filled in below
                   </div>
+                }
                   <h3>Register</h3>
                   <form className='form' onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
@@ -62,7 +76,7 @@ class RegisterUser extends Component {
                           <input
                             type='text'
                             name='firstname'
-                            value={this.state.user.firstname}
+                            value={this.state.User.firstname}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -71,7 +85,7 @@ class RegisterUser extends Component {
                           <input
                             type='text'
                             name='lastname'
-                            value={this.state.user.lastname}
+                            value={this.state.User.lastname}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -80,7 +94,7 @@ class RegisterUser extends Component {
                           <input
                             type='text'
                             name='email'
-                            value={this.state.user.email}
+                            value={this.state.User.email}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -89,7 +103,7 @@ class RegisterUser extends Component {
                           <input
                             type='password'
                             name='password'
-                            value={this.state.user.password}
+                            value={this.state.User.password}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>

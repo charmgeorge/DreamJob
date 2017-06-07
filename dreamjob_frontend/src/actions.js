@@ -6,7 +6,7 @@ export function updateJobs(){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/jobs", params).then(function(response){
+  fetch("http://localhost:3000/jobs", params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         Dispatcher.dispatch({
@@ -27,7 +27,7 @@ export function createJob(attributes){
     },
     body: JSON.stringify(attributes)
   }
-  fetch('http://localhost:4000/create_job', params).then((response)=>{
+  fetch('http://localhost:3000/create_job', params).then((response)=>{
     if(response.ok){
       response.json().then((body)=>{
         Dispatcher.dispatch({

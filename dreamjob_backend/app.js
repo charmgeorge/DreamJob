@@ -19,9 +19,9 @@ const authorization = function(request, response, next){
   if(token){
     User.findOne({
       where: {authToken: token}
-    }).then((user)=>{
-      if(user){
-        request.currentUser = user
+    }).then((User)=>{
+      if(User){
+        request.currentUser = User
         next()
       }else{
         response.status(401)
@@ -60,10 +60,10 @@ app.post('/create_job', authorization, function (request, response){
 })
 
 app.post('/create_user', function(request, response){
-  console.log(request.body.user)
-  User.create(request.body.user).then((user) => {
+  console.log(request.body.User)
+  User.create(request.body.User).then((User) => {
     response.status(200)
-    response.json({status:'success', user: user})
+    response.json({status:'success', user: User})
   })
   .catch((error)=>{
     response.status(400)
@@ -77,8 +77,8 @@ app.post('/login_user', function(request, response){
   User.findOne({where: { email: request.body.user.email }}).then((user) => {
     if(user){
       response.status(200)
-      response.json({status:'success', user: user })
-      console.log('user = ', user);
+      response.json({status:'success', user: User })
+      console.log('user = ', User);
     } else {
       response.status(401)
       response.json({status: 'error', error: 'Could not log in' })
@@ -91,5 +91,5 @@ app.post('/login_user', function(request, response){
 })
 
 app.listen(4000, function () {
- console.log('Todo Server listening on port 4000!');
+ console.log('Todo Server listening on port 3000!');
 });

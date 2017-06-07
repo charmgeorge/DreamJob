@@ -25,7 +25,7 @@ class Login extends Component {
   handleChange(e){
     let target = e.target
     //target.name is the properties of cat??? what is target.value?
-    let user = this.state.user
+    let user = this.state.User
     user[target.name]= target.value
     this.setState({
       user: user
@@ -54,7 +54,7 @@ class Login extends Component {
                           <input
                             type='text'
                             name='email'
-                            value={this.state.user.email}
+                            value={this.state.User.email}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
@@ -63,7 +63,7 @@ class Login extends Component {
                           <input
                             type='password'
                             name='password'
-                            value={this.state.user.password}
+                            value={this.state.User.password}
                             onChange={this.handleChange.bind(this)}/>
                         </div>
                         <div>
