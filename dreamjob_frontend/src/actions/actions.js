@@ -153,6 +153,12 @@ export function updateJobs(){
 }
 
 export function createJob(attributes){
+
+  let currentUser = userStore.getUser()
+  if(currentUser){
+    attributes.authToken = currentUser.authToken
+  }
+
   const params = {
     method: 'POST',
     headers: {
@@ -161,6 +167,7 @@ export function createJob(attributes){
     body: JSON.stringify(attributes)
   }
   fetch('http://localhost:4000/create_job', params).then((response)=>{
+    debugger;
     if(response.ok){
       response.json().then((body)=>{
         dispatcher.dispatch({

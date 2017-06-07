@@ -15,6 +15,9 @@ app.use(express.static('public'))
 app.use(bodyParser.json())
 
 const authorization = function(request, response, next){
+  debugger;
+  console.log(request.query);
+  console.log( request.body);
   const token = request.query.authToken || request.body.authToken
   if(token){
     User.findOne({
@@ -92,7 +95,8 @@ app.post('/update_job_details/:id', function (request, response){
   })
 })
 
-app.post('/create_job', function (request, response){
+app.post('/create_job', authorization, function (request, response){
+  debugger;
   let jobParams = request.body.job
   Job.create(jobParams).then(function(job){
     response.status(200)

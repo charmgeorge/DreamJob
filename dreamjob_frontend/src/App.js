@@ -10,6 +10,7 @@ import RegisterUser from './routes/RegisterUser';
 import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
+import Header from './components/Header'
 import {checkLogin, userLogout} from './actions/actions';
 import jobDetails from './routes/jobDetails';
 import {updateJobs} from './actions/actions';
@@ -53,14 +54,6 @@ class App extends Component {
     })
   }
 
-  login(){
-    if(this.state.currentUser){
-      return(
-        <a onClick={this.handleLogout.bind(this)}>Logout</a>)
-    } else {
-      return(<Link to="/login">Login</Link>)
-    }
-  }
 
 
   render() {
@@ -68,19 +61,10 @@ class App extends Component {
       <div>
         <div className="message">{this.state.message}</div>
         <div className="App">
-          <h2>Dream Job</h2>
-          <p className="App-intro">
-            {/* {this.state.currentUser.email} */}
 
-          </p>
           <Router>
             <div>
-              <div className="pull-right">
-                <Link to="/">Home</Link> |
-                <Link to="/add_job">Add Job</Link> |
-                <Link to="/register">Register</Link> |
-                {this.login()}
-              </div>
+              <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
               <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/register" component={RegisterUser}></Route>
