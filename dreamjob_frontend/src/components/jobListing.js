@@ -31,12 +31,12 @@ class JobListing extends Component {
       // <div className="container">
         <div className={this.updateClass()} >
           <ul>
-            <li>
+            {/* <li>
               {this.props.job.id}
             </li>
             <li>
               {this.props.job.updatedAt}
-            </li>
+            </li> */}
             <li>
               {this.props.job.company}
             </li>
