@@ -43,7 +43,6 @@ class JobStore extends EventEmitter{
 
   updateDetails(attributes){
     this.details = attributes
-    // this.jobs.find(job => job.id === attributes.id)
     this.updateMessage('Job details retrieved!')
     this.emit('jobDetails')
   }

@@ -9,6 +9,7 @@ class jobDetails extends Component {
     super(props)
     this.state={
       job: jobStore.getDetails(),
+      error: ""
     }
   }
 

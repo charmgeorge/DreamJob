@@ -86,6 +86,7 @@ app.get('/glassdoor/:company', function (request, response) {
         })
     })
       .catch(function (err) {
+          response.status(400)
           response.json({error:err});
       });
 });
