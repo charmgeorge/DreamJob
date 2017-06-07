@@ -25,20 +25,64 @@ class glassdoor extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <ul>
           <li><img src={this.state.data.squareLogo} alt={this.state.data.name} /></li>
-          <li>Company: {this.state.data.name}</li>
-          <li>Overall Rating: {this.state.data.overallRating} out of 5</li>
-          <li>Culture and Values Rating: {this.state.data.cultureAndValuesRating} out of 5</li>
-          <li>Senior Leadership Rating: {this.state.data.seniorLeadershipRating} out of 5</li>
-          <li>Compensation and Benefits Rating: {this.state.data.compensationAndBenefitsRating} out of 5</li>
-          <li>Career Opportunities Rating: {this.state.data.careerOpportunitiesRating} out of 5</li>
-          <li>Work/Life Balance Rating: {this.state.data.workLifeBalanceRating} out of 5</li>
-          <li>Recommend To Friend Rating: {this.state.data.recommendToFriendRating} out of 100</li>
-          <li>An Insider's Pros: {this.state.data.featuredReview.pros}</li>
-          <li>An Insider's Cons: {this.state.data.featuredReview.cons}</li>
-          <li>CEO Approval Rating: {this.state.data.ceo.pctApprove} out of 100</li>
+          <li>
+            <label>Company</label>
+            <br />
+            {this.state.data.name}
+          </li>
+          <li>
+            <label>Overall Rating (out of 5)</label>
+            <br />
+            {this.state.data.overallRating}
+          </li>
+          <li>
+            <label>Culture and Values Rating (out of 5)</label>
+            <br />
+            {this.state.data.cultureAndValuesRating}
+          </li>
+          <li>
+            <label>Senior Leadership Rating (out of 5)</label>
+            <br />
+            {this.state.data.seniorLeadershipRating}
+          </li>
+          <li>
+            <label>Compensation and Benefits Rating (out of 5)</label>
+            <br />
+            {this.state.data.compensationAndBenefitsRating}
+          </li>
+          <li>
+            <label>Career Opportunities Rating (out of 5)</label>
+            <br />
+            {this.state.data.careerOpportunitiesRating}
+          </li>
+          <li>
+            <label>Work/Life Balance Rating (out of 5)</label>
+            <br />
+            {this.state.data.workLifeBalanceRating}
+          </li>
+          <li>
+            <label>Recommend To Friend Rating (out of 100)</label>
+            <br />
+            {this.state.data.recommendToFriendRating}
+          </li>
+          <li>
+            <label>An Insider's Pros</label>
+            <br />
+            {this.state.data.featuredReview.pros}
+          </li>
+          <li>
+            <label>An Insider's Cons</label>
+            <br />
+            {this.state.data.featuredReview.cons}
+          </li>
+          <li>
+            <label>CEO Approval Rating (out of 100)</label>
+            <br />
+            {this.state.data.ceo.pctApprove}
+          </li>
         </ul>
       </div>
     );
