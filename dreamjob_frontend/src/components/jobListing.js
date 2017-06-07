@@ -13,15 +13,14 @@ class JobListing extends Component {
     var updatedAt = new Date(this.props.job.updatedAt);
     var result = rightNow-updatedAt
     var color
-
     if(result <= 30000){
-      color = "col-xs-3 GREEN"
+      color = "GREEN glyphicon glyphicon-arrow-up"
     }
     else if(result <= 60000){
-      color = "col-xs-3 YELLOW"
+      color = "YELLOW glyphicon glyphicon-arrow-right"
     }
     else {
-      color = "col-xs-3 RED"
+      color = "RED glyphicon glyphicon-arrow-down pull-left"
     }
     return color
   }
@@ -29,14 +28,10 @@ class JobListing extends Component {
   render(){
     return(
       // <div className="container">
-        <div className={this.updateClass()} >
-          <ul>
-            {/* <li>
-              {this.props.job.id}
-            </li>
-            <li>
-              {this.props.job.updatedAt}
-            </li> */}
+      <div>
+        <div>
+          <ul className='col-xs-3'>
+            <li><div className={this.updateClass()}></div></li>
             <li>
               {this.props.job.company}
             </li>
@@ -50,11 +45,10 @@ class JobListing extends Component {
               <div>
                 <button className='btn-primary glyphicon glyphicon-edit' onClick={this.handleClick.bind(this)}></button>
               </div>
-              {/* {this.props.job.id} */}
             </li>
           </ul>
         </div>
-      // </div>
+      </div>
     )
   }
 }

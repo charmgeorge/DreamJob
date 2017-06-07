@@ -54,7 +54,7 @@ class jobIndex extends Component {
             <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
           </div>
           <h3>Current Dream Jobs</h3>
-          <div className="job-list row">
+          <div className=" job-list row">
             {this.renderJobs()}
           </div>
         </div>

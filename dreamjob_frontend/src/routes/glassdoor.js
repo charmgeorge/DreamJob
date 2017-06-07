@@ -80,16 +80,19 @@ class glassdoor extends Component {
                           {this.state.data.recommendToFriendRating}
                         </div>
                         <div>
+                          <br />
                           <label>An Insider's Pros</label>
                           <br />
                           {this.state.data.featuredReview.pros}
                         </div>
                         <div>
+                          <br />
                           <label>An Insider's Cons</label>
                           <br />
                           {this.state.data.featuredReview.cons}
                         </div>
                         <div>
+                          <br />
                           <label>CEO Approval Rating (out of 100)</label>
                           <br />
                           {this.state.data.ceo.pctApprove}
