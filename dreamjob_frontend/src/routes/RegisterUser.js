@@ -38,7 +38,7 @@ class RegisterUser extends Component {
   }
 //cg
   validate(){
-    userStore.validate()
+    userStore.validate(this.state.user)
     this.setState({errors: userStore.getErrors()})
   }
 
@@ -51,6 +51,14 @@ class RegisterUser extends Component {
 
   isValid(){
     return Object.keys(this.state.errors).length === 0
+  }
+
+  errorClass(field){
+    if(this.state.errors && this.state.errors[field] && this.state.errors[field].length != 0){
+      return 'form-group has-error'
+    } else {
+      return 'form-group '
+    }
   }
 
   render() {
@@ -66,52 +74,65 @@ class RegisterUser extends Component {
                       Please verify that all fields are filled in below
                     </div>
                   }
-
                   <h3>Register</h3>
                   <form className='form'
                     onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
                       <div className='col-xs-12'>
-                        <div>
-
-                          <label htmlFor='name'>First Name</label>
-                          <br />
-                          <input
-                            type='text'
-                            name='firstname'
-                            value={this.state.user.firstname}
-                            onChange={this.handleChange.bind(this)}
-
-                            // pass in errors for this input
-                            errors={this.state.errors.firstname}
-                          />
+                        <div className={this.errorClass('firstName')}>
+                          <label className='control-label' htmlFor='firstname'>
+                            First Name
+                            <input
+                              type='text'
+                              name='firstname'
+                              value={this.state.user.firstname}
+                              onChange={this.handleChange.bind(this)}
+                              className='form-control'
+                            />
+                            {this.state.errors.firstName}
+                          </label>
                         </div>
-                        <div>
-                          <label>Last Name</label>
+                        <div className={this.errorClass('lastName')}>
+                          <label className='control-label' htmlFor='lastname'>
+                            Last Name
                           <br />
                           <input
                             type='text'
                             name='lastname'
                             value={this.state.user.lastname}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                        />
+                            {this.state.errors.lastName}
+                            </label>
                         </div>
-                        <div>
-                          <label>Email</label>
+                        <div className={this.errorClass('email')}>
+                          <label className='control-label' htmlFor='email'>
+                            Email
                           <br />
                           <input
                             type='text'
                             name='email'
                             value={this.state.user.email}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                          />
+                          {this.state.errors.email}
+                          </label>
                         </div>
-                        <div>
-                          <label>Password</label>
+                        <div className={this.errorClass('password')}>
+                          <label className='control-label' htmlFor='password'>
+                            Password
                           <br />
                           <input
                             type='password'
                             name='password'
                             value={this.state.user.password}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                          />
+                          {this.state.errors.password}
+                            </label>
                         </div>
                         <div>
                           <br />

@@ -28,7 +28,6 @@ class UserStore extends EventEmitter{
     return this.user
   }
 
-
   getErrors(){
     // {}
     // or
@@ -36,12 +35,14 @@ class UserStore extends EventEmitter{
     return this.errors
   }
   //cg
-  validate(){
+  validate(fields){
+    this.fields = fields
     this.errors = {}
     this.validatePresence('firstName')
     this.validatePresence('lastName')
     this.validatePresence('email')
     this.validatePresence('password')
+    this.validateEmail('email')
     // console.log("the errors", this.errors)
   }
 

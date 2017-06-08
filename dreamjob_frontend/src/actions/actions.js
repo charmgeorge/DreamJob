@@ -31,7 +31,6 @@ export function newUser(userInfo){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userInfo)
       }
-      debugger
   fetch('http://localhost:4000/create_user', params).then((response)=>{
       success = response.ok
       return response.json()
