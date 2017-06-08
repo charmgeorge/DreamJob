@@ -136,17 +136,9 @@ export function getDetails(jobId){
 
 export function updateJobs(){
   const params = {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json'}
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
   }
-  var email
-  let currentUser = userStore.getUser()
-  console.log('user is logged in', currentUser);
-  if(currentUser){
-    email = currentUser.email
-  }
-  console.log('the email is (in actions) ', email);
-
   fetch("http://localhost:4000/jobs", params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
@@ -157,18 +149,19 @@ export function updateJobs(){
       })
     }
   }).catch(function(error){
+    console.log('error', error);
   })
 }
 
 export function createJob(attributes){
 
   let currentUser = userStore.getUser()
+  console.log('in createJob ', currentUser);
   if(currentUser){
     attributes.authToken = currentUser.authToken,
     attributes.email = currentUser.email
+    // attributes.user.userId = currentUser.id
   }
-
-  //console.log(currentUser);
 
   const params = {
     method: 'POST',

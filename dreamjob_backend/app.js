@@ -38,15 +38,22 @@ app.get('/', function (request, response) {
   response.json({message: 'hello world!'})
 });
 
+
+
+/// have error getting id on line 47
+
+
 app.get('/jobs', function (request, response) {
 
-  console.log('in jobs route', request.email);
+  // let id = request.currentUser.id;
+
+  console.log('in jobs route', request)
   Job.findAll(
-  //   {
-  //   where: {
-  //     userId:request.body.user.id
-  //   }
-  // }
+    {
+    where: {
+      userId:id
+    }
+  }
 )
 .then(function(jobs){
     response.status(200)
@@ -54,6 +61,10 @@ app.get('/jobs', function (request, response) {
       status:'success',
       jobs:jobs
     })
+  })
+  .catch(function(error){
+    response.status(400)
+    response.json({status:'error', error:error})
   })
 })
 
@@ -105,16 +116,18 @@ app.post('/create_job', authorization, function (request, response){
   let jobParams = request.body.job
 //  userEmail: currentUser.email
   console.log('email is : ' , request.body.email);
-  User.findOne({
-    where: {email: request.body.email}
-  })
-  .then(function(user) {
-    debugger
-    console.log('user is: ', user.id);
-    return user.id
-  })
-
-  console.log(jobParams);
+  // User.findOne({
+  //   where: {email: request.body.email}
+  // })
+  // .then(function(user) {
+  //   debugger
+  //   console.log('user is: ', user.id);
+  //   return user.id
+  // })
+  //
+  // console.log(jobParams);
+  jobParams.userId = request.currentUser.id;
+  console.log(request.currentUser.id);
   Job.create(jobParams).then(function(job){
     response.status(200)
     response.json({status:'success', job:job})
