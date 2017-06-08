@@ -1,5 +1,6 @@
 import {EventEmitter} from 'events';
 import dispatcher from '../dispatchers/dispatcher';
+import { updateJobs } from '../actions/actions';
 
 class UserStore extends EventEmitter{
   constructor(){
@@ -12,7 +13,6 @@ class UserStore extends EventEmitter{
     this.user = user
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
-    console.log(user.authToken);
     localStorage.setItem('email', user.email);
     this.emit('login')
   }
@@ -39,6 +39,7 @@ class UserStore extends EventEmitter{
         authTokenExpiration: expire,
         email: localStorage.getItem('email')
       }
+      updateJobs()
       this.emit('login')
     }
   }

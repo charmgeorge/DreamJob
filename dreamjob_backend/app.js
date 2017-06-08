@@ -38,16 +38,8 @@ app.get('/', function (request, response) {
   response.json({message: 'hello world!'})
 });
 
-
-
-/// have error getting id on line 47
-
-
-app.get('/jobs', function (request, response) {
-
-  // let id = request.currentUser.id;
-
-  console.log('in jobs route', request)
+app.get('/jobs', authorization, function (request, response) {
+  let id = request.currentUser.id ;
   Job.findAll(
     {
     where: {
@@ -104,7 +96,6 @@ app.post('/update_job_details/:id', function (request, response){
     job.update(request.body.job).then(function(update){
       response.status(200)
       response.json({status:'success', job:update})
-      console.log('update');
     })
   }).catch(function(error){
     response.status(400)
@@ -114,20 +105,8 @@ app.post('/update_job_details/:id', function (request, response){
 
 app.post('/create_job', authorization, function (request, response){
   let jobParams = request.body.job
-//  userEmail: currentUser.email
-  console.log('email is : ' , request.body.email);
-  // User.findOne({
-  //   where: {email: request.body.email}
-  // })
-  // .then(function(user) {
-  //   debugger
-  //   console.log('user is: ', user.id);
-  //   return user.id
-  // })
-  //
-  // console.log(jobParams);
+
   jobParams.userId = request.currentUser.id;
-  console.log(request.currentUser.id);
   Job.create(jobParams).then(function(job){
     response.status(200)
     response.json({status:'success', job:job})
@@ -138,7 +117,6 @@ app.post('/create_job', authorization, function (request, response){
 })
 
 app.post('/create_user', function(request, response){
-  console.log(request.body.user)
   User.create(request.body.user).then((user) => {
     response.status(200)
     response.json({status:'success', user: user})
@@ -156,7 +134,6 @@ app.post('/login_user', function(request, response){
     if(user){
       response.status(200)
       response.json({status:'success', user: user })
-      console.log('user = ', user);
     } else {
       response.status(401)
       response.json({status: 'error', error: 'Could not log in' })

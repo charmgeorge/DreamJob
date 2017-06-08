@@ -18,8 +18,7 @@ import {updateJobs} from './actions/actions';
 class App extends Component {
   constructor(props){
     super(props)
-    updateJobs()
-    checkLogin()
+    checkLogin()    
     this.state = {
       message:jobStore.getMessage(),
       currentUser: userStore.getUser()
