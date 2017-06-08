@@ -9,7 +9,7 @@ class jobIndex extends Component {
   super(props)
   this.state = {
     jobs: jobStore.getJobs()
-    }
+  }
   }
 
   updateJobs(){
@@ -28,6 +28,13 @@ class jobIndex extends Component {
     jobStore.on('jobDetails', this.redirect.bind(this))
     jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
     checkLoginRedir(this.props)
+  }
+
+  componentWillUnmount(){
+    jobStore.removeListener('jobAdded',this.updateJobs.bind(this))
+    jobStore.removeListener('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.removeListener('jobDetails', this.redirect.bind(this))
+    jobStore.removeListener('jobDetailsUpdated', this.updateJobs.bind(this))
   }
 
   componentWillUpdate(){

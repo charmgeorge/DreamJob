@@ -61,6 +61,8 @@ class jobDetails extends Component {
   handleGlassdoor(e){
     e.preventDefault()
     glassdoorDetails(this.state.job.company)
+    console.log(this.state.job.company)
+    debugger
   }
 
   render() {

@@ -78,9 +78,13 @@ app.get('/getDetails/:id', function (request, response) {
 app.get('/glassdoor/:company', function (request, response) {
   let company = request.params['company'];
   Glassdoor.findOneCompany(company,{country:""}).then(function (data) {
+    console.log(data)
       if(Object.keys(data).length === 0){
         response.status(400)
         response.json({error:err});
+        // else if(Object.keys(data.ceo).length === 0){
+        //
+        // }
       } else {
         response.json({
           data:data
@@ -94,7 +98,7 @@ app.get('/glassdoor/:company', function (request, response) {
 });
 
 app.get('/', function (request, response) {
-  Glassdoor.findOneCompany('asdf',{country:""}).then(function (data) {
+  Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
         response.json({
           data:data
         })

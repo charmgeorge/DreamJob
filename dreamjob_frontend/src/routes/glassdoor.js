@@ -22,6 +22,36 @@ class glassdoor extends Component {
   }
 
   render() {
+
+    let ceoData;
+    if(this.state.data.ceo){
+      ceoData = this.state.data.ceo.pctApprove
+    } else {
+      ceoData = "no data"
+    }
+
+    let reviewData;
+    if(this.state.data.featuredReview){
+      reviewData = (
+        <div>
+          <div>
+            <br />
+            <label>An Insider's Pros</label>
+            <br />
+            {this.state.data.featuredReview.pros}
+          </div>
+          <div>
+            <br />
+            <label>An Insider's Cons</label>
+            <br />
+            {this.state.data.featuredReview.cons}
+          </div>
+        </div>
+        )
+    } else {
+      reviewData = "no data"
+    }
+
     return(
       <div>
         <div className='container'>
@@ -91,7 +121,8 @@ class glassdoor extends Component {
                           <br />
                           <label>CEO Approval Rating (out of 100)</label>
                           <br />
-                          {this.state.data.ceo.pctApprove}
+                          {/* { this.state.data.ceo.pctApprove} */}
+                          {ceoData}
                         </div>
                       </div>
                     </div>
