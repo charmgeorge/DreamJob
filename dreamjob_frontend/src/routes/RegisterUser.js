@@ -61,7 +61,11 @@ class RegisterUser extends Component {
             <div className='col-xs-6 col-xs-offset-3'>
               <div className='panel panel-default'>
                 <div className='panel-body'>
-                  </div>
+                  { !this.isValid() &&
+                    <div className='alert alert-danger'>
+                      Please verify that all fields are filled in below
+                    </div>
+                  }
 
                   <h3>Register</h3>
                   <form className='form'
@@ -69,6 +73,7 @@ class RegisterUser extends Component {
                     <div className='row'>
                       <div className='col-xs-12'>
                         <div>
+
                           <label htmlFor='name'>First Name</label>
                           <br />
                           <input
@@ -110,6 +115,7 @@ class RegisterUser extends Component {
                         </div>
                         <div>
                           <br />
+                          <input type='submit' value='Submit' className = 'btn btn-primary' />
                         </div>
                       </div>
                     </div>
@@ -119,6 +125,7 @@ class RegisterUser extends Component {
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }
