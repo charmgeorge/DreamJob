@@ -113,7 +113,7 @@ export function deleteJob(jobId){
   }).catch(function(err){
       jobStore.updateMessage("There was an error: " + err)
   })
-  }
+}
 
 export function getDetails(jobId){
   const params = {
@@ -135,11 +135,13 @@ export function getDetails(jobId){
 }
 
 export function updateJobs(){
+  let currentUser = userStore.getUser()
   const params = {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json'}
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/jobs", params).then(function(response){
+  let theUrl = "http://localhost:4000/jobs?authToken=" + currentUser.authToken
+  fetch(theUrl, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({
@@ -149,14 +151,17 @@ export function updateJobs(){
       })
     }
   }).catch(function(error){
+    console.log('error', error);
   })
 }
 
 export function createJob(attributes){
 
   let currentUser = userStore.getUser()
+  console.log('in createJob ', currentUser);
   if(currentUser){
-    attributes.authToken = currentUser.authToken
+    attributes.authToken = currentUser.authToken,
+    attributes.email = currentUser.email
   }
 
   const params = {
