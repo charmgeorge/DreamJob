@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
-import {checkLoginRedir} from '../actions/actions';
-import {createJob} from '../actions/actions';
+import {checkLoginRedir, createJob} from '../actions/actions';
 import jobStore from '../stores/jobStore';
 import {Link} from 'react-router-dom';
 
@@ -70,7 +68,6 @@ handleChange(e){
                           <label>Company</label>
                           <br />
                           <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)} />
-                            {/* <input type='text' name='url' placeholder="URL" value={this.state.job.url} onChange={this.handleChange.bind(this)}/> */}
                             <br />
                         </div>
                         <div>

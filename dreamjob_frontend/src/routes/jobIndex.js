@@ -8,8 +8,7 @@ class jobIndex extends Component {
   constructor(props){
   super(props)
   this.state = {
-    jobs: jobStore.getJobs(),
-    // status:""
+    jobs: jobStore.getJobs()
     }
   }
 
@@ -32,6 +31,10 @@ class jobIndex extends Component {
   }
 
   componentWillUpdate(){
+    jobStore.on('jobAdded',this.updateJobs.bind(this))
+    jobStore.on('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.on('jobDetails', this.redirect.bind(this))
+    jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
     checkLoginRedir(this.props)
   }
 

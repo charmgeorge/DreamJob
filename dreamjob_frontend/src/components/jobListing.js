@@ -14,12 +14,10 @@ class JobListing extends Component {
     var result = rightNow-updatedAt
     var color
     if(result <= 30000){
-      color = "GREEN glyphicon glyphicon-arrow-up pull-left"
-    }
-    else if(result <= 60000){
+      color = "GREEN glyphicon glyphicon-arrow-up pull-left d"
+    } else if(result <= 60000){
       color = "YELLOW glyphicon glyphicon-arrow-right pull-left"
-    }
-    else {
+    } else {
       color = "RED glyphicon glyphicon-arrow-down pull-left"
     }
     return color
@@ -27,7 +25,6 @@ class JobListing extends Component {
 
   render(){
     return(
-      // <div className="container">
       <div>
         <div>
           <ul className='col-xs-3'>

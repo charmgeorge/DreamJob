@@ -32,9 +32,7 @@ class jobDetails extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('jobDetails', this.updateDetails.bind(this))
     jobStore.on('glassdoor', this.redirectGlassdoor.bind(this))
-    // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     jobStore.on('jobDeleted', this.redirect.bind(this))
@@ -72,7 +70,7 @@ class jobDetails extends Component {
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
               <div className="pull-left">
-                <Link to="/job_index"><button onclick={this.handleSubmit.bind(this)} className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
+                <Link to="/job_index"><button onClick={this.redirect.bind(this)} className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
               </div>
                 <div className='panel panel-default'>
                   <div className='panel-body'>
@@ -84,7 +82,6 @@ class jobDetails extends Component {
                             <label>Company</label>
                             <br />
                             <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)}/>
-                              {/* <input type='text' name='url' placeholder="URL" value={this.state.job.url} onChange={this.handleChange.bind(this)}/> */}
                               <br />
                           </div>
                           <div>
@@ -123,11 +120,6 @@ class jobDetails extends Component {
                             <input type='date' name='date' value={this.state.job.date} onChange={this.handleChange.bind(this)} />
                             <br />
                           </div>
-                          {/* <div className="form-group">
-                            <label>Job Posting URL</label>
-                            <input type='text' name='url' value={this.state.job.url} onChange={this.handleChange.bind(this)}/>
-                            <br />
-                          </div> */}
                           <div>
                             <br />
                             <textarea rows="4" cols="30" type='text' name='notes' placeholder='Notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)} >
@@ -138,7 +130,6 @@ class jobDetails extends Component {
                             <input type='submit' value='Update Job' className="btn-primary" />
                             <button className="btn-danger glyphicon glyphicon-trash" onClick={this.handleDelete.bind(this)}></button>
                             <button className="btn-success" onClick={this.handleGlassdoor.bind(this)}>Glassdoor</button>
-                            {/* <input value="Delete" className="btn btn-danger" /> */}
                             <br />
                           </div>
                         </div>

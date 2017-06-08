@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import {newUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
-// import '../App.css'
 
 
 class RegisterUser extends Component {
   constructor(props){
     super(props)
-    //the initial state of the website
     this.state={
       user:{
         firstname:"",
@@ -27,7 +25,6 @@ class RegisterUser extends Component {
 
   handleChange(e){
     let target = e.target
-    //target.name is the properties of cat??? what is target.value?
     let user = this.state.user
     user[target.name]= target.value
     this.setState({
@@ -36,7 +33,6 @@ class RegisterUser extends Component {
   }
   handleSubmit(e){
     e.preventDefault()
-    console.log('handle submit with state: ', this.state);
     newUser(this.state)
   }
 

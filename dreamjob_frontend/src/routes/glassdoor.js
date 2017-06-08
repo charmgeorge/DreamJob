@@ -22,7 +22,7 @@ class glassdoor extends Component {
   }
 
   render() {
-    return (
+    return(
       <div>
         <div className='container'>
           <div className='row'>
@@ -101,7 +101,7 @@ class glassdoor extends Component {
             </div>
           </div>
       </div>
-    );
+    )
   }
 }
 

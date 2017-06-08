@@ -38,8 +38,6 @@ const authorization = function(request, response, next){
   }
 }
 
-
-
 app.get('/jobs', function (request, response) {
   Job.findAll().then(function(jobs){
     response.status(200)
@@ -80,7 +78,6 @@ app.get('/getDetails/:id', function (request, response) {
 app.get('/glassdoor/:company', function (request, response) {
   let company = request.params['company'];
   Glassdoor.findOneCompany(company,{country:""}).then(function (data) {
-
       if(Object.keys(data).length === 0){
         response.status(400)
         response.json({error:err});
@@ -96,7 +93,15 @@ app.get('/glassdoor/:company', function (request, response) {
       });
 });
 
-app.post('/update_job_details/:id/:company', function (request, response){
+app.get('/', function (request, response) {
+  Glassdoor.findOneCompany('asdf',{country:""}).then(function (data) {
+        response.json({
+          data:data
+        })
+      })
+    });
+
+app.post('/update_job_details/:id', function (request, response){
   let id = request.params['id'];
   Job.findOne({
     where:{id:id}

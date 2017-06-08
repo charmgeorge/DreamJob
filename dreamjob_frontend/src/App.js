@@ -10,9 +10,8 @@ import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
 import glassdoor from './routes/glassdoor';
-import {checkLogin, userLogout} from './actions/actions';
+import {checkLogin, userLogout, updateJobs} from './actions/actions';
 import jobDetails from './routes/jobDetails';
-import {updateJobs} from './actions/actions';
 
 class App extends Component {
   constructor(props){
@@ -62,17 +61,12 @@ class App extends Component {
     }
   }
 
-
   render() {
     return (
       <div>
         <div className="message">{this.state.message}</div>
         <div className="App">
           <h2>Dream Job</h2>
-          <p className="App-intro">
-            {/* {this.state.currentUser.email} */}
-
-          </p>
           <Router>
             <div>
               <div className="pull-right">
@@ -91,14 +85,8 @@ class App extends Component {
                 <Route exact path = '/glassdoor' component={glassdoor}></Route>
                 <Route component={NoMatch} />
               </Switch>
-
             </div>
           </Router>
-
-
-
-
-
         </div>
       </div>
     );
