@@ -11,8 +11,8 @@ class RegisterUser extends Component {
     //the initial state of the website
     this.state={
       user:{
-        firstname:"",
-        lastname:"",
+        firstName:"",
+        lastName:"",
         email:"",
         password:""
       },
@@ -80,11 +80,11 @@ class RegisterUser extends Component {
                     <div className='row'>
                       <div className='col-xs-12'>
                         <div className={this.errorClass('firstName')}>
-                          <label className='control-label' htmlFor='firstname'>
+                          <label className='control-label' htmlFor='firstName'>
                             First Name
                             <input
                               type='text'
-                              name='firstname'
+                              name='firstName'
                               value={this.state.user.firstname}
                               onChange={this.handleChange.bind(this)}
                               className='form-control'
@@ -93,12 +93,12 @@ class RegisterUser extends Component {
                           </label>
                         </div>
                         <div className={this.errorClass('lastName')}>
-                          <label className='control-label' htmlFor='lastname'>
+                          <label className='control-label' htmlFor='lastName'>
                             Last Name
                           <br />
                           <input
                             type='text'
-                            name='lastname'
+                            name='lastName'
                             value={this.state.user.lastname}
                             onChange={this.handleChange.bind(this)}
                             className='form-control'

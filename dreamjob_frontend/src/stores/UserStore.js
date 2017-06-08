@@ -43,6 +43,8 @@ class UserStore extends EventEmitter{
     this.validatePresence('email')
     this.validatePresence('password')
     this.validateEmail('email')
+    this.validatePassword('password')
+    // I added validatePassword to set password params
     // console.log("the errors", this.errors)
   }
 
@@ -55,7 +57,15 @@ class UserStore extends EventEmitter{
   validateEmail(fieldName){
     const filter = /^\w+([\.-]?\ w+)*@\w+([\.-]?\ w+)*(\.\w{2,3})+$/
     if(!filter.test(this.fields[fieldName])){
-      this.addError(fieldName, 'is not an email')
+      this.addError(fieldName, 'is not a valid email address')
+    }
+  }
+
+// I set password parameters
+  validatePassword(fieldName){
+    debugger
+    if(!(this.fields[fieldName].length > 6 ) || (this.fields[fieldName].includes("$")) || (this.fields[fieldName].includes("*"))){
+      this.addError(fieldName, 'is not a valid password')
     }
   }
 
