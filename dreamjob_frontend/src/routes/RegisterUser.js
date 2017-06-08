@@ -45,7 +45,6 @@ class RegisterUser extends Component {
   handleSubmit(e){
     e.preventDefault()
     this.validate()
-    console.log('handle submit with state: ', this.state);
     newUser(this.state)
   }
 

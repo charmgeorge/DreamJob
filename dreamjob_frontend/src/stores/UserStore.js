@@ -1,5 +1,6 @@
 import {EventEmitter} from 'events';
 import dispatcher from '../dispatchers/dispatcher';
+import { updateJobs } from '../actions/actions';
 
 class UserStore extends EventEmitter{
   constructor(){
@@ -83,6 +84,7 @@ class UserStore extends EventEmitter{
         authTokenExpiration: expire,
         email: localStorage.getItem('email')
       }
+      updateJobs()
       this.emit('login')
     }
   }
