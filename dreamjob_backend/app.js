@@ -79,11 +79,16 @@ app.get('/getDetails/:id', function (request, response) {
 
 app.get('/glassdoor/:company', function (request, response) {
   let company = request.params['company'];
-  Glassdoor.findOneCompany(company,{country:""})
-    .then(function (data) {
+  Glassdoor.findOneCompany(company,{country:""}).then(function (data) {
+
+      if(Object.keys(data).length === 0){
+        response.status(400)
+        response.json({error:err});
+      } else {
         response.json({
           data:data
         })
+      }
     })
       .catch(function (err) {
           response.status(400)
@@ -100,7 +105,6 @@ app.post('/update_job_details/:id/:company', function (request, response){
     job.update(request.body.job).then(function(update){
       response.status(200)
       response.json({status:'success', job:update})
-      console.log('update');
     })
   }).catch(function(error){
     response.status(400)
@@ -138,7 +142,6 @@ app.post('/create_job', function (request, response){
 })
 
 app.post('/create_user', function(request, response){
-  console.log(request.body.user)
   User.create(request.body.user).then((user) => {
     response.status(200)
     response.json({status:'success', user: user})
@@ -156,7 +159,6 @@ app.post('/login_user', function(request, response){
     if(user){
       response.status(200)
       response.json({status:'success', user: user })
-      console.log('user = ', user);
     } else {
       response.status(401)
       response.json({status: 'error', error: 'Could not log in' })

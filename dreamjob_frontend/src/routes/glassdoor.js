@@ -32,7 +32,7 @@ class glassdoor extends Component {
               </div>
               <div className='panel panel-default'>
                 <div className='panel-body'>
-                  <h3>Add A Job</h3>
+                  <h3>{this.state.data.name}</h3>
                     <div className='row'>
                       <div className='col-xs-12'>
                         <div>
@@ -40,11 +40,7 @@ class glassdoor extends Component {
                           <br />
                         </div>
                         <div>
-                          <label>Company</label>
                           <br />
-                          {this.state.data.name}
-                        </div>
-                        <div>
                           <label>Overall Rating (out of 5): </label>
                           <br />
                           {this.state.data.overallRating}

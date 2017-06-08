@@ -128,10 +128,13 @@ export function glassdoorDetails(company){
           data: data
         })
       })
+    } else{
+      jobStore.updateMessage("Couldn't find the company in Glassdoor")
     }
-  }).catch(function(err){
-      jobStore.updateMessage("There was an error: " + err)
   })
+  // .catch(function(err){
+  //     jobStore.updateMessage("There was an error: " + err)
+  // })
 }
 
 export function getDetails(jobId){
