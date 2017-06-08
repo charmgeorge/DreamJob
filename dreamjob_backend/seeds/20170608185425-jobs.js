@@ -19,8 +19,8 @@ module.exports = {
             url: "www.google.com",
             notes: "Spoke with hiring manager at JavaScript meetup in March",
             userId: 25,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:2,
@@ -32,8 +32,8 @@ module.exports = {
             url: "www.apple.com",
             notes: "Had coffee with Jim, the engineering manager in mid May. He thought I'd be a good fit for the role.",
             userId: 25,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:3,
@@ -45,8 +45,8 @@ module.exports = {
             url: "www.facebook.com",
             notes: "Facebook corporate headhunting reached out to me about applying for the job",
             userId: 26,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:4,
@@ -58,8 +58,8 @@ module.exports = {
             url: "www.qualcomm.com",
             notes: "Volunteered at the tech conference and met Alvin, the hiring manager.",
             userId: 26,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:5,
@@ -71,8 +71,8 @@ module.exports = {
             url: "www.microsoft.com",
             notes: "Interview went well and just received an offer.",
             userId: 27,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:6,
@@ -84,8 +84,8 @@ module.exports = {
             url: "www.costco.com",
             notes: "Looks to be a good oportunity with a great company.",
             userId: 27,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:7,
@@ -97,8 +97,8 @@ module.exports = {
             url: "www.undergroundelephant.com",
             notes: "Looks to be a good cultural fit with a great company in the East Village, SD.",
             userId: 27,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
           {
             id:8,
@@ -110,8 +110,8 @@ module.exports = {
             url: "www.intuit.com",
             notes: "Found a good oportunity with a solid company.",
             userId: 26,
-            createdAt:  "2017-07-05T18:35:21.365Z",
-            updatedAt: "2017-07-05T18:35:21.365Z"
+            createdAt:  "2017-06-05T18:35:21.365Z",
+            updatedAt: "2017-06-05T18:35:21.365Z"
           },
         ])
       })
