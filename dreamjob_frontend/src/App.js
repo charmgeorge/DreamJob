@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 import addJob from './routes/addJob';
@@ -10,10 +9,10 @@ import RegisterUser from './routes/RegisterUser';
 import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
+import glassdoor from './routes/glassdoor';
+import {checkLogin, userLogout, updateJobs} from './actions/actions';
 import Header from './components/Header'
-import {checkLogin, userLogout} from './actions/actions';
 import jobDetails from './routes/jobDetails';
-import {updateJobs} from './actions/actions';
 
 class App extends Component {
   constructor(props){
@@ -54,13 +53,12 @@ class App extends Component {
   }
 
 
-
   render() {
     return (
       <div>
         <div className="message">{this.state.message}</div>
         <div className="App">
-
+          <h2>Dream Job</h2>
           <Router>
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
@@ -71,16 +69,11 @@ class App extends Component {
                 <Route exact path = '/job_index' component={jobIndex}></Route>
                 <Route exact path = '/job_details' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
+                <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
                 <Route component={NoMatch} />
               </Switch>
-
             </div>
           </Router>
-
-
-
-
-
         </div>
       </div>
     );

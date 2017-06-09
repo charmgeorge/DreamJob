@@ -76,8 +76,8 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     hooks:{
-      beforeCreate: function(user, options){
-        user.setAuthToken()
+      beforeCreate: function(User, options){
+        User.setAuthToken()
       }
     },
     classMethods: {

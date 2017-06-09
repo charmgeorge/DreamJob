@@ -5,8 +5,16 @@ import { updateJobs } from '../actions/actions';
 class UserStore extends EventEmitter{
   constructor(){
     super();
-    this.user = null,
+    this.user = null
     this.message = ""
+    // this.errors = {} moving to new line per Antonios code ex
+    this.fields = {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: ""
+    },
+    this.errors = {}
   }
 
   updateUser(user){
@@ -21,13 +29,66 @@ class UserStore extends EventEmitter{
     return this.user
   }
 
-  getMessage(){
-    return this.message
+  getErrors(){
+    // {}
+    // or
+    // {firstName: 'is requires'}
+    return this.errors
   }
+  //cg
+  validate(fields){
+    this.fields = fields
+    this.errors = {}
+    this.validatePresence('firstName')
+    this.validatePresence('lastName')
+    this.validatePresence('email')
+    this.validatePresence('password')
+    this.validateEmail('email')
+    this.validatePassword('password')
+    // I added validatePassword to set password params
+    // console.log("the errors", this.errors)
+  }
+
+  validatePresence(fieldName){
+    if(this.fields[fieldName] === ''){
+      this.addError(fieldName, 'is Required')
+    }
+  }
+
+  validateEmail(fieldName){
+    const filter = /^\w+([\.-]?\ w+)*@\w+([\.-]?\ w+)*(\.\w{2,3})+$/
+    if(!filter.test(this.fields[fieldName])){
+      this.addError(fieldName, 'is not a valid email address')
+    }
+  }
+
+
+  validatePassword(fieldName){
+    const filter = /\d+/
+
+    if((this.fields[fieldName].length > 6 )&&
+    (filter.test(this.fields[fieldName]))&&
+    (!this.fields[fieldName].includes("$"))&&
+    (!this.fields[fieldName].includes("*"))){
+      
+    }else{
+      this.addError(fieldName, 'is not a valid password')
+    }
+  }
+
+  addError(fieldName, message){
+    this.errors[fieldName] = message
+  }
+
 
   addUser(user){
     this.user = user
+    console.log("new user set")
     this.emit('user_created')
+  }
+
+  getMessage(){
+    return this.message
   }
 
   setUserFromLocal(){

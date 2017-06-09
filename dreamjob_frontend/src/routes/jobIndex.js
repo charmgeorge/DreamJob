@@ -31,7 +31,18 @@ class jobIndex extends Component {
     checkLoginRedir(this.props)
   }
 
+  componentWillUnmount(){
+    jobStore.removeListener('jobAdded',this.updateJobs.bind(this))
+    jobStore.removeListener('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.removeListener('jobDetails', this.redirect.bind(this))
+    jobStore.removeListener('jobDetailsUpdated', this.updateJobs.bind(this))
+  }
+
   componentWillUpdate(){
+    jobStore.on('jobAdded',this.updateJobs.bind(this))
+    jobStore.on('jobsLoaded',this.updateJobs.bind(this))
+    jobStore.on('jobDetails', this.redirect.bind(this))
+    jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
     checkLoginRedir(this.props)
   }
 
@@ -48,13 +59,15 @@ class jobIndex extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="pull-left">
-          <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
-        </div>
-        <h3>Current Dream Jobs</h3>
-        <div className="job-list row">
-          {this.renderJobs()}
+      <div className='container'>
+        <div className="App">
+          <div className="pull-left">
+            <Link to="/add_job"><button className='btn-primary'>Add Job</button></Link>
+          </div>
+          <h3>Current Dream Jobs</h3>
+          <div className=" job-list row">
+            {this.renderJobs()}
+          </div>
         </div>
       </div>
     );

@@ -47,7 +47,6 @@ class JobStore extends EventEmitter{
 
   updateDetails(attributes){
     this.details = attributes
-    // this.jobs.find(job => job.id === attributes.id)
     this.updateMessage('Job details retrieved!')
     this.emit('jobDetails')
   }
@@ -56,6 +55,12 @@ class JobStore extends EventEmitter{
     this.details = attributes
     this.updateMessage('Job details updated!')
     this.emit('jobDetailsUpdated')
+  }
+
+  updateGlassdoor(alldata){
+    this.details = alldata.data
+    this.updateMessage('Glassdoor details retrieved!')
+    this.emit('glassdoor')
   }
 
   handleActions(action){
@@ -83,6 +88,10 @@ class JobStore extends EventEmitter{
      }
      case("UPDATE_JOB_DETAILS"):{
        this.updateJobDetails(action.job)
+       break
+     }
+     case("GLASSDOOR"):{
+       this.updateGlassdoor(action.data)
        break
      }
      default:{}
