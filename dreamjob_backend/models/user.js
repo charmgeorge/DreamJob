@@ -76,16 +76,18 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     hooks:{
-      beforeCreate: function(user, options){
-        user.setAuthToken()
+      beforeCreate: function(User, options){
+        User.setAuthToken()
       }
     },
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-      }
+       User.hasMany(models.Job,{
+         foreignKey: 'userId',
+         as: 'jobs'
+       })
     }
-
+  }
   });
   return User;
 };

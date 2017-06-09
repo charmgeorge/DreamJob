@@ -13,15 +13,17 @@ class RegisterUser extends Component {
         email:"",
         password:""
       },
-      message: ''
+      message: '',
+      errors: {}
     }
   }
 
   componentWillMount(){
     userStore.on('user_created', ()=> {
-      this.props.history.push("/")
+      this.props.history.push("/job_index")
     })
   }
+
 
   handleChange(e){
     let target = e.target
@@ -31,9 +33,30 @@ class RegisterUser extends Component {
       user: user
     })
   }
+//cg
+  validate(){
+    userStore.validate(this.state.user)
+    this.setState({errors: userStore.getErrors()})
+  }
+
   handleSubmit(e){
     e.preventDefault()
-    newUser(this.state)
+    this.validate()
+    if(this.isValid()){
+      newUser(this.state)
+    }
+  }
+
+  isValid(){
+    return Object.keys(this.state.errors).length === 0
+  }
+
+  errorClass(field){
+    if(this.state.errors && this.state.errors[field] && this.state.errors[field].length != 0){
+      return 'form-group has-error'
+    } else {
+      return 'form-group '
+    }
   }
 
   render() {
@@ -44,62 +67,85 @@ class RegisterUser extends Component {
             <div className='col-xs-6 col-xs-offset-3'>
               <div className='panel panel-default'>
                 <div className='panel-body'>
-                  <div className='alert alert-danger'>
-                    Please verify that all fields are filled in below
-                  </div>
+                  { !this.isValid() &&
+                    <div className='alert alert-danger'>
+                      Please verify that all fields are filled in below
+                    </div>
+                  }
                   <h3>Register</h3>
-                  <form className='form' onSubmit={this.handleSubmit.bind(this)}>
+                  <form className='form'
+                    onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
                       <div className='col-xs-12'>
-                        <div>
-                          <label htmlFor='name'>First Name</label>
-                          <br />
-                          <input
-                            type='text'
-                            name='firstname'
-                            value={this.state.user.firstname}
-                            onChange={this.handleChange.bind(this)}/>
+                        <div className={this.errorClass('firstname')}>
+                          <label className='control-label' htmlFor='firstname'>
+                            First Name
+                            <input
+                              type='text'
+                              name='firstname'
+                              value={this.state.user.firstname}
+                              onChange={this.handleChange.bind(this)}
+                              className='form-control'
+                            />
+                            {this.state.errors.firstname}
+                          </label>
                         </div>
-                        <div>
-                          <label>Last Name</label>
+                        <div className={this.errorClass('lastname')}>
+                          <label className='control-label' htmlFor='lastname'>
+                            Last Name
                           <br />
                           <input
                             type='text'
                             name='lastname'
                             value={this.state.user.lastname}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                        />
+                            {this.state.errors.lastname}
+                            </label>
                         </div>
-                        <div>
-                          <label>Email</label>
+                        <div className={this.errorClass('email')}>
+                          <label className='control-label' htmlFor='email'>
+                            Email
                           <br />
                           <input
                             type='text'
                             name='email'
                             value={this.state.user.email}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                          />
+                          {this.state.errors.email}
+                          </label>
                         </div>
-                        <div>
-                          <label>Password</label>
+                        <div className={this.errorClass('password')}>
+                          <label className='control-label' htmlFor='password'>
+                            Password
                           <br />
                           <input
                             type='password'
                             name='password'
                             value={this.state.user.password}
-                            onChange={this.handleChange.bind(this)}/>
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                          />
+                          {this.state.errors.password}
+                            </label>
                         </div>
                         <div>
                           <br />
                           <input type='submit' value='Submit' className = 'btn btn-primary' />
+
                         </div>
                       </div>
                     </div>
                   </form>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }
