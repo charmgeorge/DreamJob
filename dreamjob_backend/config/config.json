@@ -14,10 +14,6 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": null,
-    "password": null,
-    "database": "dreamjob_backend_production",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "use_env_variable": "DATABASE_URL"
   }
 }

@@ -3,6 +3,10 @@ var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
 var cors = require('cors')
+var path = require('path')
+
+const PORT = process.env.PORT || 4000;
+
 var app = express();
 var Glassdoor = require('node-glassdoor').initGlassdoor({
     partnerId: 157533,
@@ -15,7 +19,8 @@ const corsOptions = {
 }
 
 app.use(cors())
-app.use(express.static('public'))
+app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
+
 app.use(bodyParser.json())
 
 const authorization = function(request, response, next){
@@ -103,13 +108,13 @@ app.get('/glassdoor/:company', function (request, response) {
       });
 });
 
-app.get('/', function (request, response) {
-  Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
-        response.json({
-          data:data
-        })
-      })
-    });
+// app.get('/', function (request, response) {
+//   Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
+//         response.json({
+//           data:data
+//         })
+//       })
+//     });
 
 app.post('/update_job_details/:id', function (request, response){
   let id = request.params['id'];
@@ -170,6 +175,10 @@ app.post('/login_user', function(request, response){
   })
 })
 
-app.listen(4000, function () {
- console.log('Todo Server listening on port 4000!');
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../dreamjob_frontend/build', 'index.html'));
+});
+
+app.listen(PORT, function () {
+ console.log(`Todo Server listening on port ${PORT}!`);
 });
