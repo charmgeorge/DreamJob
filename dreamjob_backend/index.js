@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
 var cors = require('cors')
+var path = require('path');
 
 var app = express();
 
@@ -11,7 +12,7 @@ const corsOptions = {
 }
 
 app.use(cors())
-app.use(express.static('public'))
+app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 app.use(bodyParser.json())
 
 const authorization = function(request, response, next){
@@ -33,10 +34,6 @@ const authorization = function(request, response, next){
     response.json({message: 'Authorization Token Required'})
   }
 }
-
-app.get('/', function (request, response) {
-  response.json({message: 'hello world!'})
-});
 
 app.get('/jobs', authorization, function (request, response) {
   let id = request.currentUser.id ;
@@ -145,6 +142,12 @@ app.post('/login_user', function(request, response){
   })
 })
 
-app.listen(4000, function () {
- console.log('Todo Server listening on port 4000!');
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../dreamjob_frontend/build', 'index.html'));
+});
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, function () {
+  console.log(`Listening on port ${PORT}`);
 });
