@@ -82,7 +82,7 @@ class App extends Component {
                 <Route exact path = '/job_index' component={jobIndex}></Route>
                 <Route exact path = '/job_details' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
-                <Route exact path = '/glassdoor' component={glassdoor}></Route>
+                <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
                 <Route component={NoMatch} />
               </Switch>
             </div>

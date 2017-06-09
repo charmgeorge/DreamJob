@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import jobStore from '../stores/jobStore';
 import {Link} from 'react-router-dom';
-
+import {glassdoorDetails} from '../actions/actions'
 class glassdoor extends Component {
   constructor(props){
+    // glassdoorDetails(HOW DO I ACCESS COMPANY THROUGH REQUEST.PARAMS?)
     super(props)
     this.state={
       data: jobStore.getDetails(),
       error:""
     }
+    glassdoorDetails(this.props.match.params.company)
   }
 
   updateDetails(){
@@ -21,8 +23,7 @@ class glassdoor extends Component {
     jobStore.on('glassdoor', this.updateDetails.bind(this))
   }
 
-  render() {
-
+  renderCompany(){
     let ceoData;
     if(this.state.data.ceo){
       ceoData = this.state.data.ceo.pctApprove
@@ -54,6 +55,88 @@ class glassdoor extends Component {
 
     return(
       <div>
+        <h3>{this.state.data.name}</h3>
+        <div className='row'>
+          <div className='col-xs-12'>
+            <div>
+              <img src={this.state.data.squareLogo} alt={this.state.data.name} />
+              <br />
+            </div>
+            <div>
+              <br />
+              <label>Overall Rating (out of 5): </label>
+              <br />
+              {this.state.data.overallRating}
+            </div>
+            <div>
+              <label>Culture and Values Rating (out of 5)</label>
+              <br />
+              {this.state.data.cultureAndValuesRating}
+            </div>
+            <div>
+              <label>Senior Leadership Rating (out of 5)</label>
+              <br />
+              {this.state.data.seniorLeadershipRating}
+            </div>
+            <div>
+              <label>Compensation and Benefits Rating (out of 5)</label>
+              <br />
+              {this.state.data.compensationAndBenefitsRating}
+            </div>
+            <div>
+              <label>Career Opportunities Rating (out of 5)</label>
+              <br />
+              {this.state.data.careerOpportunitiesRating}
+            </div>
+            <div>
+              <label>Work/Life Balance Rating (out of 5)</label>
+              <br />
+              {this.state.data.workLifeBalanceRating}
+            </div>
+            <div>
+              <label>Recommend To Friend Rating (out of 100)</label>
+              <br />
+              {this.state.data.recommendToFriendRating}
+            </div>
+            {/* <div>
+              <br />
+              <label>An Insider's Pros</label>
+              <br />
+              {this.state.data.featuredReview.pros}
+            </div>
+            <div>
+              <br />
+              <label>An Insider's Cons</label>
+              <br />
+              {this.state.data.featuredReview.cons}
+            </div> */}
+            <div>
+              {reviewData}
+            </div>
+            <div>
+              <br />
+              <label>CEO Approval Rating (out of 100)</label>
+              <br />
+              {/* { this.state.data.ceo.pctApprove} */}
+              {ceoData}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    )
+  }
+
+  render() {
+    let companyView
+    if(Object.keys(this.state.data).length > 0){
+      companyView = this.renderCompany()
+    } else {
+      companyView = <img src="/hourglass.svg" />
+    }
+
+    return(
+      <div>
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
@@ -62,75 +145,12 @@ class glassdoor extends Component {
               </div>
               <div className='panel panel-default'>
                 <div className='panel-body'>
-                  <h3>{this.state.data.name}</h3>
-                    <div className='row'>
-                      <div className='col-xs-12'>
-                        <div>
-                          <img src={this.state.data.squareLogo} alt={this.state.data.name} />
-                          <br />
-                        </div>
-                        <div>
-                          <br />
-                          <label>Overall Rating (out of 5): </label>
-                          <br />
-                          {this.state.data.overallRating}
-                        </div>
-                        <div>
-                          <label>Culture and Values Rating (out of 5)</label>
-                          <br />
-                          {this.state.data.cultureAndValuesRating}
-                        </div>
-                        <div>
-                          <label>Senior Leadership Rating (out of 5)</label>
-                          <br />
-                          {this.state.data.seniorLeadershipRating}
-                        </div>
-                        <div>
-                          <label>Compensation and Benefits Rating (out of 5)</label>
-                          <br />
-                          {this.state.data.compensationAndBenefitsRating}
-                        </div>
-                        <div>
-                          <label>Career Opportunities Rating (out of 5)</label>
-                          <br />
-                          {this.state.data.careerOpportunitiesRating}
-                        </div>
-                        <div>
-                          <label>Work/Life Balance Rating (out of 5)</label>
-                          <br />
-                          {this.state.data.workLifeBalanceRating}
-                        </div>
-                        <div>
-                          <label>Recommend To Friend Rating (out of 100)</label>
-                          <br />
-                          {this.state.data.recommendToFriendRating}
-                        </div>
-                        <div>
-                          <br />
-                          <label>An Insider's Pros</label>
-                          <br />
-                          {this.state.data.featuredReview.pros}
-                        </div>
-                        <div>
-                          <br />
-                          <label>An Insider's Cons</label>
-                          <br />
-                          {this.state.data.featuredReview.cons}
-                        </div>
-                        <div>
-                          <br />
-                          <label>CEO Approval Rating (out of 100)</label>
-                          <br />
-                          {/* { this.state.data.ceo.pctApprove} */}
-                          {ceoData}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  {companyView}
                 </div>
               </div>
             </div>
           </div>
+        </div>
       </div>
     )
   }

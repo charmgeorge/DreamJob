@@ -59,10 +59,10 @@ class jobDetails extends Component {
   }
 
   handleGlassdoor(e){
+    let company = this.state.job.company
     e.preventDefault()
-    glassdoorDetails(this.state.job.company)
-    console.log(this.state.job.company)
-    debugger
+    // glassdoorDetails(this.state.job.company)
+    this.props.history.push('/glassdoor/' + company)
   }
 
   render() {

@@ -82,9 +82,6 @@ app.get('/glassdoor/:company', function (request, response) {
       if(Object.keys(data).length === 0){
         response.status(400)
         response.json({error:err});
-        // else if(Object.keys(data.ceo).length === 0){
-        //
-        // }
       } else {
         response.json({
           data:data
