@@ -39,7 +39,7 @@ export function newUser(userInfo){
       if (success){
         dispatcher.dispatch({
           type: "NEW_USER",
-          user: body
+          user: body.user
         })
         console.log("success!", body)
       }
@@ -65,12 +65,12 @@ export function loginUser(userInfo){
       if (success){
         dispatcher.dispatch({
           type: "LOGIN_USER",
-          user: body.User
+          user: body.user
         })
-        console.log("success!", body.User)
+        console.log("success!", body.user)
       }
       else {
-        console.log("failure!", body.User)
+        console.log("failure!", body.user)
       }
     })
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Link} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 
 class Home extends Component {
@@ -9,8 +9,9 @@ class Home extends Component {
       <div>
         <h1>Welcome To Dream Job</h1>
         <h2>where the dream jobs go.... to become yours</h2>
-        <Link to='/register'><button className='btn-primary'>Register</button></Link>
-
+        {/* <Link to='/job_index'> brady </Link>             */}
+        <Link to="/register"><button className='btn-primary'>Register</button></Link>
+        {/* <Link to="/register">Home</Link> */}
       </div>
     );
   }

@@ -25,8 +25,7 @@ class JobListing extends Component {
 
   render(){
     return(
-      <div>
-      // <div className="container">
+      <div className="container">
         <div className={this.updateClass()} >
           <ul className="jobList">
             <li>
