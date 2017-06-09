@@ -4,7 +4,6 @@ import jobStore from '../stores/jobStore'
 
 export function checkLoginRedir(props){
   let currentUser = userStore.getUser()
-
   if(currentUser === null){
     props.history.push("/login")
     return false

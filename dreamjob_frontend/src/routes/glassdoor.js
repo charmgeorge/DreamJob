@@ -3,16 +3,19 @@ import jobStore from '../stores/jobStore';
 import {Link} from 'react-router-dom';
 import {glassdoorDetails} from '../actions/actions'
 
+//glassdoor must persist, so we call the glassdoor ACTION in the constructor
 class glassdoor extends Component {
   constructor(props){
     super(props)
+    glassdoorDetails(this.props.match.params.company)
     this.state={
       data: jobStore.getDetails(),
       error:""
     }
-    console.log('glassdoor data', this.state.data);
-    glassdoorDetails(this.props.match.params.company)
-    // debugger;
+  }
+
+  componentWillMount(){
+    jobStore.on('glassdoor', this.updateDetails.bind(this))
   }
 
   updateDetails(){
@@ -21,10 +24,7 @@ class glassdoor extends Component {
     })
   }
 
-  componentWillMount(){
-    jobStore.on('glassdoor', this.updateDetails.bind(this))
-  }
-
+  //this defines what's shown on glassdoor page
   renderCompany(){
     let ceoData;
     if(this.state.data.ceo){
@@ -100,18 +100,6 @@ class glassdoor extends Component {
               <br />
               {this.state.data.recommendToFriendRating}
             </div>
-            {/* <div>
-              <br />
-              <label>An Insider's Pros</label>
-              <br />
-              {this.state.data.featuredReview.pros}
-            </div>
-            <div>
-              <br />
-              <label>An Insider's Cons</label>
-              <br />
-              {this.state.data.featuredReview.cons}
-            </div> */}
             <div>
               {reviewData}
             </div>
@@ -119,7 +107,6 @@ class glassdoor extends Component {
               <br />
               <label>CEO Approval Rating (out of 100)</label>
               <br />
-              {/* { this.state.data.ceo.pctApprove} */}
               {ceoData}
             </div>
           </div>

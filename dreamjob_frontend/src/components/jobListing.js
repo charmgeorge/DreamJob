@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
-import {getDetails} from '../actions/actions'
-import jobIndex from '../routes/jobDetails'
 
 class JobListing extends Component {
-  constructor(props){
-    super(props)
-
-    // console.log(props);
-  }
-
 
   handleClick(e){
     let id = this.props.job.id
@@ -22,7 +14,7 @@ class JobListing extends Component {
     var result = rightNow-updatedAt
     var color
     if(result <= 30000){
-      color = "GREEN glyphicon glyphicon-arrow-up pull-left d"
+      color = "GREEN glyphicon glyphicon-arrow-up pull-left"
     } else if(result <= 60000){
       color = "YELLOW glyphicon glyphicon-arrow-right pull-left"
     } else {
@@ -36,21 +28,25 @@ class JobListing extends Component {
       <div>
         <div>
           <ul className='col-xs-3'>
-            <li><div className={this.updateClass()}></div></li>
+
             <li>
-              {this.props.job.company}
-            </li>
-            <li>
-              {this.props.job.jobTitle}
-            </li>
-            <li>
-              {this.props.job.status}
-            </li>
-            <li>
-              <div>
-                <button className='btn-primary glyphicon glyphicon-edit' onClick={this.handleClick.bind(this)}></button>
+              <div className={this.updateClass()}>
               </div>
             </li>
+
+            <li>{this.props.job.company}</li>
+            <li>{this.props.job.jobTitle}</li>
+            <li>{this.props.job.status}</li>
+
+            <li>
+              <div>
+                <button
+                  className='btn-primary glyphicon glyphicon-edit'
+                  onClick={this.handleClick.bind(this)}>
+                </button>
+              </div>
+            </li>
+
           </ul>
         </div>
       </div>

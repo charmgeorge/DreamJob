@@ -50,6 +50,7 @@ class JobStore extends EventEmitter{
   updateJobDetails(attributes){
     this.details = attributes
     this.updateMessage('Job details updated!')
+    updateJobs()
     this.emit('jobDetailsUpdated')
   }
 
