@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import JobListing from '../components/jobListing'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
-import {checkLoginRedir} from '../actions/actions'
+import {checkLoginRedir, updateJobs} from '../actions/actions'
 
 class jobIndex extends Component {
   constructor(props){
   super(props)
+  updateJobs()
   this.state = {
     jobs: jobStore.getJobs(),
-    // status:""
     }
   }
 

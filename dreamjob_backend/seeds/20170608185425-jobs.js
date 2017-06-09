@@ -6,7 +6,6 @@ module.exports = {
   up: function (queryInterface, Sequelize) {
     return User.findAll().then(function(users){ // returns a promise
       let jobPromises = users.map(function(user){
-        console.log(user);
         return queryInterface.bulkInsert('Jobs',
         [
           {
