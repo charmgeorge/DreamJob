@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob, glassdoorDetails} from '../actions/actions'
+import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -27,12 +27,7 @@ class jobDetails extends Component {
     updateJobs()
   }
 
-  redirectGlassdoor(){
-    this.props.history.push('/glassdoor')
-  }
-
   componentWillMount(){
-    jobStore.on('glassdoor', this.redirectGlassdoor.bind(this))
     jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     jobStore.on('jobDeleted', this.redirect.bind(this))
@@ -61,7 +56,6 @@ class jobDetails extends Component {
   handleGlassdoor(e){
     let company = this.state.job.company
     e.preventDefault()
-    // glassdoorDetails(this.state.job.company)
     this.props.history.push('/glassdoor/' + company)
   }
 

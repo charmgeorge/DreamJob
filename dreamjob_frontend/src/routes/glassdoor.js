@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import jobStore from '../stores/jobStore';
 import {Link} from 'react-router-dom';
 import {glassdoorDetails} from '../actions/actions'
+
 class glassdoor extends Component {
   constructor(props){
-    // glassdoorDetails(HOW DO I ACCESS COMPANY THROUGH REQUEST.PARAMS?)
     super(props)
     this.state={
       data: jobStore.getDetails(),
@@ -132,7 +132,7 @@ class glassdoor extends Component {
     if(Object.keys(this.state.data).length > 0){
       companyView = this.renderCompany()
     } else {
-      companyView = <img src="/hourglass.svg" />
+      companyView = <img src="/hourglass.svg" alt='hourglass' />
     }
 
     return(

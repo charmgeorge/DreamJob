@@ -78,7 +78,6 @@ app.get('/getDetails/:id', function (request, response) {
 app.get('/glassdoor/:company', function (request, response) {
   let company = request.params['company'];
   Glassdoor.findOneCompany(company,{country:""}).then(function (data) {
-    console.log(data)
       if(Object.keys(data).length === 0){
         response.status(400)
         response.json({error:err});
@@ -117,24 +116,6 @@ app.post('/update_job_details/:id', function (request, response){
     response.json({status:'error', error:error})
   })
 })
-
-// app.post('/update_job_details/:id/:company', function (request, response){
-//   let id = request.params['id'];
-//   let company = request.params['company'];
-//   Job.findOne({
-//     where:{id:id}
-//   })
-//   .then(function(job){
-//     job.update(request.body.job).then(function(update){
-//       response.status(200)
-//       response.json({status:'success', job:update})
-//       console.log('update');
-//     })
-//   }).catch(function(error){
-//     response.status(400)
-//     response.json({status:'error', error:error})
-//   })
-// })
 
 app.post('/create_job', function (request, response){
   let jobParams = request.body.job
