@@ -26,9 +26,16 @@ class JobListing extends Component {
   render(){
     return(
       <div>
-        <div>
-          <ul className='col-xs-3'>
-            <li><div className={this.updateClass()}></div></li>
+      // <div className="container">
+        <div className={this.updateClass()} >
+          <ul className="jobList">
+            <li>
+              {this.props.job.id}
+            </li>
+            <li>
+              {this.props.job.updatedAt}
+            </li>
+
             <li>
               {this.props.job.company}
             </li>

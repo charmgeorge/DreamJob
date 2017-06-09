@@ -38,13 +38,23 @@ const authorization = function(request, response, next){
   }
 }
 
-app.get('/jobs', function (request, response) {
-  Job.findAll().then(function(jobs){
+app.get('/jobs', authorization, function (request, response) {
+  let id = request.currentUser.id ;
+  Job.findAll(
+    {
+    where: {
+      userId:id
+    }
+  }).then(function(jobs){
     response.status(200)
     response.json({
       status:'success',
       jobs:jobs
     })
+  })
+  .catch(function(error){
+    response.status(400)
+    response.json({status:'error', error:error})
   })
 })
 
@@ -117,8 +127,10 @@ app.post('/update_job_details/:id', function (request, response){
   })
 })
 
-app.post('/create_job', function (request, response){
+app.post('/create_job', authorization, function (request, response){
   let jobParams = request.body.job
+
+  jobParams.userId = request.currentUser.id;
   Job.create(jobParams).then(function(job){
     response.status(200)
     response.json({status:'success', job:job})

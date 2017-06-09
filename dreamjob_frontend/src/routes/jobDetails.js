@@ -28,6 +28,8 @@ class jobDetails extends Component {
   }
 
   componentWillMount(){
+    jobStore.on('jobDetails', this.updateDetails.bind(this))
+    // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     jobStore.on('jobDeleted', this.redirect.bind(this))

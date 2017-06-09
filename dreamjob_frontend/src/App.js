@@ -11,13 +11,13 @@ import Login from './routes/Login';
 import Home from './routes/Home';
 import glassdoor from './routes/glassdoor';
 import {checkLogin, userLogout, updateJobs} from './actions/actions';
+import Header from './components/Header'
 import jobDetails from './routes/jobDetails';
 
 class App extends Component {
   constructor(props){
     super(props)
-    updateJobs()
-    checkLogin()
+    checkLogin()    
     this.state = {
       message:jobStore.getMessage(),
       currentUser: userStore.getUser()
@@ -52,14 +52,6 @@ class App extends Component {
     })
   }
 
-  login(){
-    if(this.state.currentUser){
-      return(
-        <a onClick={this.handleLogout.bind(this)}>Logout</a>)
-    } else {
-      return(<Link to="/login">Login</Link>)
-    }
-  }
 
   render() {
     return (
@@ -69,12 +61,7 @@ class App extends Component {
           <h2>Dream Job</h2>
           <Router>
             <div>
-              <div className="pull-right">
-                <Link to="/">Home</Link> |
-                <Link to="/add_job">Add Job</Link> |
-                <Link to="/register">Register</Link> |
-                {this.login()}
-              </div>
+              <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
               <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route exact path="/register" component={RegisterUser}></Route>
