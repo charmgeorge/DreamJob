@@ -146,6 +146,7 @@ app.post('/create_user', function(request, response){
     response.json({status:'success', user: user})
   })
   .catch((error)=>{
+    console.log('here ', error)
     response.status(400)
     response.json({
       message:"Could not create User",

@@ -9,8 +9,8 @@ class UserStore extends EventEmitter{
     this.message = ""
     // this.errors = {} moving to new line per Antonios code ex
     this.fields = {
-      firstName: "",
-      lastName: "",
+      firstname: "",
+      lastname: "",
       email: "",
       password: ""
     },
@@ -32,15 +32,15 @@ class UserStore extends EventEmitter{
   getErrors(){
     // {}
     // or
-    // {firstName: 'is requires'}
+    // {firstname: 'is requires'}
     return this.errors
   }
   //cg
   validate(fields){
     this.fields = fields
     this.errors = {}
-    this.validatePresence('firstName')
-    this.validatePresence('lastName')
+    this.validatePresence('firstname')
+    this.validatePresence('lastname')
     this.validatePresence('email')
     this.validatePresence('password')
     this.validateEmail('email')
@@ -70,7 +70,7 @@ class UserStore extends EventEmitter{
     (filter.test(this.fields[fieldName]))&&
     (!this.fields[fieldName].includes("$"))&&
     (!this.fields[fieldName].includes("*"))){
-      
+
     }else{
       this.addError(fieldName, 'is not a valid password')
     }
@@ -83,8 +83,13 @@ class UserStore extends EventEmitter{
 
   addUser(user){
     this.user = user
+    localStorage.setItem('authToken', user.authToken);
+    localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
+    localStorage.setItem('email', user.email);
+
     console.log("new user set")
     this.emit('user_created')
+    this.emit('login')
   }
 
   getMessage(){

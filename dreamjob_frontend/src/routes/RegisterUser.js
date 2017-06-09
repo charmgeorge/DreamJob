@@ -8,8 +8,8 @@ class RegisterUser extends Component {
     super(props)
     this.state={
       user:{
-        firstName:"",
-        lastName:"",
+        firstname:"",
+        lastname:"",
         email:"",
         password:""
       },
@@ -42,11 +42,12 @@ class RegisterUser extends Component {
   handleSubmit(e){
     e.preventDefault()
     this.validate()
-    newUser(this.state)
+    if(this.isValid()){
+      newUser(this.state)
+    }
   }
 
   isValid(){
-    debugger;
     return Object.keys(this.state.errors).length === 0
   }
 
@@ -76,31 +77,31 @@ class RegisterUser extends Component {
                     onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
                       <div className='col-xs-12'>
-                        <div className={this.errorClass('firstName')}>
-                          <label className='control-label' htmlFor='firstName'>
+                        <div className={this.errorClass('firstname')}>
+                          <label className='control-label' htmlFor='firstname'>
                             First Name
                             <input
                               type='text'
-                              name='firstName'
+                              name='firstname'
                               value={this.state.user.firstname}
                               onChange={this.handleChange.bind(this)}
                               className='form-control'
                             />
-                            {this.state.errors.firstName}
+                            {this.state.errors.firstname}
                           </label>
                         </div>
-                        <div className={this.errorClass('lastName')}>
-                          <label className='control-label' htmlFor='lastName'>
+                        <div className={this.errorClass('lastname')}>
+                          <label className='control-label' htmlFor='lastname'>
                             Last Name
                           <br />
                           <input
                             type='text'
-                            name='lastName'
+                            name='lastname'
                             value={this.state.user.lastname}
                             onChange={this.handleChange.bind(this)}
                             className='form-control'
                         />
-                            {this.state.errors.lastName}
+                            {this.state.errors.lastname}
                             </label>
                         </div>
                         <div className={this.errorClass('email')}>

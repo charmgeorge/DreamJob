@@ -17,7 +17,7 @@ import jobDetails from './routes/jobDetails';
 class App extends Component {
   constructor(props){
     super(props)
-    checkLogin()    
+    checkLogin()
     this.state = {
       message:jobStore.getMessage(),
       currentUser: userStore.getUser()
@@ -63,7 +63,7 @@ class App extends Component {
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
               <Switch>
-                <Route exact path="/" component={Home}></Route>
+                <Route exact path="/" component={Home} />
                 <Route exact path="/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={addJob}></Route>
                 <Route exact path = '/job_index' component={jobIndex}></Route>
