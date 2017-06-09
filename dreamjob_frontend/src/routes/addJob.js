@@ -22,22 +22,19 @@ class addJob extends Component {
   }
 }
 
-redirect(){
-  this.props.history.push("/job_index")
-}
-
+//before a job can be created, we must check if the user is logged in.
+//after a job is added, we must redirect to the job index
 componentWillMount(){
-  jobStore.on('jobAdded', this.redirect.bind(this))
   checkLoginRedir(this.props)
+  jobStore.on('jobAdded', this.redirect.bind(this))
 }
 
 componentWillUpdate(){
   checkLoginRedir(this.props)
 }
 
-handleSubmit(e){
-  e.preventDefault()
-  createJob(this.state)
+redirect(){
+  this.props.history.push("/job_index")
 }
 
 handleChange(e){
@@ -47,6 +44,11 @@ handleChange(e){
   this.setState({
     job:job
   })
+}
+
+handleSubmit(e){
+  e.preventDefault()
+  createJob(this.state)
 }
 
   render() {

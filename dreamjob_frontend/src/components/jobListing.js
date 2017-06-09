@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {getDetails} from '../actions/actions'
 
 class JobListing extends Component {
 
   handleClick(e){
+    let id = this.props.job.id
     e.preventDefault();
-    getDetails(this.props.job.id)
+    this.props.history.push('/job_details/' + id)
   }
 
   updateClass(){
@@ -14,7 +14,7 @@ class JobListing extends Component {
     var result = rightNow-updatedAt
     var color
     if(result <= 30000){
-      color = "GREEN glyphicon glyphicon-arrow-up pull-left d"
+      color = "GREEN glyphicon glyphicon-arrow-up pull-left"
     } else if(result <= 60000){
       color = "YELLOW glyphicon glyphicon-arrow-right pull-left"
     } else {
@@ -42,13 +42,23 @@ class JobListing extends Component {
               {this.props.job.jobTitle}
             </li>
             <li>
-              {this.props.job.status}
-            </li>
-            <li>
-              <div>
-                <button className='btn-primary glyphicon glyphicon-edit' onClick={this.handleClick.bind(this)}></button>
+              <div className={this.updateClass()}>
               </div>
             </li>
+
+            <li>{this.props.job.company}</li>
+            <li>{this.props.job.jobTitle}</li>
+            <li>{this.props.job.status}</li>
+
+            <li>
+              <div>
+                <button
+                  className='btn-primary glyphicon glyphicon-edit'
+                  onClick={this.handleClick.bind(this)}>
+                </button>
+              </div>
+            </li>
+
           </ul>
         </div>
       </div>

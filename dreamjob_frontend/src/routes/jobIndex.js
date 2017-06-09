@@ -9,7 +9,7 @@ class jobIndex extends Component {
   super(props)
   updateJobs()
   this.state = {
-    jobs: jobStore.getJobs(),
+    jobs: jobStore.getJobs()
     }
   }
 
@@ -26,7 +26,6 @@ class jobIndex extends Component {
   componentWillMount(){
     jobStore.on('jobAdded',this.updateJobs.bind(this))
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.on('jobDetails', this.redirect.bind(this))
     jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
     checkLoginRedir(this.props)
   }
@@ -34,24 +33,23 @@ class jobIndex extends Component {
   componentWillUnmount(){
     jobStore.removeListener('jobAdded',this.updateJobs.bind(this))
     jobStore.removeListener('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.removeListener('jobDetails', this.redirect.bind(this))
     jobStore.removeListener('jobDetailsUpdated', this.updateJobs.bind(this))
   }
 
-  componentWillUpdate(){
-    jobStore.on('jobAdded',this.updateJobs.bind(this))
-    jobStore.on('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.on('jobDetails', this.redirect.bind(this))
-    jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
-    checkLoginRedir(this.props)
+  //after a job is added or the job's details are updated, refresh the state with all jobs
+  updateJobs(){
+    this.setState({
+      jobs:jobStore.getJobs()
+    })
   }
 
+  //this uses JobListing helper component to generate list view of each job.
   renderJobs(){
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){
       let jobId = "job-" + i
       jobRender.push(
-        <JobListing key={jobId} job={this.state.jobs[i]}/>
+        <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
       )
     }
     return jobRender

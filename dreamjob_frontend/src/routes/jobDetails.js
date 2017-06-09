@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
-import '../App.css';
-import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
+import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
+//jobDetails must persist, so we call ACTION in constructor
 class jobDetails extends Component {
   constructor(props){
     super(props)
+    getDetails(this.props.match.params.id)
     this.state={
       job: jobStore.getDetails(),
       error: ""
     }
+  }
+
+  componentWillMount(){
+    // jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this)) //do we need this?
+    jobStore.on('jobDeleted', this.redirect.bind(this))
+    jobStore.on('jobDetails', this.updateDetails.bind(this))
+    checkLoginRedir(this.props)
   }
 
   updateDetails(){
@@ -19,6 +27,7 @@ class jobDetails extends Component {
     })
   }
 
+  //upon job deletion, go to job index
   redirect(){
     this.props.history.push('/job_index');
   }
