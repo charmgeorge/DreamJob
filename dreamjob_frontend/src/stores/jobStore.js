@@ -23,6 +23,10 @@ class JobStore extends EventEmitter{
     return this.message
   }
 
+  clearJobs(){
+    this.jobs = []
+  }
+
   updateMessage(str){
     this.message = str
     this.emit('message')
@@ -72,6 +76,10 @@ class JobStore extends EventEmitter{
      }
      case("UPDATE_JOBS"):{
        this.updateJobs(action.jobs)
+       break
+     }
+     case("LOGOUT"):{
+       this.clearJobs()
        break
      }
      case("GET_DETAILS"):{

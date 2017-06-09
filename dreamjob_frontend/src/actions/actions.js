@@ -180,7 +180,6 @@ export function updateJobs(){
 export function createJob(attributes){
 
   let currentUser = userStore.getUser()
-  console.log('in createJob ', currentUser);
   if(currentUser){
     attributes.authToken = currentUser.authToken,
     attributes.email = currentUser.email
