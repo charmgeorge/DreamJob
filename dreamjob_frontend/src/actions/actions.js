@@ -115,6 +115,28 @@ export function deleteJob(jobId){
   })
 }
 
+export function glassdoorDetails(company){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/glassdoor/" + company, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(data){
+        dispatcher.dispatch({
+          type: 'GLASSDOOR',
+          data: data
+        })
+      })
+    }else{
+      jobStore.updateMessage("Couldn't find the company in Glassdoor")
+    }
+  })
+  .catch(function(err){
+      jobStore.updateMessage("Couldn't find the company in Glassdoor")
+  })
+}
+
 export function getDetails(jobId){
   const params = {
       method: 'GET',
@@ -150,8 +172,8 @@ export function updateJobs(){
         })
       })
     }
-  }).catch(function(error){
-    console.log('error', error);
+  }).catch(function(err){
+    jobStore.updateMessage("There was an error: " + err)
   })
 }
 

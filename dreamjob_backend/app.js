@@ -3,8 +3,12 @@ var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
 var cors = require('cors')
-
 var app = express();
+var Glassdoor = require('node-glassdoor').initGlassdoor({
+    partnerId: 157533,
+    partnerKey: "cE2dvplWMTK"
+});
+
 
 const corsOptions = {
   origin: 'http://localhost:3000'
@@ -34,10 +38,6 @@ const authorization = function(request, response, next){
   }
 }
 
-app.get('/', function (request, response) {
-  response.json({message: 'hello world!'})
-});
-
 app.get('/jobs', authorization, function (request, response) {
   let id = request.currentUser.id ;
   Job.findAll(
@@ -45,9 +45,7 @@ app.get('/jobs', authorization, function (request, response) {
     where: {
       userId:id
     }
-  }
-)
-.then(function(jobs){
+  }).then(function(jobs){
     response.status(200)
     response.json({
       status:'success',
@@ -86,6 +84,32 @@ app.get('/getDetails/:id', function (request, response) {
     })
   })
 })
+
+app.get('/glassdoor/:company', function (request, response) {
+  let company = request.params['company'];
+  Glassdoor.findOneCompany(company,{country:""}).then(function (data) {
+      if(Object.keys(data).length === 0){
+        response.status(400)
+        response.json({error:err});
+      } else {
+        response.json({
+          data:data
+        })
+      }
+    })
+      .catch(function (err) {
+          response.status(400)
+          response.json({error:err});
+      });
+});
+
+app.get('/', function (request, response) {
+  Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
+        response.json({
+          data:data
+        })
+      })
+    });
 
 app.post('/update_job_details/:id', function (request, response){
   let id = request.params['id'];

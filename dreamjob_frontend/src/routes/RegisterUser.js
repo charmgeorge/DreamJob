@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom'
 import {newUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
-// import '../App.css'
 
 
 class RegisterUser extends Component {
   constructor(props){
     super(props)
-    //the initial state of the website
     this.state={
       user:{
         firstName:"",
@@ -30,7 +27,6 @@ class RegisterUser extends Component {
 
   handleChange(e){
     let target = e.target
-    //target.name is the properties of cat??? what is target.value?
     let user = this.state.user
     user[target.name]= target.value
     this.setState({

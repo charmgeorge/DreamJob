@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom'
-import {newUser} from '../actions/actions';
-import userStore from '../stores/UserStore';
-// import '../App.css'
+import {BrowserRouter as Link} from 'react-router-dom'
 
 
 class Home extends Component {
