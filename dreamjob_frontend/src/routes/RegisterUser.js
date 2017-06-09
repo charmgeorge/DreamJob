@@ -23,9 +23,10 @@ class RegisterUser extends Component {
 
   componentWillMount(){
     userStore.on('user_created', ()=> {
-      this.props.history.push("/")
+      this.props.history.push("/job_index")
     })
   }
+
 
   handleChange(e){
     let target = e.target
@@ -50,6 +51,7 @@ class RegisterUser extends Component {
   }
 
   isValid(){
+    debugger;
     return Object.keys(this.state.errors).length === 0
   }
 
@@ -137,6 +139,7 @@ class RegisterUser extends Component {
                         <div>
                           <br />
                           <input type='submit' value='Submit' className = 'btn btn-primary' />
+
                         </div>
                       </div>
                     </div>

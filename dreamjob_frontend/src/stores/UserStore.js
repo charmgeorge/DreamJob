@@ -61,10 +61,16 @@ class UserStore extends EventEmitter{
     }
   }
 
-// I set password parameters
+
   validatePassword(fieldName){
-    debugger
-    if(!(this.fields[fieldName].length > 6 ) || (this.fields[fieldName].includes("$")) || (this.fields[fieldName].includes("*"))){
+    const filter = /\d+/
+
+    if((this.fields[fieldName].length > 6 )&&
+    (filter.test(this.fields[fieldName]))&&
+    (!this.fields[fieldName].includes("$"))&&
+    (!this.fields[fieldName].includes("*"))){
+      
+    }else{
       this.addError(fieldName, 'is not a valid password')
     }
   }

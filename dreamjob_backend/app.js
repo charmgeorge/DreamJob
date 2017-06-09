@@ -104,6 +104,7 @@ app.post('/create_job', function (request, response){
 })
 
 app.post('/create_user', function(request, response){
+  debugger
   console.log(request.body.user)
   User.create(request.body.user).then((user) => {
     response.status(200)
