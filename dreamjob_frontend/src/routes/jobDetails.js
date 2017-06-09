@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import '../App.css';
-import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob} from '../actions/actions'
+import {checkLoginRedir, updateJobs, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
 class jobDetails extends Component {
   constructor(props){
     super(props)
+    getDetails(this.props.match.params.id)
     this.state={
       job: jobStore.getDetails(),
       error: ""
     }
+    console.log(this.props.match.params.id)
   }
 
   updateDetails(){
@@ -28,9 +30,11 @@ class jobDetails extends Component {
   }
 
   componentWillMount(){
+    getDetails(this.props.match.params.id)
     jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
     jobStore.on('jobsLoaded', this.updateDetails.bind(this))
     jobStore.on('jobDeleted', this.redirect.bind(this))
+    jobStore.on('jobDetails', this.updateDetails.bind(this))
     checkLoginRedir(this.props)
   }
 

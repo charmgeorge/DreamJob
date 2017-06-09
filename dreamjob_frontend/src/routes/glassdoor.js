@@ -10,7 +10,9 @@ class glassdoor extends Component {
       data: jobStore.getDetails(),
       error:""
     }
+    console.log('glassdoor data', this.state.data);
     glassdoorDetails(this.props.match.params.company)
+    // debugger;
   }
 
   updateDetails(){

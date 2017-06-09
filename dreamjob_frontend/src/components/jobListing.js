@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import {getDetails} from '../actions/actions'
+import jobIndex from '../routes/jobDetails'
 
 class JobListing extends Component {
+  constructor(props){
+    super(props)
+
+    // console.log(props);
+  }
+
 
   handleClick(e){
+    let id = this.props.job.id
     e.preventDefault();
-    getDetails(this.props.job.id)
+    this.props.history.push('/job_details/' + id)
   }
 
   updateClass(){

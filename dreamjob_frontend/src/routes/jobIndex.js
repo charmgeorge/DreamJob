@@ -9,8 +9,9 @@ class jobIndex extends Component {
   super(props)
   this.state = {
     jobs: jobStore.getJobs()
+    }
   }
-  }
+
 
   updateJobs(){
     this.setState({
@@ -19,13 +20,17 @@ class jobIndex extends Component {
   }
 
   redirect(){
-    this.props.history.push('/job_details')
+    console.log(this.state.jobs);
+    // let id = this.state.job.id
+    // debugger
+    // this.props.history.push('/job_details')
+    this.props.history.push('/job_details/' )
   }
 
   componentWillMount(){
     jobStore.on('jobAdded',this.updateJobs.bind(this))
     jobStore.on('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.on('jobDetails', this.redirect.bind(this))
+    // jobStore.on('jobDetails', this.redirect.bind(this))
     jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
     checkLoginRedir(this.props)
   }
@@ -33,7 +38,7 @@ class jobIndex extends Component {
   componentWillUnmount(){
     jobStore.removeListener('jobAdded',this.updateJobs.bind(this))
     jobStore.removeListener('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.removeListener('jobDetails', this.redirect.bind(this))
+    // jobStore.removeListener('jobDetails', this.redirect.bind(this))
     jobStore.removeListener('jobDetailsUpdated', this.updateJobs.bind(this))
   }
 
@@ -50,7 +55,7 @@ class jobIndex extends Component {
     for(var i=0; i<this.state.jobs.length; i++){
       let jobId = "job-" + i
       jobRender.push(
-        <JobListing key={jobId} job={this.state.jobs[i]}/>
+        <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
       )
     }
     return jobRender

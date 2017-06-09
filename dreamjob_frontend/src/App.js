@@ -80,7 +80,8 @@ class App extends Component {
                 <Route exact path="/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={addJob}></Route>
                 <Route exact path = '/job_index' component={jobIndex}></Route>
-                <Route exact path = '/job_details' component={jobDetails}></Route>
+                {/* <Route exact path = '/job_details' component={jobDetails}></Route> */}
+                <Route exact path = '/job_details/:id' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
                 <Route component={NoMatch} />
