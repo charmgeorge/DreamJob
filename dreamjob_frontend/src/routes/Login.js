@@ -27,6 +27,9 @@ class Login extends Component {
   componentWillMount(){
     userStore.on('login', this.handleLogin.bind(this))
   }
+  componentWillUpdate(){
+    userStore.on('login', this.handleLogin.bind(this))
+  }
 
   handleChange(e){
     let target = e.target

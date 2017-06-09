@@ -32,7 +32,7 @@ class JobListing extends Component {
     return(
       // <div className="container">
         <div className={this.updateClass()} >
-          <ul>
+          <ul className="jobList">
             <li>
               {this.props.job.id}
             </li>

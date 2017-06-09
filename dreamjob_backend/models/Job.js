@@ -11,9 +11,12 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-      }
+        Job.belongsTo(models.User,{
+          foreignKey: 'userId',
+          onDelete: 'CASCADE'
+      })
     }
-  });
+    }
+  })
   return Job;
 };
