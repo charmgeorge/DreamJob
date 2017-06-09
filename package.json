@@ -1,11 +1,19 @@
 {
-  "name": "dreamjob_backend",
+  "name": "dreamjob",
   "version": "1.0.0",
-  "description": "",
+  "description": "job of your dreams",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "6.9.x"
   },
+  "scripts": {
+    "start": "node dreamjob_backend",
+    "heroku-postbuild": "cd dreamjob_frontent/ && yarn install && yarn build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "dreamjob_frontend/node_modules"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
