@@ -180,7 +180,7 @@ export function createJob(attributes){
 
   let currentUser = userStore.getUser()
   if(currentUser){
-    attributes.authToken = currentUser.authToken,
+    attributes.authToken = currentUser.authToken
     attributes.email = currentUser.email
   }
 

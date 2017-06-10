@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {getDetails, deleteJob} from '../actions/actions'
-
 
 class Header extends Component {
-  constructor(props){
-    super(props)
-
-  }
   login(){
     if(this.props.user){
       return(
@@ -37,11 +31,6 @@ class Header extends Component {
       )
     }
   }
-
-
-
-
-
 
   render() {
     return (

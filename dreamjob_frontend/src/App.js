@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import addJob from './routes/addJob';
 import jobStore from './stores/jobStore';
 import userStore from './stores/UserStore';
@@ -10,7 +10,7 @@ import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
 import glassdoor from './routes/glassdoor';
-import {checkLogin, userLogout, updateJobs} from './actions/actions';
+import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
 import jobDetails from './routes/jobDetails';
 

@@ -3,8 +3,8 @@ import dispatcher from '../dispatchers/dispatcher';
 import { updateJobs } from '../actions/actions';
 
 class UserStore extends EventEmitter{
-  constructor(){
-    super();
+  constructor(props){
+    super(props)
     this.user = null
     this.message = ""
     // this.errors = {} moving to new line per Antonios code ex
@@ -13,7 +13,7 @@ class UserStore extends EventEmitter{
       lastname: "",
       email: "",
       password: ""
-    },
+    }
     this.errors = {}
   }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
+import {checkLoginRedir, updateJobDetails, deleteJob, getDetails, updateJobs} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 
@@ -12,13 +12,6 @@ class jobDetails extends Component {
       job: jobStore.getDetails(),
       error: ""
     }
-  }
-
-  componentWillMount(){
-    // jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this)) //do we need this?
-    jobStore.on('jobDeleted', this.redirect.bind(this))
-    jobStore.on('jobDetails', this.updateDetails.bind(this))
-    checkLoginRedir(this.props)
   }
 
   updateDetails(){

@@ -13,12 +13,6 @@ class jobIndex extends Component {
     }
   }
 
-  updateJobs(){
-    this.setState({
-      jobs:jobStore.getJobs()
-    })
-  }
-
   redirect(){
     this.props.history.push('/job_details')
   }

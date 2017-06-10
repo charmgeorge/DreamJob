@@ -52,7 +52,7 @@ class RegisterUser extends Component {
   }
 
   errorClass(field){
-    if(this.state.errors && this.state.errors[field] && this.state.errors[field].length != 0){
+    if(this.state.errors && this.state.errors[field] && this.state.errors[field].length !== 0){
       return 'form-group has-error'
     } else {
       return 'form-group '
