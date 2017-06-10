@@ -26,6 +26,7 @@ class jobDetails extends Component {
 
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this)) // NEED
+    jobStore.on('jobDeleted', this.redirect.bind(this)) // NEED
     checkLoginRedir(this.props)
   }
 
