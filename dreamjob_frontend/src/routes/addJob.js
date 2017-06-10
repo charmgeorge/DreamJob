@@ -26,7 +26,6 @@ class addJob extends Component {
 //after a job is added, we must redirect to the job index
 componentWillMount(){
   checkLoginRedir(this.props)
-  jobStore.on('jobAdded', this.redirect.bind(this))
 }
 
 componentWillUpdate(){

@@ -20,21 +20,12 @@ class jobDetails extends Component {
     })
   }
 
-  //upon job deletion, go to job index
   redirect(){
     this.props.history.push('/job_index');
   }
 
-  renewJobs(){
-    updateJobs()
-  }
-
   componentWillMount(){
-    jobStore.on('jobDetails', this.updateDetails.bind(this))
-    // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
-    jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
-    jobStore.on('jobsLoaded', this.updateDetails.bind(this))
-    jobStore.on('jobDeleted', this.redirect.bind(this))
+    jobStore.on('jobDetails', this.updateDetails.bind(this)) // NEED
     checkLoginRedir(this.props)
   }
 

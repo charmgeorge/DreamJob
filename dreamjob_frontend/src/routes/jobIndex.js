@@ -13,21 +13,13 @@ class jobIndex extends Component {
     }
   }
 
-  redirect(){
-    this.props.history.push('/job_details')
-  }
-
   componentWillMount(){
-    jobStore.on('jobAdded',this.updateJobs.bind(this))
-    jobStore.on('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.on('jobDetailsUpdated', this.updateJobs.bind(this))
+    jobStore.on('jobsLoaded',this.updateJobs.bind(this)) // NEED
     checkLoginRedir(this.props)
   }
 
   componentWillUnmount(){
-    jobStore.removeListener('jobAdded',this.updateJobs.bind(this))
     jobStore.removeListener('jobsLoaded',this.updateJobs.bind(this))
-    jobStore.removeListener('jobDetailsUpdated', this.updateJobs.bind(this))
   }
 
   //after a job is added or the job's details are updated, refresh the state with all jobs

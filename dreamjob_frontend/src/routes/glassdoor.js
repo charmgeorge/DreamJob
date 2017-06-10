@@ -15,7 +15,7 @@ class glassdoor extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('glassdoor', this.updateDetails.bind(this))
+    jobStore.on('glassdoor', this.updateDetails.bind(this)) // NEED
   }
 
   updateDetails(){
