@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 class JobListing extends Component {
-
   handleClick(e){
     let id = this.props.job.id
     e.preventDefault();
@@ -25,22 +24,10 @@ class JobListing extends Component {
 
   render(){
     return(
-      <div className="container">
-        <div className={this.updateClass()} >
+      <div>
+        <div className="container">
           <ul className="jobList">
-            <li>
-              {this.props.job.id}
-            </li>
-            <li>
-              {this.props.job.updatedAt}
-            </li>
 
-            <li>
-              {this.props.job.company}
-            </li>
-            <li>
-              {this.props.job.jobTitle}
-            </li>
             <li>
               <div className={this.updateClass()}>
               </div>

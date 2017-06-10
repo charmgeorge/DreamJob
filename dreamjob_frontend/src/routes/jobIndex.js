@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import JobListing from '../components/jobListing'
+import JobListing from '../components/JobListing'
 import jobStore from '../stores/jobStore'
 import {Link} from 'react-router-dom'
 import {checkLoginRedir, updateJobs} from '../actions/actions'
