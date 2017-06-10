@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
-import {Link} from 'react-router-dom'
 
 //jobDetails must persist, so we call ACTION in constructor
 class jobDetails extends Component {
@@ -61,9 +60,6 @@ class jobDetails extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
-              <div className="pull-left">
-                <Link to="/job_index"><button onClick={this.redirect.bind(this)} className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
-              </div>
                 <div className='panel panel-default'>
                   <div className='panel-body'>
                     <h3>Job Details</h3>
