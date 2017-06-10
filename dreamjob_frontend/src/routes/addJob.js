@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, createJob} from '../actions/actions';
-import jobStore from '../stores/jobStore';
 import {Link} from 'react-router-dom';
 
 class addJob extends Component {
