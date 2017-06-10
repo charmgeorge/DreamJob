@@ -58,7 +58,6 @@ class App extends Component {
       <div>
         <div className="message">{this.state.message}</div>
         <div className="App">
-          <h2>Dream Job</h2>
           <Router>
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />

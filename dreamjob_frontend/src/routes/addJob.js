@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, createJob} from '../actions/actions';
 import {Link} from 'react-router-dom';
+import {Button} from 'react-bootstrap'
 
 class addJob extends Component {
   constructor(props){
@@ -56,7 +57,9 @@ handleSubmit(e){
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
               <div className="pull-left">
-                <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
+                <Link to="/job_index">
+                  <Button bsStyle="primary glyphicon glyphicon-list">Index</Button>
+                </Link>
               </div>
               <div className='panel panel-default'>
                 <div className='panel-body'>
