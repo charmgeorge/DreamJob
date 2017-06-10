@@ -13,6 +13,8 @@ import glassdoor from './routes/glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
 import jobDetails from './routes/jobDetails';
+import Pop from './components/Pop';
+
 
 class App extends Component {
   constructor(props){
@@ -52,7 +54,6 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <div>
@@ -61,6 +62,7 @@ class App extends Component {
           <Router>
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
+              <Pop />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/register" component={RegisterUser}></Route>
