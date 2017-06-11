@@ -13,6 +13,7 @@ import glassdoor from './routes/glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
 import jobDetails from './routes/jobDetails';
+import alternateView from './routes/alternateView';
 
 class App extends Component {
   constructor(props){
@@ -65,6 +66,7 @@ class App extends Component {
                 <Route exact path="/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={addJob}></Route>
                 <Route exact path = '/job_index' component={jobIndex}></Route>
+                <Route exact path = '/job_index_alternate' component={alternateView}></Route>
                 <Route exact path = '/job_details/:id' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>

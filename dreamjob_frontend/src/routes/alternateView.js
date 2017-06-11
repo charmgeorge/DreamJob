@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import JobListing from '../components/JobListing'
-import jobStore from '../stores/jobStore'
-import {checkLoginRedir, updateJobs} from '../actions/actions'
+import {Table} from 'react-bootstrap';
+import {updateJobs, checkLoginRedir} from '../actions/actions';
+import jobStore from '../stores/jobStore';
+import Alternate from '../components/Alternate'
 
-class jobIndex extends Component {
+class alternateView extends Component {
   constructor(props){
   super(props)
   updateJobs()
@@ -28,14 +29,12 @@ class jobIndex extends Component {
     })
   }
 
-
-
   renderJobs(){
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){
       let jobId = "job-" + i
       jobRender.push(
-        <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+        <Alternate history={this.props.history} key={jobId} job={this.state.jobs[i]} />
       )
     }
     return jobRender
@@ -43,16 +42,25 @@ class jobIndex extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <div className="App">
+      <div>
           <h3>Current Dream Jobs</h3>
-          <div className=" job-list row">
+            <Table striped bordered condensed hover>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Company</th>
+                  <th>Job Title</th>
+                  <th>Status</th>
+                  <th>Job Details</th>
+                </tr>
+              </thead>
+              <tbody>
             {this.renderJobs()}
-          </div>
-        </div>
+              </tbody>
+            </Table>
       </div>
     );
   }
 }
 
-export default jobIndex
+export default alternateView
