@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, Modal} from 'react-bootstrap';
+import {Button, Modal, OverlayTrigger,Popover} from 'react-bootstrap';
 import {getDetails, checkLoginRedir, deleteJob, updateJobDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 
@@ -39,6 +39,7 @@ class Pop extends Component {
   handleDelete(e){
     e.preventDefault();
     deleteJob(this.state.job.id)
+    this.close()
   }
 
   handleSubmit(e){
@@ -62,6 +63,48 @@ class Pop extends Component {
   }
 
   render() {
+    const popoverCompany = (
+      <Popover id="modal-popover" title="Company">
+        List the company for which you are interested or are seeking employ.
+      </Popover>
+    )
+
+    const popoverUrl = (
+      <Popover id="modal-popover" title="URL To Job Posting">
+        Did you find the job posting online? At Indeed? Dice? Save it here!
+      </Popover>
+    )
+
+    const popoverJobTitle = (
+      <Popover id="modal-popover" title="URL To Job Posting">
+        For what position are you interested or applying?
+      </Popover>
+    )
+
+    const popoverCity = (
+      <Popover id="modal-popover" title="URL To Job Posting">
+        Will you have to relocate? Where's the job?
+      </Popover>
+    )
+
+    const popoverStatus = (
+      <Popover id="modal-popover" title="URL To Job Posting">
+        At what stage are you in the hiring process?
+      </Popover>
+    )
+
+    const popoverDate = (
+      <Popover id="modal-popover" title="URL To Job Posting">
+        When did you last take action on this job (i.e. apply, thank your interviewer)? Or, do you have anything lined up (i.e. phone or in-person interview)?
+      </Popover>
+    )
+
+    const popoverNotes = (
+      <Popover id="modal-popover" title="URL To Job Posting">
+        Who did you meet? Which cover letter did you send? Add any relevant notes here.
+      </Popover>
+    )
+
     return (
       <div>
         <Button
@@ -80,31 +123,36 @@ class Pop extends Component {
             <h4>Any updates? Keep track here.</h4>
               <div className='col-xs-12'>
                 <div>
-                  <label>Company</label>
+                  <br />
+                  <label><OverlayTrigger overlay={popoverCompany}><a href="#">Company</a></OverlayTrigger></label>
                   <br />
                   <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)}/>
                   <br />
                 </div>
                 <div>
-                  <label>URL to Job Posting</label>
+                  <br />
+                    <label><OverlayTrigger overlay={popoverUrl}><a href="#">URL To Job Posting</a></OverlayTrigger></label>
                   <br />
                   <input type='text' name='url' value={this.state.job.url} onChange={this.handleChange.bind(this)}/>
                   <br />
                 </div>
                 <div>
-                  <label>Job Title</label>
+                  <br />
+                    <label><OverlayTrigger overlay={popoverJobTitle}><a href="#">Job Title</a></OverlayTrigger></label>
                   <br />
                   <input type='text' name='jobTitle' value={this.state.job.jobTitle} onChange={this.handleChange.bind(this)} />
                   <br />
                 </div>
                 <div>
-                  <label>City</label>
+                  <br />
+                    <label><OverlayTrigger overlay={popoverCity}><a href="#">City</a></OverlayTrigger></label>
                   <br />
                   <input type='text' name='city' value={this.state.job.city} onChange={this.handleChange.bind(this)} />
                   <br />
                 </div>
                 <div>
-                  <label>Status</label>
+                  <br />
+                    <label><OverlayTrigger overlay={popoverStatus}><a href="#">Status</a></OverlayTrigger></label>
                   <br />
                   <select name='status' value={this.state.job.status} onChange={this.handleChange.bind(this)}>
                     <option></option>
@@ -116,13 +164,15 @@ class Pop extends Component {
                   <br />
                 </div>
                 <div>
-                  <label>Date</label>
+                  <br />
+                    <label><OverlayTrigger overlay={popoverDate}><a href="#">Date</a></OverlayTrigger></label>
                   <br />
                   <input type='date' name='date' value={this.state.job.date} onChange={this.handleChange.bind(this)} />
                   <br />
                 </div>
                 <div>
-                  <label>Notes</label>
+                  <br />
+                    <label><OverlayTrigger overlay={popoverNotes}><a href="#">Notes</a></OverlayTrigger></label>
                   <br />
                   <textarea rows="4" cols="30" type='text' name='notes' placeholder='Notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)} >
                   </textarea>
@@ -133,7 +183,7 @@ class Pop extends Component {
           </Modal.Body>
           <Modal.Footer>
             <div>
-              <Button bsStyle='primary' type='submit'>Update Job</Button>
+              <Button bsStyle='primary' onClick={this.handleSubmit.bind(this)} type='submit'>Update Job</Button>
               <Button bsStyle='danger' onClick={this.handleDelete.bind(this)}>Delete</Button>
               <Button bsStyle='success' onClick={this.handleGlassdoor.bind(this)}>Glassdoor</Button>
               <Button onClick={this.close}>Close</Button>

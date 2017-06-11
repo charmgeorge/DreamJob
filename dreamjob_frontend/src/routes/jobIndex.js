@@ -35,7 +35,6 @@ class jobIndex extends Component {
       jobRender.push(
         <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
       )
-      console.log(this.state.jobs[i].id)
     }
     return jobRender
   }
