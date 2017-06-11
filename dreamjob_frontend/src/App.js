@@ -62,7 +62,6 @@ class App extends Component {
           <Router>
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
-              <Pop />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/register" component={RegisterUser}></Route>

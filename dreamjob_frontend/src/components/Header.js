@@ -8,7 +8,12 @@ class Header extends Component {
     if(this.props.user){
       return `Welcome, ${this.props.user.email}`
     }else{
-      return <Link to="/login">Login</Link>
+      return (
+        <div>
+          <Link to="/login">Login</Link> |
+          <Link to="/Register">Register</Link>
+        </div>
+      )
     }
   }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Pop from './Pop';
 
 class JobListing extends Component {
   handleClick(e){
@@ -39,10 +40,9 @@ class JobListing extends Component {
 
             <li>
               <div>
-                <button
-                  className='btn-primary glyphicon glyphicon-edit'
-                  onClick={this.handleClick.bind(this)}>
-                </button>
+
+                <Pop job={this.props.job} />
+
               </div>
             </li>
 
@@ -54,3 +54,8 @@ class JobListing extends Component {
 }
 
 export default JobListing;
+
+// <button
+//   className='btn-primary glyphicon glyphicon-edit'
+//   onClick={this.handleClick.bind(this)}>
+// </button>
