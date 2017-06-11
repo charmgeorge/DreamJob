@@ -8,6 +8,11 @@
   max-height: 300px
 }
 
+.thumbs {
+  width: auto;
+  max-height: 150px
+}
+
 .GREEN {
   color: green;
 }
