@@ -42,7 +42,7 @@ class alternateView extends Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
           <h3>Current Dream Jobs</h3>
             <Table striped bordered condensed hover>
               <thead>
