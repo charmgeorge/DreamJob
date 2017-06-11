@@ -9,13 +9,18 @@
 }
 
 .jumbotron {
-  border: 3px solid #73AD21;
-  background: rgba(245, 240, 240, 0.3)
+  border: 3px solid rgb(91,192,222);
+  background: rgba(245,240,240,0.3)
 }
 
 .jumbotron h1 {
   text-align: left;
   padding-left: 20%;
+}
+
+.benefits {
+  background: rgba(91,192,222,.8);
+  padding-top: 15px;
 }
 
 .thumbs {
