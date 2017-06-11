@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import jobStore from '../stores/jobStore';
-import {Link} from 'react-router-dom';
 import {glassdoorDetails} from '../actions/actions'
 
 //glassdoor must persist, so we call the glassdoor ACTION in the constructor
@@ -24,7 +23,6 @@ class glassdoor extends Component {
     })
   }
 
-  //this defines what's shown on glassdoor page
   renderCompany(){
     let ceoData;
     if(this.state.data.ceo){
@@ -129,9 +127,6 @@ class glassdoor extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
-              <div className="pull-left">
-                <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
-              </div>
               <div className='panel panel-default'>
                 <div className='panel-body'>
                   {companyView}

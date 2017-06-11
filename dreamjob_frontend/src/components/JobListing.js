@@ -40,9 +40,7 @@ class JobListing extends Component {
 
             <li>
               <div>
-
-                <Pop job={this.props.job} />
-
+                <Pop history={this.props.history} job={this.props.job} />
               </div>
             </li>
 

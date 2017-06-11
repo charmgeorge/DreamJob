@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import {Popover,Tooltip, Button, Modal, OverlayTrigger} from 'react-bootstrap';
+import {Button, Modal} from 'react-bootstrap';
 import {getDetails, checkLoginRedir, deleteJob, updateJobDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 
 class Pop extends Component {
   constructor(props){
   super(props)
-  getDetails(this.props.job.id)
   this.state={
     showModal: false,
-    job: jobStore.getDetails(),
-    error: ""
+    job:jobStore.getDetails()
   }
   this.close = this.close.bind(this);
   this.open = this.open.bind(this);
@@ -21,7 +19,10 @@ class Pop extends Component {
   }
 
   open() {
-    this.setState({ showModal: true })
+    getDetails(this.props.job.id)
+    this.setState({
+      showModal: true
+    })
   }
 
   updateDetails(){
@@ -30,13 +31,8 @@ class Pop extends Component {
     })
   }
 
-  redirect(){
-    this.props.history.push('/job_index');
-  }
-
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this)) // NEED
-    jobStore.on('jobDeleted', this.redirect.bind(this)) // NEED
     checkLoginRedir(this.props)
   }
 
@@ -66,17 +62,6 @@ class Pop extends Component {
   }
 
   render() {
-    const popover = (
-      <Popover id="modal-popover" title="popover">
-        very popover. such engagement
-      </Popover>
-    );
-    const tooltip = (
-      <Tooltip id="modal-tooltip">
-        wow.
-      </Tooltip>
-    );
-
     return (
       <div>
         <Button
@@ -92,25 +77,13 @@ class Pop extends Component {
             <Modal.Title>Job Details</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
-
-            <h4>Popover in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
-
-            <h4>Tooltips in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={tooltip}><a href="#">tooltip</a></OverlayTrigger> here</p>
-
-            <hr />
-
-            <h4>Overflowing text to show scroll behavior</h4>
-
+            <h4>Any updates? Keep track here.</h4>
               <div className='col-xs-12'>
                 <div>
                   <label>Company</label>
                   <br />
                   <input type='text' name='company' value={this.state.job.company} onChange={this.handleChange.bind(this)}/>
-                    <br />
+                  <br />
                 </div>
                 <div>
                   <label>URL to Job Posting</label>
@@ -149,21 +122,19 @@ class Pop extends Component {
                   <br />
                 </div>
                 <div>
+                  <label>Notes</label>
                   <br />
                   <textarea rows="4" cols="30" type='text' name='notes' placeholder='Notes' value={this.state.job.notes} onChange={this.handleChange.bind(this)} >
                   </textarea>
                   <br />
                 </div>
-
+                <br />
               </div>
-
-
-
           </Modal.Body>
           <Modal.Footer>
             <div>
-              <input type='submit' value='Update Job' className="btn-primary" />
-              <Button bsStyle='danger' className="glyphicon glyphicon-trash" onClick={this.handleDelete.bind(this)}></Button>
+              <Button bsStyle='primary' type='submit'>Update Job</Button>
+              <Button bsStyle='danger' onClick={this.handleDelete.bind(this)}>Delete</Button>
               <Button bsStyle='success' onClick={this.handleGlassdoor.bind(this)}>Glassdoor</Button>
               <Button onClick={this.close}>Close</Button>
             </div>

@@ -22,14 +22,12 @@ class jobIndex extends Component {
     jobStore.removeListener('jobsLoaded',this.updateJobs.bind(this))
   }
 
-  //after a job is added or the job's details are updated, refresh the state with all jobs
   updateJobs(){
     this.setState({
       jobs:jobStore.getJobs()
     })
   }
 
-  //this uses JobListing helper component to generate list view of each job.
   renderJobs(){
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){
@@ -37,6 +35,7 @@ class jobIndex extends Component {
       jobRender.push(
         <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
       )
+      console.log(this.state.jobs[i].id)
     }
     return jobRender
   }

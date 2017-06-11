@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, createJob} from '../actions/actions';
-import {Link} from 'react-router-dom';
-import {Button} from 'react-bootstrap'
+import jobStore from '../stores/jobStore'
 
 class addJob extends Component {
   constructor(props){
@@ -22,9 +21,8 @@ class addJob extends Component {
   }
 }
 
-//before a job can be created, we must check if the user is logged in.
-//after a job is added, we must redirect to the job index
 componentWillMount(){
+  jobStore.on('jobAdded', this.redirect.bind(this)) //NEED
   checkLoginRedir(this.props)
 }
 
@@ -56,11 +54,6 @@ handleSubmit(e){
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
-              <div className="pull-left">
-                <Link to="/job_index">
-                  <Button bsStyle="primary glyphicon glyphicon-list">Index</Button>
-                </Link>
-              </div>
               <div className='panel panel-default'>
                 <div className='panel-body'>
                   <h3>Add A Job</h3>
