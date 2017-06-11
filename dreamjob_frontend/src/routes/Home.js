@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Slide from '../components/Slide';
-import {Grid, Row, Col, Clearfix} from 'react-bootstrap';
+import {Grid, Row, Col, Clearfix, Jumbotron, Button} from 'react-bootstrap';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <h1>LIVE THE DREAM</h1>
-        <h4>find your why</h4>
-        <Slide />
+
+        <Jumbotron>
+          <h1>find your why.</h1>
+          <p>A SIMPLE, EASY APP TO STREAMLINE THE JOB SEARCH </p>
+        </Jumbotron>
+
         <br />
 
         <Grid>

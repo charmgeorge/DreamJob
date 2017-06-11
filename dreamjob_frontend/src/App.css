@@ -8,6 +8,10 @@
   max-height: 300px
 }
 
+.jumbotron {
+  background: rgba(245, 240, 240, 0.5)
+}
+
 .thumbs {
   width: auto;
   max-height: 150px
