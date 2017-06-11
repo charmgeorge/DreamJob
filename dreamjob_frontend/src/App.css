@@ -9,7 +9,13 @@
 }
 
 .jumbotron {
-  background: rgba(245, 240, 240, 0.5)
+  border: 3px solid #73AD21;
+  background: rgba(245, 240, 240, 0.3)
+}
+
+.jumbotron h1 {
+  text-align: left;
+  padding-left: 20%;
 }
 
 .thumbs {
