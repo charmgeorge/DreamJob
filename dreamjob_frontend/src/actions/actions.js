@@ -211,15 +211,13 @@ export function researchJob(searchDetails){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  
+
   let job = searchDetails.job;
   let location = searchDetails.location;
 
   fetch("http://localhost:4000/job_research/" + job + "/" + location, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
-        console.log('im back', body);
-        // return body
         dispatcher.dispatch({
           type: 'JOB_DETAILS',
           body: body

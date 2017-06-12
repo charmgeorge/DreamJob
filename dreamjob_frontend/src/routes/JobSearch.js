@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {researchJob} from '../actions/actions';
 
 class JobSearch extends Component {
   constructor(props){
@@ -7,7 +6,9 @@ class JobSearch extends Component {
     this.state={
       search: {
         job: "",
-        location: ""
+        location: "",
+        radius:null,
+
       }
     }
   }
@@ -21,7 +22,7 @@ class JobSearch extends Component {
   }
 
   handleSubmit(e){
-    console.log(this.state.search);
+    // console.log(this.state.search);
     let job = this.state.search.job;
     let location = this.state.search.location;
     e.preventDefault()

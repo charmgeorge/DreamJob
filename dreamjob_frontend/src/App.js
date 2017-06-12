@@ -72,8 +72,8 @@ class App extends Component {
                 <Route exact path = '/job_details/:id' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
-                <Route exact path = '/job_research/' component={JobSearch}></Route>
-                <Route exact path = '/job_research/:job/:location' component={JobSearchResults} />
+                <Route exact path = '/job_research' component={JobSearch}></Route>
+                <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
 
                 <Route component={NoMatch} />
               </Switch>
