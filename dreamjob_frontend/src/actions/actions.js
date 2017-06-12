@@ -211,8 +211,7 @@ export function researchJob(searchDetails){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-
-  console.log(searchDetails);
+  
   let job = searchDetails.job;
   let location = searchDetails.location;
 
