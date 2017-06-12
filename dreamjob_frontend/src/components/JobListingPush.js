@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Pop from './Pop';
+import {Col} from 'react-bootstrap'
 
-class JobListing extends Component {
+class JobListing2 extends Component {
   handleClick(e){
     let id = this.props.job.id
     e.preventDefault();
@@ -26,34 +27,28 @@ class JobListing extends Component {
   render(){
     return(
       <div>
-        <div className="container">
-          <ul className="jobList">
-
+        <Col md={6} mdPush={6}>
+          <ul className ='jobList'>
             <li>
+              <br />
               <div className={this.updateClass()}>
               </div>
             </li>
-
+            <br/>
             <li>{this.props.job.company}</li>
             <li>{this.props.job.jobTitle}</li>
             <li>{this.props.job.status}</li>
-
             <li>
               <div>
                 <Pop history={this.props.history} job={this.props.job} />
+                <br />
               </div>
             </li>
-
           </ul>
-        </div>
+        </Col>
       </div>
     )
   }
 }
 
-export default JobListing;
-
-// <button
-//   className='btn-primary glyphicon glyphicon-edit'
-//   onClick={this.handleClick.bind(this)}>
-// </button>
+export default JobListing2;

@@ -45,6 +45,12 @@ class JobStore extends EventEmitter{
     this.emit('jobsLoaded')
   }
 
+  sortJobs(attributes){
+    this.jobs = attributes
+    this.updateMessage('Jobs were sorted')
+    this.emit('sorted')
+  }
+
   updateDetails(attributes){
     this.details = attributes
     this.updateMessage('Job details retrieved!')
@@ -93,6 +99,10 @@ class JobStore extends EventEmitter{
      }
      case("GLASSDOOR"):{
        this.updateGlassdoor(action.data)
+       break
+     }
+     case("SORT_JOBS"):{
+       this.sortJobs(action.jobs)
        break
      }
      default:{}

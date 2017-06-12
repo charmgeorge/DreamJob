@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Button, Modal, OverlayTrigger,Popover} from 'react-bootstrap';
 import {getDetails, checkLoginRedir, deleteJob, updateJobDetails} from '../actions/actions'
-import jobStore from '../stores/jobStore'
+import jobStore from '../stores/JobStore'
 
 class Pop extends Component {
   constructor(props){
@@ -32,7 +32,7 @@ class Pop extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('jobDetails', this.updateDetails.bind(this)) // NEED
+    jobStore.on('jobDetails', this.updateDetails.bind(this)) //need to listen to this emission
     checkLoginRedir(this.props)
   }
 

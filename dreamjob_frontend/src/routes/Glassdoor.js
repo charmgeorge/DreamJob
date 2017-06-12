@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import jobStore from '../stores/jobStore';
+import jobStore from '../stores/JobStore';
 import {glassdoorDetails} from '../actions/actions'
 
-//glassdoor must persist, so we call the glassdoor ACTION in the constructor
-class glassdoor extends Component {
+class Glassdoor extends Component {
   constructor(props){
     super(props)
     glassdoorDetails(this.props.match.params.company)
@@ -14,7 +13,7 @@ class glassdoor extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('glassdoor', this.updateDetails.bind(this)) // NEED
+    jobStore.on('glassdoor', this.updateDetails.bind(this)) //need to listen to this emission
   }
 
   updateDetails(){
@@ -110,7 +109,6 @@ class glassdoor extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -140,4 +138,4 @@ class glassdoor extends Component {
   }
 }
 
-export default glassdoor;
+export default Glassdoor;
