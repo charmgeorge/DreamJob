@@ -34,6 +34,7 @@ class UserStore extends EventEmitter{
     // {firstName: 'is requires'}
     return this.errors
   }
+  
   //cg
   validate(fields){
     this.fields = fields
@@ -69,7 +70,7 @@ class UserStore extends EventEmitter{
     (filter.test(this.fields[fieldName]))&&
     (!this.fields[fieldName].includes("$"))&&
     (!this.fields[fieldName].includes("*"))){
-      
+
     }else{
       this.addError(fieldName, 'is not a valid password')
     }

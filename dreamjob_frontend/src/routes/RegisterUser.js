@@ -63,6 +63,7 @@ class RegisterUser extends Component {
     }
   }
 
+
   render() {
     return (
       <div>
@@ -138,7 +139,8 @@ class RegisterUser extends Component {
                         </div>
                         <div>
                           <br />
-                          <input type='submit' value='Submit' className = 'btn btn-primary' />
+                          <h4>Please click Submit to complete your registration</h4>
+                            <input type='submit' value='Submit' className = 'btn btn-primary' />
 
                         </div>
                       </div>
