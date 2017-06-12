@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
 import jobStore from '../stores/jobStore'
 
-//jobDetails must persist, so we call ACTION in constructor
 class jobDetails extends Component {
   constructor(props){
     super(props)

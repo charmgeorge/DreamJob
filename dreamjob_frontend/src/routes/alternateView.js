@@ -73,30 +73,3 @@ class alternateView extends Component {
 }
 
 export default alternateView
-
-//FAILED ATTEMPT AT REACT-BOOTSTRAP-TABLE
-// import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-// import Pop from '../components/Pop';
-// let order = 'desc';
-
-//   handleBtnClick = () => {
-//   if (order === 'desc') {
-//     this.refs.table.handleSort('asc', 'name');
-//     order = 'asc';
-//   } else {
-//     this.refs.table.handleSort('desc', 'name');
-//     order = 'desc';
-//   }
-// }
-
-// renderModal(){
-//   return <Pop history={this.props.history} job={this.props.job} />
-// }
-
-// <BootstrapTable ref='table' data={ this.state.jobs }>
-//     <TableHeaderColumn dataField='updatedAt' isKey={ true } dataSort={ true }>Last Update</TableHeaderColumn>
-//     <TableHeaderColumn dataField='company' dataSort={ true }>Company</TableHeaderColumn>
-//     <TableHeaderColumn dataField='jobTitle'>Job Title</TableHeaderColumn>
-//     <TableHeaderColumn dataField='status'>Status</TableHeaderColumn>
-//     <TableHeaderColumn dataField={this.renderModal.bind(this)}>Job Details</TableHeaderColumn>
-// </BootstrapTable>

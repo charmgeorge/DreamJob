@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import jobStore from '../stores/jobStore';
 import {glassdoorDetails} from '../actions/actions'
 
-//glassdoor must persist, so we call the glassdoor ACTION in the constructor
 class glassdoor extends Component {
   constructor(props){
     super(props)
@@ -110,7 +109,6 @@ class glassdoor extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 

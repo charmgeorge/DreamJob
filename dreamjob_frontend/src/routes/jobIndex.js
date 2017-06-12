@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import JobListing from '../components/JobListing'
 import JobListing2 from '../components/JobListing2'
 import jobStore from '../stores/jobStore'
-import {checkLoginRedir, updateJobs} from '../actions/actions'
+import {checkLoginRedir, updateJobs, sort} from '../actions/actions'
 import {Link} from 'react-router-dom'
+import {Button} from 'react-bootstrap'
 
 class jobIndex extends Component {
   constructor(props){
@@ -17,6 +18,7 @@ class jobIndex extends Component {
   componentWillMount(){
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) // NEED
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) // NEED
+    jobStore.on('sorted',this.updateJobs.bind(this)) // NEED
     checkLoginRedir(this.props)
   }
 
@@ -34,7 +36,7 @@ class jobIndex extends Component {
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){
       let jobId = "job-" + i
-      if(i % 2 !== 0){
+      if((i % 2) !== 0){
         jobRender.push(
           <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
         )
@@ -47,10 +49,25 @@ class jobIndex extends Component {
     return jobRender
   }
 
+  handleClick(e){
+    let column = e.target.name
+    console.log(column)
+    sort(column)
+  }
+
+  redirect(){
+    this.props.history.push('job_index_alternate')
+  }
+
   render() {
     return (
       <div className='container'>
-        <div className='pull-left'><Link to="/job_index_alternate">Alternate Job Pipeline View</Link></div>
+        <div className='pull-left'>
+          <Button onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
+        </div>
+        <div className='pull-right'>
+          <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
+        </div>
         <div>
           <h3>Current Dream Jobs</h3>
           <div className=" job-list row">
