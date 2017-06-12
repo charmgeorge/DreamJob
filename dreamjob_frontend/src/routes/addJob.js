@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, createJob} from '../actions/actions';
-import jobStore from '../stores/jobStore'
+import jobStore from '../stores/jobStore';
+import {Form, FormGroup, Col, ControlLabel, FormControl, Checkbox, Button} from 'react-bootstrap';
 
 class addJob extends Component {
   constructor(props){
@@ -51,6 +52,44 @@ handleSubmit(e){
   render() {
     return (
       <div>
+        <div>
+
+          <Form horizontal>
+            <FormGroup controlId="formHorizontalEmail">
+              <Col componentClass={ControlLabel} sm={4}>
+                Email
+              </Col>
+              <Col sm={4}>
+                <FormControl type="email" placeholder="Email" />
+              </Col>
+            </FormGroup>
+
+            <FormGroup controlId="formHorizontalPassword">
+              <Col componentClass={ControlLabel} sm={4}>
+                Password
+              </Col>
+              <Col sm={4}>
+                <FormControl type="password" placeholder="Password" />
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col smOffset={4} sm={4}>
+                <Checkbox>Remember me</Checkbox>
+              </Col>
+            </FormGroup>
+
+            <FormGroup>
+              <Col smOffset={4} sm={4}>
+                <Button type="submit">
+                  Sign in
+                </Button>
+              </Col>
+            </FormGroup>
+          </Form>
+        </div>
+
+  <div>
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
@@ -121,6 +160,7 @@ handleSubmit(e){
           </div>
         </div>
       </div>
+    </div>
     );
   }
 }

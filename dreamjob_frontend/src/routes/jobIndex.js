@@ -3,7 +3,6 @@ import JobListing from '../components/JobListing'
 import JobListing2 from '../components/JobListing2'
 import jobStore from '../stores/jobStore'
 import {checkLoginRedir, updateJobs, sort} from '../actions/actions'
-import {Link} from 'react-router-dom'
 import {Button} from 'react-bootstrap'
 
 class jobIndex extends Component {

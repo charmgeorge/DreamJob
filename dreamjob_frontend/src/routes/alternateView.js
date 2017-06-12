@@ -56,7 +56,7 @@ class alternateView extends Component {
           <Table striped bordered condensed hover>
             <thead>
               <tr>
-                <th><Button block name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button></th>
+                <th><Button block bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button></th>
                 <th><Button block name='company' onClick={this.handleClick.bind(this)}>Company</Button></th>
                 <th><Button block name='jobTitle' onClick={this.handleClick.bind(this)}>Job Title</Button></th>
                 <th><Button block name='status' onClick={this.handleClick.bind(this)}>Status</Button></th>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Pop from './Pop';
-import {Grid, Row, Col} from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
 
 class JobListing2 extends Component {
   handleClick(e){
