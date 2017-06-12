@@ -35,14 +35,17 @@
 
 .GREEN {
   color: green;
+  margin-left: 40%;
 }
 
 .YELLOW {
   color: yellow;
+  margin-left: 40%;
 }
 
 .RED {
   color: red;
+  margin-left: 40%;
 }
 
 .jobList {
@@ -50,6 +53,7 @@
   /*height: 100px;*/
   border: 1px black solid;
   box-shadow: 2px 2px 2px 2px;
+  background: rgba(91,192,222,.4);
 }
 
 h1 {

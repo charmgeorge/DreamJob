@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import JobListing from '../components/JobListing'
+import JobListing2 from '../components/JobListing2'
 import jobStore from '../stores/jobStore'
 import {checkLoginRedir, updateJobs} from '../actions/actions'
 import {Link} from 'react-router-dom'
@@ -33,9 +34,15 @@ class jobIndex extends Component {
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){
       let jobId = "job-" + i
-      jobRender.push(
-        <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
-      )
+      if(i % 2 !== 0){
+        jobRender.push(
+          <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+        )
+      }else{
+        jobRender.push(
+          <JobListing2 history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+        )
+      }
     }
     return jobRender
   }

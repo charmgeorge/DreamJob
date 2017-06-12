@@ -25,13 +25,13 @@ class Alternate extends Component {
 
   render(){
     return(
-        <tr>
-          <td className={this.updateClass()}></td>
-          <td>{this.props.job.company}</td>
-          <td>{this.props.job.jobTitle}</td>
-          <td>{this.props.job.status}</td>
-          <td><Pop history={this.props.history} job={this.props.job} /></td>
-        </tr>
+      <tr>
+        <td className={this.updateClass()}></td>
+        <td>{this.props.job.company}</td>
+        <td>{this.props.job.jobTitle}</td>
+        <td>{this.props.job.status}</td>
+        <td><Pop history={this.props.history} job={this.props.job} /></td>
+      </tr>
     )
   }
 }
