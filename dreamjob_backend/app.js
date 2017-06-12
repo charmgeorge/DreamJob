@@ -17,6 +17,20 @@ const corsOptions = {
   origin: 'http://localhost:3000'
 }
 
+// resume and cover letter file upload function
+var x;
+function myFunction() {
+  var x = document.getElementById("myResume");
+  x.disable = true;
+}
+var y;
+function myFunction(){
+  var y = document.getElementById("myCoverLetter");
+  y.disable = true;
+}
+
+
+
 app.use(cors())
 app.use(express.static('public'))
 app.use(bodyParser.json())

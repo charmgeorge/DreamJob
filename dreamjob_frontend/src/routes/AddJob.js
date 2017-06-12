@@ -126,6 +126,22 @@ handleSubmit(e){
             </FormGroup>
 
             <FormGroup>
+            <label>
+            <h4>Upload Resume</h4>
+            <input type="file" controlId="myResume"></input>
+            <Button onClick="myFunction()">Upload Resume</Button>
+            </label>
+          </FormGroup>
+
+          <FormGroup>
+          <label>
+          <h4>Upload Cover Letter</h4>
+          <input type="file" controlId="myCoverLetter"></input>
+          <Button onClick="myFunction()">Upload Cover Letter</Button>
+          </label>
+          </FormGroup>
+
+            <FormGroup>
               <Col smOffset={4} sm={4}>
                 <Button type="submit">
                   Submit
@@ -136,7 +152,7 @@ handleSubmit(e){
           </Form>
         </Panel>
 
-  <div>
+  {/* <div>
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
@@ -214,7 +230,7 @@ handleSubmit(e){
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
     );
   }
