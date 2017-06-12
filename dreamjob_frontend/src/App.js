@@ -15,15 +15,7 @@ import Header from './components/Header'
 import jobDetails from './routes/jobDetails';
 import alternateView from './routes/alternateView';
 import JobSearch from './routes/JobSearch';
-
-const JobStuff = ({ match }) => (
-  <div>
-    {console.log(match)}
-    <h1>hola, nick</h1>
-    {/* <h3>{match.params.job}</h3>
-    <h3>{match.params.location}</h3> */}
-  </div>
-)
+import JobSearchResults from './routes/JobSearchResults';
 
 class App extends Component {
   constructor(props){
@@ -82,7 +74,7 @@ class App extends Component {
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
                 <Route exact path = '/job_research/' component={JobSearch}></Route>
-                <Route exact path = '/job_research/:job/:location' component={JobStuff} />
+                <Route exact path = '/job_research/:job/:location' component={JobSearchResults} />
 
                 <Route component={NoMatch} />
               </Switch>

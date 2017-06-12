@@ -18,13 +18,14 @@ class JobSearch extends Component {
     this.setState({
       search:search
     })
-    console.log(this.state);
   }
 
   handleSubmit(e){
+    console.log(this.state.search);
+    let job = this.state.search.job;
+    let location = this.state.search.location;
     e.preventDefault()
-    // console.log(e.target);
-    researchJob(this.state)
+    this.props.history.push(`/job_research/${job}/${location}`)
   }
 
   render(){
