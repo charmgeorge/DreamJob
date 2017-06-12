@@ -53,7 +53,7 @@ handleSubmit(e){
   render() {
     return (
       <div>
-        <Panel className='formSize' header="Add a Job" bsStyle="danger">
+        <Panel className='formSize' header="Add a Job" bsStyle="primary">
           <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
             <FormGroup controlId="formHorizontalEmail"sm={6}>
               <Col componentClass={ControlLabel} >

@@ -9,13 +9,13 @@ import RegisterUser from './routes/RegisterUser';
 import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
-import Glassdoor from './routes/Glassdoor';
+import glassdoor from './routes/Glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
+import jobDetails from './routes/JobDetails';
+import alternateView from './routes/AlternateView';
 import JobSearch from './routes/JobSearch';
 import JobSearchResults from './routes/JobSearchResults';
-import JobDetails from './routes/JobDetails';
-import AlternateView from './routes/AlternateView';
 
 class App extends Component {
   constructor(props){
@@ -58,8 +58,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="message">{this.state.message}</div>
-        <div>
+        {/* <div className="message">{this.state.message}</div> */}
+        <div className="App">
           <Router>
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
@@ -68,10 +68,10 @@ class App extends Component {
                 <Route exact path="/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={AddJob}></Route>
                 <Route exact path = '/job_index' component={JobIndex}></Route>
-                <Route exact path = '/job_index_alternate' component={AlternateView}></Route>
-                <Route exact path = '/job_details/:id' component={JobDetails}></Route>
+                <Route exact path = '/job_index_alternate' component={alternateView}></Route>
+                <Route exact path = '/job_details/:id' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
-                <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
+                <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route component={NoMatch} />
