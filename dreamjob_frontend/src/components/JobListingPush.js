@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Pop from './Pop';
 import {Col} from 'react-bootstrap'
 
-class JobListing2 extends Component {
+class JobListingPush extends Component {
   handleClick(e){
     let id = this.props.job.id
     e.preventDefault();
@@ -51,4 +51,4 @@ class JobListing2 extends Component {
   }
 }
 
-export default JobListing2;
+export default JobListingPush;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import JobListing from '../components/JobListing'
-import JobListing2 from '../components/JobListing2'
+import JobListingPull from '../components/JobListingPull'
+import JobListingPush from '../components/JobListingPush'
 import jobStore from '../stores/JobStore'
 import {checkLoginRedir, updateJobs, sort} from '../actions/actions'
 import {Button} from 'react-bootstrap'
@@ -37,11 +37,11 @@ class JobIndex extends Component {
       let jobId = "job-" + i
       if((i % 2) !== 0){
         jobRender.push(
-          <JobListing history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+          <JobListingPull history={this.props.history} key={jobId} job={this.state.jobs[i]} />
         )
       }else{
         jobRender.push(
-          <JobListing2 history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+          <JobListingPush history={this.props.history} key={jobId} job={this.state.jobs[i]} />
         )
       }
     }
