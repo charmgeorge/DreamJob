@@ -64,8 +64,8 @@ class App extends Component {
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
               <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/register" component={RegisterUser}></Route>
+                <Route exact path = "/" component={Home} />
+                <Route exact path = "/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={AddJob}></Route>
                 <Route exact path = '/job_index' component={JobIndex}></Route>
                 <Route exact path = '/job_index_alternate' component={AlternateView}></Route>
@@ -74,7 +74,7 @@ class App extends Component {
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
-                <Route component={NoMatch} />
+                <Route component = {NoMatch} />
               </Switch>
             </div>
           </Router>

@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import {Navbar, Nav, NavItem,} from 'react-bootstrap';
+// import {Link, NavLink} from 'react-router-dom';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import Home from '../routes/Home';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Redirect,
+  withRouter
+} from 'react-router-dom';
 
 class Header extends Component {
 
+
   email(){
+    console.log(this.props);
     if(this.props.user){
       return `Welcome, ${this.props.user.email}`
     }else{
@@ -20,8 +31,10 @@ class Header extends Component {
   logout(){
     if(this.props.user){
       return <a onClick={this.props.logout}>Logout</a>
-    }else{
-      return <Link to="/">Home</Link>
+    } else{
+      // send to home
+      return <Redirect to="/" />
+      // return <Link to="/">Home</Link>
     }
   }
 

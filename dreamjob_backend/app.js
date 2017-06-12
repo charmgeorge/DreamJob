@@ -161,7 +161,7 @@ app.get('/job_research/:job/:location', function (request, response) {
       return response.json()
     })
     .then((body)=>{
-      console.log("success!", body.status)
+      // console.log("success!", body.status)
       response.json({
         jobs: body.response.jobTitles,
         companies: body.response.employers
