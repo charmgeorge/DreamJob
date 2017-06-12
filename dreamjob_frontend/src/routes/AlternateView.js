@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap';
 import {updateJobs, checkLoginRedir, sort} from '../actions/actions';
-import jobStore from '../stores/jobStore';
+import jobStore from '../stores/JobStore';
 import Alternate from '../components/Alternate';
 import {Button} from 'react-bootstrap';
 
-class alternateView extends Component {
+class AlternateView extends Component {
   constructor(props){
   super(props)
   updateJobs()
@@ -15,9 +15,9 @@ class alternateView extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('jobsLoaded',this.updateJobs.bind(this)) // NEED
-    jobStore.on('jobDeleted',this.updateJobs.bind(this)) // NEED
-    jobStore.on('sorted',this.updateJobs.bind(this)) // NEED
+    jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
+    jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
+    jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
     checkLoginRedir(this.props)
   }
 
@@ -44,14 +44,13 @@ class alternateView extends Component {
 
   handleClick(e){
     let column = e.target.name
-    console.log(column)
     sort(column)
   }
 
   render() {
     return (
       <div className='container'>
-        <h3>Current Dream Jobs</h3>
+        <h3 className='centerTitle'>Current Dream Jobs</h3>
 
           <Table striped bordered condensed hover>
             <thead>
@@ -72,4 +71,4 @@ class alternateView extends Component {
   }
 }
 
-export default alternateView
+export default AlternateView

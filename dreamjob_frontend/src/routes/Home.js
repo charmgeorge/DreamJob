@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import {Grid, Row, Col, Clearfix, Jumbotron} from 'react-bootstrap';
+import Slide from '../components/Slide'
 
 class Home extends Component {
   render() {
     return (
       <div>
+
         <Jumbotron>
           <h1>find your why.</h1>
           <p>A SIMPLE, EASY APP TO STREAMLINE THE JOB SEARCH </p>

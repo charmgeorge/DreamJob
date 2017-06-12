@@ -1,6 +1,6 @@
 import dispatcher from '../dispatchers/dispatcher';
 import userStore from '../stores/UserStore';
-import jobStore from '../stores/jobStore'
+import jobStore from '../stores/JobStore'
 
 export function sort(attribute){
   const params = {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
-import jobStore from '../stores/jobStore'
+import jobStore from '../stores/JobStore'
 
-class jobDetails extends Component {
+class JobDetails extends Component {
   constructor(props){
     super(props)
     getDetails(this.props.match.params.id)
@@ -23,8 +23,8 @@ class jobDetails extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('jobDetails', this.updateDetails.bind(this)) // NEED
-    jobStore.on('jobDeleted', this.redirect.bind(this)) // NEED
+    jobStore.on('jobDetails', this.updateDetails.bind(this)) //need to listen to this emission
+    jobStore.on('jobDeleted', this.redirect.bind(this)) //need to listen to this emission
     checkLoginRedir(this.props)
   }
 
@@ -132,4 +132,4 @@ class jobDetails extends Component {
   }
 }
 
-export default jobDetails;
+export default JobDetails;

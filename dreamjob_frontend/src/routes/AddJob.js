@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, createJob} from '../actions/actions';
-import jobStore from '../stores/jobStore';
+import jobStore from '../stores/JobStore';
 import {Form, Panel, FormGroup, Col, ControlLabel, FormControl, Checkbox, Button} from 'react-bootstrap';
 
-class addJob extends Component {
+class AddJob extends Component {
   constructor(props){
   super(props)
   this.state={
@@ -23,7 +23,7 @@ class addJob extends Component {
 }
 
 componentWillMount(){
-  jobStore.on('jobAdded', this.redirect.bind(this)) //NEED
+  jobStore.on('jobAdded', this.redirect.bind(this)) //need to listen to this emission
   checkLoginRedir(this.props)
 }
 
@@ -220,4 +220,4 @@ handleSubmit(e){
   }
 }
 
-export default addJob;
+export default AddJob;

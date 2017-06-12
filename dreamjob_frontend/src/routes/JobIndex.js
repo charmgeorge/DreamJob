@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import JobListing from '../components/JobListing'
 import JobListing2 from '../components/JobListing2'
-import jobStore from '../stores/jobStore'
+import jobStore from '../stores/JobStore'
 import {checkLoginRedir, updateJobs, sort} from '../actions/actions'
 import {Button} from 'react-bootstrap'
 
-class jobIndex extends Component {
+class JobIndex extends Component {
   constructor(props){
   super(props)
   updateJobs()
@@ -15,9 +15,9 @@ class jobIndex extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('jobsLoaded',this.updateJobs.bind(this)) // NEED
-    jobStore.on('jobDeleted',this.updateJobs.bind(this)) // NEED
-    jobStore.on('sorted',this.updateJobs.bind(this)) // NEED
+    jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
+    jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
+    jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
     checkLoginRedir(this.props)
   }
 
@@ -77,4 +77,4 @@ class jobIndex extends Component {
   }
 }
 
-export default jobIndex
+export default JobIndex
