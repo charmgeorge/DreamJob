@@ -7,11 +7,18 @@ class JobSearch extends Component {
       search: {
         job: "",
         location: "",
-        radius:null,
+        // radius:null,
 
       }
     }
   }
+
+  // add the glassdoor attribution by the search https://www.glassdoor.com/developer/jobsApiActions.htm
+  // add more options to search and use conditionals to see if user searched for a given field (don't make the fields required to submit the field)
+  // radius, jobType, 
+
+  // - nick
+
   handleChange(e){
     let target = e.target;
     let search = this.state.search;
