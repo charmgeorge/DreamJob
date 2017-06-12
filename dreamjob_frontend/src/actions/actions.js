@@ -220,11 +220,11 @@ export function researchJob(searchDetails){
     if(response.status === 200){
       response.json().then(function(body){
         console.log('im back', body);
-        return body
-        // dispatcher.dispatch({
-        //   type: 'JOB_DETAILS',
-        //   body: body
-        // })
+        // return body
+        dispatcher.dispatch({
+          type: 'JOB_DETAILS',
+          body: body
+        })
       })
     }
   }).catch(function(err){

@@ -9,20 +9,42 @@ class JobSearchResults extends Component {
     console.log(this.props.match.params);
     researchJob(this.props.match.params)
     this.state={
-      jobs: jobResearchStore.getJobs(),
-      companies: jobResearchStore.getCompanies(),
+      jobs: [],
+      companies: [],
       error:""
     }
   }
 
+  componentWillMount(){
+    jobResearchStore.on('jobResearchStoreUpdated', this.updateDetails.bind(this))
+  }
+
+  updateDetails(){
+    this.setState({
+      jobs: jobResearchStore.getJobs(),
+      companies: jobResearchStore.getCompanies()
+    })
+  }
+
   render(){
+
+    var jobListings = this.state.jobs;
+    console.log('listings', jobListings);
+
+    let list = []
+
+    if(jobListings.length !== 0){
+      jobListings.map((job) => {
+         list.push(<p>{job.id}, {job.jobTitle}, {job.numJobs} </p>)
+      })
+    }
+
 
     return (
       <div>
-        <h1>hello, nick</h1>
+        <h1>hola, nick</h1>
 
-        <p>hola</p>
-
+        {list}
 
 
       </div>
