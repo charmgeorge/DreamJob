@@ -9,6 +9,7 @@ export function sort(attribute){
   }
   fetch("http://localhost:4000/sort/" + attribute, params).then(function(response){
     if(response.status === 200){
+      debugger
       response.json().then(function(body){
         dispatcher.dispatch({
           type: 'SORT_JOBS',

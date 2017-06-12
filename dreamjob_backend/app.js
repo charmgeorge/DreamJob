@@ -57,11 +57,20 @@ app.get('/jobs', authorization, function (request, response) {
   })
 })
 
+var direction = true
 app.get('/sort/:attribute', function (request, response) {
-  var attribute = request.params["attribute"];
+  let attribute = request.params["attribute"];
+  if (direction === true){
+    sort = 'ASC'
+    direction = !direction
+  }else{
+    sort = 'DESC'
+    direction = !direction
+  }
+
   Job.findAll(
     {
-      order: [[attribute, 'ASC']]
+      order: [[attribute, sort]]
     }
   ).then(function(jobs){
     response.status(200)

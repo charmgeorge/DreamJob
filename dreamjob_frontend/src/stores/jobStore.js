@@ -102,7 +102,6 @@ class JobStore extends EventEmitter{
        break
      }
      case("SORT_JOBS"):{
-       debugger
        this.sortJobs(action.jobs)
        break
      }

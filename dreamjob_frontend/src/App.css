@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+.clear {
+  background: rgba(0, 255, 255, 0);
+  border-style: none;
+}
+
 .pictures {
   margin: auto;
   width: auto;
