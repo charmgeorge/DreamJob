@@ -3,8 +3,8 @@ import dispatcher from '../dispatchers/dispatcher';
 import { updateJobs } from '../actions/actions';
 
 class UserStore extends EventEmitter{
-  constructor(){
-    super();
+  constructor(props){
+    super(props)
     this.user = null
     this.message = ""
     // this.errors = {} moving to new line per Antonios code ex
@@ -13,7 +13,7 @@ class UserStore extends EventEmitter{
       lastname: "",
       email: "",
       password: ""
-    },
+    }
     this.errors = {}
   }
 
@@ -46,7 +46,6 @@ class UserStore extends EventEmitter{
     this.validateEmail('email')
     this.validatePassword('password')
     // I added validatePassword to set password params
-    // console.log("the errors", this.errors)
   }
 
   validatePresence(fieldName){
@@ -86,8 +85,6 @@ class UserStore extends EventEmitter{
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
     localStorage.setItem('email', user.email);
-
-    console.log("new user set")
     this.emit('user_created')
     this.emit('login')
   }

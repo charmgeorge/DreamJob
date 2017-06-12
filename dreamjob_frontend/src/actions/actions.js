@@ -1,6 +1,25 @@
 import dispatcher from '../dispatchers/dispatcher';
 import userStore from '../stores/UserStore';
-import jobStore from '../stores/jobStore'
+import jobStore from '../stores/JobStore'
+
+export function sort(attribute){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/sort/" + attribute, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        dispatcher.dispatch({
+          type: 'SORT_JOBS',
+          jobs: body.jobs
+        })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+}
 
 export function checkLoginRedir(props){
   let currentUser = userStore.getUser()
@@ -40,7 +59,6 @@ export function newUser(userInfo){
           type: "NEW_USER",
           user: body.user
         })
-        console.log("success!", body)
       }
       else {
         console.log("failure!", body)
@@ -66,7 +84,6 @@ export function loginUser(userInfo){
           type: "LOGIN_USER",
           user: body.user
         })
-        console.log("success!", body.user)
       }
       else {
         console.log("failure!", body.user)
@@ -180,7 +197,7 @@ export function createJob(attributes){
 
   let currentUser = userStore.getUser()
   if(currentUser){
-    attributes.authToken = currentUser.authToken,
+    attributes.authToken = currentUser.authToken
     attributes.email = currentUser.email
   }
 

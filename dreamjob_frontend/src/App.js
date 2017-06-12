@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
-import addJob from './routes/addJob';
-import jobStore from './stores/jobStore';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import AddJob from './routes/AddJob';
+import jobStore from './stores/JobStore';
 import userStore from './stores/UserStore';
-import jobIndex from './routes/jobIndex';
+import JobIndex from './routes/JobIndex';
 import RegisterUser from './routes/RegisterUser';
 import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
-import glassdoor from './routes/glassdoor';
-import {checkLogin, userLogout, updateJobs} from './actions/actions';
+import Glassdoor from './routes/Glassdoor';
+import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
-import jobDetails from './routes/jobDetails';
+import JobDetails from './routes/JobDetails';
+import AlternateView from './routes/AlternateView';
 
 class App extends Component {
   constructor(props){
@@ -52,24 +53,23 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <div>
         <div className="message">{this.state.message}</div>
-        <div className="App">
-          <h2>Dream Job</h2>
+        <div>
           <Router>
             <div>
               <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/register" component={RegisterUser}></Route>
-                <Route exact path = '/add_job' component={addJob}></Route>
-                <Route exact path = '/job_index' component={jobIndex}></Route>
-                <Route exact path = '/job_details/:id' component={jobDetails}></Route>
+                <Route exact path = '/add_job' component={AddJob}></Route>
+                <Route exact path = '/job_index' component={JobIndex}></Route>
+                <Route exact path = '/job_index_alternate' component={AlternateView}></Route>
+                <Route exact path = '/job_details/:id' component={JobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
-                <Route exact path = '/glassdoor/:company' component={glassdoor}></Route>
+                <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route component={NoMatch} />
               </Switch>
             </div>

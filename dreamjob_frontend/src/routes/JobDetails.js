@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
-import jobStore from '../stores/jobStore'
-import {Link} from 'react-router-dom'
+import jobStore from '../stores/JobStore'
 
-//jobDetails must persist, so we call ACTION in constructor
-class jobDetails extends Component {
+class JobDetails extends Component {
   constructor(props){
     super(props)
     getDetails(this.props.match.params.id)
@@ -14,34 +12,19 @@ class jobDetails extends Component {
     }
   }
 
-  componentWillMount(){
-    // jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this)) //do we need this?
-    jobStore.on('jobDeleted', this.redirect.bind(this))
-    jobStore.on('jobDetails', this.updateDetails.bind(this))
-    checkLoginRedir(this.props)
-  }
-
   updateDetails(){
     this.setState({
       job:jobStore.getDetails()
     })
   }
 
-  //upon job deletion, go to job index
   redirect(){
     this.props.history.push('/job_index');
   }
 
-  renewJobs(){
-    updateJobs()
-  }
-
   componentWillMount(){
-    jobStore.on('jobDetails', this.updateDetails.bind(this))
-    // TODO check this jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
-    jobStore.on('jobDetailsUpdated', this.renewJobs.bind(this))
-    jobStore.on('jobsLoaded', this.updateDetails.bind(this))
-    jobStore.on('jobDeleted', this.redirect.bind(this))
+    jobStore.on('jobDetails', this.updateDetails.bind(this)) //need to listen to this emission
+    jobStore.on('jobDeleted', this.redirect.bind(this)) //need to listen to this emission
     checkLoginRedir(this.props)
   }
 
@@ -76,9 +59,6 @@ class jobDetails extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
-              <div className="pull-left">
-                <Link to="/job_index"><button onClick={this.redirect.bind(this)} className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
-              </div>
                 <div className='panel panel-default'>
                   <div className='panel-body'>
                     <h3>Job Details</h3>
@@ -152,4 +132,4 @@ class jobDetails extends Component {
   }
 }
 
-export default jobDetails;
+export default JobDetails;

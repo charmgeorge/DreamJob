@@ -1,84 +1,10 @@
-.App {
-  text-align: center;
-}
-
-.GREEN {
-  color: green;
-}
-
-.YELLOW {
-  color: yellow;
-}
-
-.RED {
-  color: red;
-}
-
-.jobList {
-  list-style-type: none;
-  /*height: 100px;*/
-  border: 1px black solid;
-  box-shadow: 2px 2px 2px 2px;
-}
-
-h1 {
-  text-align: center;
-}
-
-.navList li{
-  display: inline;
-  padding-right: 5px;
-}
-
-.navi{
-  padding-right: 20px
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
+/*APP.JS*/
 .message {
   background-color: #222;
   text-align: center;
   height: 30px;
   font-size: 20px;
   color: white;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-#login, #register {
-  float: right;
-  display: block;
-  margin-right: 10px;
-  clear:left;
-}
-#getStartedButton{
-  float: center;
-  position: absolute;
-  bottom: 0;
-}
-
-.divider{
-  width: 0px;
-  height:auto;
-  display:inline-block;
 }
 
 body {
@@ -88,4 +14,77 @@ body {
    -moz-background-size: cover;
    -o-background-size: cover;
    background-size: cover;
+}
+
+
+
+/*ROUTES*/
+/*ADDJOB*/
+.formSize {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.panel-heading {
+  font-size: 25px;
+}
+
+/*ALTERNATEVIEW*/
+.clear {
+  background: rgba(0, 255, 255, 0);
+  border-style: none;
+}
+
+/*HOME*/
+.jumbotron {
+  border: 3px solid rgb(91,192,222);
+  background: rgba(245,240,240,0.3)
+}
+
+.jumbotron h1 {
+  padding-right: 50%;
+}
+
+.benefits {
+  background: rgba(91,192,222,.8);
+  padding-top: 15px;
+}
+
+.thumbs {
+  width: auto;
+  max-height: 150px
+}
+
+
+
+/*COMPONENTS*/
+/*SLIDE*/
+.pictures {
+  margin: auto;
+  width: auto;
+  max-height: 300px
+}
+
+/*ALTERNATE, JOBLISTING, AND JOBLISTING2*/
+.GREEN {
+  color: green;
+  margin-left: 48%;
+}
+
+.YELLOW {
+  color: yellow;
+  margin-left: 48%;
+}
+
+.RED {
+  color: red;
+  margin-left: 48%;
+}
+
+/*JOBLISTING, JOBLISTING2*/
+.jobList {
+  list-style-type: none;
+  border: 1px black solid;
+  box-shadow: 2px 2px 2px 2px;
+  background: rgba(91,192,222,.5);
 }

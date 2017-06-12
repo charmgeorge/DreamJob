@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import jobStore from '../stores/jobStore';
-import {Link} from 'react-router-dom';
+import jobStore from '../stores/JobStore';
 import {glassdoorDetails} from '../actions/actions'
 
-//glassdoor must persist, so we call the glassdoor ACTION in the constructor
-class glassdoor extends Component {
+class Glassdoor extends Component {
   constructor(props){
     super(props)
     glassdoorDetails(this.props.match.params.company)
@@ -15,7 +13,7 @@ class glassdoor extends Component {
   }
 
   componentWillMount(){
-    jobStore.on('glassdoor', this.updateDetails.bind(this))
+    jobStore.on('glassdoor', this.updateDetails.bind(this)) //need to listen to this emission
   }
 
   updateDetails(){
@@ -24,7 +22,6 @@ class glassdoor extends Component {
     })
   }
 
-  //this defines what's shown on glassdoor page
   renderCompany(){
     let ceoData;
     if(this.state.data.ceo){
@@ -112,7 +109,6 @@ class glassdoor extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 
@@ -129,9 +125,6 @@ class glassdoor extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>
-              <div className="pull-left">
-                <Link to="/job_index"><button className='btn-primary glyphicon glyphicon-list'>Index</button></Link>
-              </div>
               <div className='panel panel-default'>
                 <div className='panel-body'>
                   {companyView}
@@ -145,4 +138,4 @@ class glassdoor extends Component {
   }
 }
 
-export default glassdoor;
+export default Glassdoor;

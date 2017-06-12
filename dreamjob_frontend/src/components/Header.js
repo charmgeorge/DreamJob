@@ -1,55 +1,52 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {getDetails, deleteJob} from '../actions/actions'
-
+import {Navbar, Nav, NavItem,} from 'react-bootstrap';
 
 class Header extends Component {
-  constructor(props){
-    super(props)
 
-  }
-  login(){
+  email(){
     if(this.props.user){
-      return(
-        <div className="navi">
-          <ul className='navList'>
-            <li>
-              {this.props.user.email}
-            </li>
-            <li>
-              <a onClick={this.props.logout}>Logout</a> ||
-            </li>
-            <li>
-              <Link to="/">Home</Link> ||
-            </li>
-            <li>
-              <Link to="job_index">Your Jobs</Link>
-            </li>
-          </ul>
-        </div>
-      )
-    } else {
-      return(
+      return `Welcome, ${this.props.user.email}`
+    }else{
+      return (
         <div>
-          <Link to="/login">Login</Link>
-          <Link to="/">Home</Link>
+          <Link to="/login">Login</Link> |
+          <Link to="/Register">Register</Link>
         </div>
       )
     }
   }
 
-
-
-
-
+  logout(){
+    if(this.props.user){
+      return <a onClick={this.props.logout}>Logout</a>
+    }else{
+      return <Link to="/">Home</Link>
+    }
+  }
 
   render() {
     return (
       <div>
-        <div className="pull-right">
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/">Dream Job</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
+              <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
 
-          {this.login()}
-        </div>
+            </Nav>
+            <Nav pullRight>
+              <NavItem eventKey={1}>{this.email()}</NavItem>
+              <NavItem eventKey={2} href="/login">{this.logout()}</NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
       </div>
     );
   }

@@ -9,7 +9,6 @@ var Glassdoor = require('node-glassdoor').initGlassdoor({
     partnerKey: "cE2dvplWMTK"
 });
 
-
 const corsOptions = {
   origin: 'http://localhost:3000'
 }
@@ -46,6 +45,34 @@ app.get('/jobs', authorization, function (request, response) {
       userId:id
     }
   }).then(function(jobs){
+    response.status(200)
+    response.json({
+      status:'success',
+      jobs:jobs
+    })
+  })
+  .catch(function(error){
+    response.status(400)
+    response.json({status:'error', error:error})
+  })
+})
+
+var direction = true
+app.get('/sort/:attribute', function (request, response) {
+  let attribute = request.params["attribute"];
+  if (direction === true){
+    sort = 'ASC'
+    direction = !direction
+  }else{
+    sort = 'DESC'
+    direction = !direction
+  }
+
+  Job.findAll(
+    {
+      order: [[attribute, sort]]
+    }
+  ).then(function(jobs){
     response.status(200)
     response.json({
       status:'success',
@@ -146,7 +173,6 @@ app.post('/create_user', function(request, response){
     response.json({status:'success', user: user})
   })
   .catch((error)=>{
-    console.log('here ', error)
     response.status(400)
     response.json({
       message:"Could not create User",
