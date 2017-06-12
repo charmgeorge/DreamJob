@@ -204,3 +204,29 @@ export function createJob(attributes){
       jobStore.updateMessage("There was an error: " + err)
   })
 }
+
+
+export function researchJob(searchDetails){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+
+  console.log(searchDetails);
+  let job = searchDetails.job;
+  let location = searchDetails.location;
+
+  fetch("http://localhost:4000/research_job/" + job +"/" + location, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        console.log('im back');
+        // dispatcher.dispatch({
+        //   type: 'GET_DETAILS',
+        //   job: body.job
+        // })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+}

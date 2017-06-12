@@ -5,7 +5,7 @@ var User = require('./models').User
 var cors = require('cors')
 var app = express();
 
-var fetch = require('node-fetch');
+var fetch = require('node-fetch');  //https://www.npmjs.com/package/node-fetch
 
 
 var Glassdoor = require('node-glassdoor').initGlassdoor({
@@ -126,7 +126,7 @@ app.get('/glassdoor/:company', function (request, response) {
 // pKey = "cE2dvplWMTK";
 // var companyURL = `http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=web+developer&l=sacramento&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`
 
-app.get('/nick/:job/:location', function (request, response) {
+app.get('/job_research/:job/:location', function (request, response) {
   let job = request.params['job'];
   let location = request.params['location'];
 
@@ -134,23 +134,19 @@ app.get('/nick/:job/:location', function (request, response) {
       return response.json()
     })
     .then((body)=>{
-        console.log("success!", body.status)
-        response.json({
-          jobs:body.response.jobTitles
-        })
-      }
-    )
+      console.log("success!", body.status)
+      response.json({
+        jobs: body.response.jobTitles,
+        companies: body.response.employers
+      })
+    })
+    .catch((error) => {
+      console.log('error', error);
+      response.json({
+        error: error
+      })
+    })
 })
-  //
-  //
-  // Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
-  //       response.json({
-  //         data:data
-  //       })
-  //     })
-  //   });
-
-
 
 app.get('/', function (request, response) {
   Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
