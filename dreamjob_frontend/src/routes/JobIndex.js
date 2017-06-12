@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import JobListingPull from '../components/JobListingPull'
-import JobListingPush from '../components/JobListingPush'
+import JobListing from '../components/JobListing'
 import jobStore from '../stores/JobStore'
 import {checkLoginRedir, updateJobs, sort} from '../actions/actions'
-import {Button} from 'react-bootstrap'
+import {Grid, Row, Button} from 'react-bootstrap'
+
 
 class JobIndex extends Component {
   constructor(props){
@@ -37,11 +37,11 @@ class JobIndex extends Component {
       let jobId = "job-" + i
       if((i % 2) !== 0){
         jobRender.push(
-          <JobListingPull history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+          <JobListing location="pull" history={this.props.history} key={jobId} job={this.state.jobs[i]} />
         )
       }else{
         jobRender.push(
-          <JobListingPush history={this.props.history} key={jobId} job={this.state.jobs[i]} />
+          <JobListing location="push" history={this.props.history} key={jobId} job={this.state.jobs[i]} />
         )
       }
     }
@@ -69,7 +69,11 @@ class JobIndex extends Component {
         <div>
           <h3>Current Dream Jobs</h3>
           <div className=" job-list row">
-            {this.renderJobs()}
+            <Grid>
+              <Row className="show-grid">
+                {this.renderJobs()}
+              </Row>
+            </Grid>
           </div>
         </div>
       </div>

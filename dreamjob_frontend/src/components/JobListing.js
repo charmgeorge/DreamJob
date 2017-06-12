@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Pop from './Pop';
 import {Col} from 'react-bootstrap'
 
-class JobListingPush extends Component {
+class JobListing extends Component {
   handleClick(e){
     let id = this.props.job.id
     e.preventDefault();
@@ -25,9 +25,15 @@ class JobListingPush extends Component {
   }
 
   render(){
+    let location
+    if(this.props.location === "pull"){
+      location = {md: 6, mdPull: 6}
+    } else {
+      location = {md: 6, mdPush: 6}
+    }
     return(
       <div>
-        <Col md={6} mdPush={6}>
+        <Col {...location}>
           <ul className ='jobList'>
             <li>
               <br />
@@ -51,4 +57,4 @@ class JobListingPush extends Component {
   }
 }
 
-export default JobListingPush;
+export default JobListing;
