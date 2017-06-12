@@ -15,9 +15,16 @@ class AlternateView extends Component {
   }
 
   componentWillMount(){
+    console.log('mounting');
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
+    checkLoginRedir(this.props)
+  }
+
+  componentWillUpdate(){
+    console.log(this.props);
+    console.log('logging out next');
     checkLoginRedir(this.props)
   }
 

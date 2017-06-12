@@ -111,9 +111,7 @@ class UserStore extends EventEmitter{
     localStorage.setItem('authToken', null);
     localStorage.setItem('authTokenExpiration', null);
     localStorage.setItem('email', "");
-    this.emit('login')
-    // ^^ should be 'logout' ???
-
+    this.emit('logout')
   }
 
   handleAction(action){

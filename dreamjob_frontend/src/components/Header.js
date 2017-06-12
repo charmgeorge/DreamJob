@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import {Link, NavLink} from 'react-router-dom';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import Home from '../routes/Home';
+import userStore from '../stores/UserStore';
 import {
   BrowserRouter as Router,
   Route,
@@ -12,7 +13,17 @@ import {
 } from 'react-router-dom';
 
 class Header extends Component {
+  constructor(props){
+    super(props)
+  }
+  componentWillMount(){
+    userStore.on('logout', this.handleLogout.bind(this))
+  }
 
+  handleLogout(){
+    // how do we get the history here???
+    this.props.history.push("/")
+  }
 
   email(){
     console.log(this.props);
@@ -33,6 +44,7 @@ class Header extends Component {
       return <a onClick={this.props.logout}>Logout</a>
     } else{
       // send to home
+      console.log('sending home');
       return <Redirect to="/" />
       // return <Link to="/">Home</Link>
     }

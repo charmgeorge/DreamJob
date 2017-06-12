@@ -62,7 +62,11 @@ class App extends Component {
         <div>
           <Router>
             <div>
-              <Header user={this.state.currentUser} logout={this.handleLogout.bind(this)} />
+              <Header
+                history={this.props.history}
+                user={this.state.currentUser}
+                logout={this.handleLogout.bind(this)}
+               />
               <Switch>
                 <Route exact path = "/" component={Home} />
                 <Route exact path = "/register" component={RegisterUser}></Route>

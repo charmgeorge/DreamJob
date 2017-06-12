@@ -27,6 +27,7 @@ export function sort(attribute){
 }
 
 export function checkLoginRedir(props){
+  console.log(props);
   let currentUser = userStore.getUser()
   if(currentUser === null){
     props.history.push("/login")
@@ -183,6 +184,13 @@ export function updateJobs(){
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   }
+  // debugger;
+  // if(!currentUser){
+  //   console.log('not logged in (in actions - updateJobs())');
+  //
+  //   checkLoginRedir() // send what props
+  // }
+
   let theUrl = "http://localhost:4000/jobs?authToken=" + currentUser.authToken
   fetch(theUrl, params).then(function(response){
     if(response.status === 200){

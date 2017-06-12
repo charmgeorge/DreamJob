@@ -24,6 +24,7 @@ class AddJob extends Component {
 
 componentWillMount(){
   jobStore.on('jobAdded', this.redirect.bind(this)) //need to listen to this emission
+  debugger;
   checkLoginRedir(this.props)
 }
 
