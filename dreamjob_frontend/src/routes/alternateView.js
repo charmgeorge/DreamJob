@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap';
-import {updateJobs, checkLoginRedir} from '../actions/actions';
+import {updateJobs, checkLoginRedir, sort} from '../actions/actions';
 import jobStore from '../stores/jobStore';
-import Alternate from '../components/Alternate'
+import Alternate from '../components/Alternate';
+import {Button} from 'react-bootstrap';
 
 class alternateView extends Component {
   constructor(props){
@@ -16,6 +17,7 @@ class alternateView extends Component {
   componentWillMount(){
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) // NEED
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) // NEED
+    jobStore.on('sorted',this.updateJobs.bind(this)) // NEED
     checkLoginRedir(this.props)
   }
 
@@ -40,27 +42,61 @@ class alternateView extends Component {
     return jobRender
   }
 
+  handleClick(e){
+    let column = e.target.name
+    console.log(column)
+    sort(column)
+  }
+
   render() {
     return (
       <div className='container'>
-          <h3>Current Dream Jobs</h3>
-            <Table striped bordered condensed hover>
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Company</th>
-                  <th>Job Title</th>
-                  <th>Status</th>
-                  <th>Job Details</th>
-                </tr>
-              </thead>
-              <tbody>
-            {this.renderJobs()}
-              </tbody>
-            </Table>
+        <h3>Current Dream Jobs</h3>
+
+          <Table striped bordered condensed hover>
+            <thead>
+              <tr>
+                <th></th>
+                <th><Button block name='company' onClick={this.handleClick.bind(this)}>Company</Button></th>
+                <th><Button block name='jobTitle' onClick={this.handleClick.bind(this)}>Job Title</Button></th>
+                <th><Button block name='status' onClick={this.handleClick.bind(this)}>Status</Button></th>
+                <th><Button block>Job Details</Button></th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderJobs()}
+            </tbody>
+          </Table>
       </div>
     );
   }
 }
 
 export default alternateView
+
+//FAILED ATTEMPT AT REACT-BOOTSTRAP-TABLE
+// import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+// import Pop from '../components/Pop';
+// let order = 'desc';
+
+//   handleBtnClick = () => {
+//   if (order === 'desc') {
+//     this.refs.table.handleSort('asc', 'name');
+//     order = 'asc';
+//   } else {
+//     this.refs.table.handleSort('desc', 'name');
+//     order = 'desc';
+//   }
+// }
+
+// renderModal(){
+//   return <Pop history={this.props.history} job={this.props.job} />
+// }
+
+// <BootstrapTable ref='table' data={ this.state.jobs }>
+//     <TableHeaderColumn dataField='updatedAt' isKey={ true } dataSort={ true }>Last Update</TableHeaderColumn>
+//     <TableHeaderColumn dataField='company' dataSort={ true }>Company</TableHeaderColumn>
+//     <TableHeaderColumn dataField='jobTitle'>Job Title</TableHeaderColumn>
+//     <TableHeaderColumn dataField='status'>Status</TableHeaderColumn>
+//     <TableHeaderColumn dataField={this.renderModal.bind(this)}>Job Details</TableHeaderColumn>
+// </BootstrapTable>

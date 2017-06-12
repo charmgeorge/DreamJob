@@ -9,7 +9,6 @@ var Glassdoor = require('node-glassdoor').initGlassdoor({
     partnerKey: "cE2dvplWMTK"
 });
 
-
 const corsOptions = {
   origin: 'http://localhost:3000'
 }
@@ -46,6 +45,25 @@ app.get('/jobs', authorization, function (request, response) {
       userId:id
     }
   }).then(function(jobs){
+    response.status(200)
+    response.json({
+      status:'success',
+      jobs:jobs
+    })
+  })
+  .catch(function(error){
+    response.status(400)
+    response.json({status:'error', error:error})
+  })
+})
+
+app.get('/sort/:attribute', function (request, response) {
+  var attribute = request.params["attribute"];
+  Job.findAll(
+    {
+      order: [[attribute, 'ASC']]
+    }
+  ).then(function(jobs){
     response.status(200)
     response.json({
       status:'success',

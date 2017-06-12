@@ -29,8 +29,6 @@ class jobIndex extends Component {
     })
   }
 
-
-
   renderJobs(){
     let jobRender = []
     for(var i=0; i<this.state.jobs.length; i++){

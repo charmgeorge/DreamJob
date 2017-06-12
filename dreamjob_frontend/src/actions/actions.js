@@ -2,6 +2,25 @@ import dispatcher from '../dispatchers/dispatcher';
 import userStore from '../stores/UserStore';
 import jobStore from '../stores/jobStore'
 
+export function sort(attribute){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/sort/" + attribute, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        dispatcher.dispatch({
+          type: 'SORT_JOBS',
+          jobs: body.jobs
+        })
+      })
+    }
+  }).catch(function(err){
+      jobStore.updateMessage("There was an error: " + err)
+  })
+}
+
 export function checkLoginRedir(props){
   let currentUser = userStore.getUser()
   if(currentUser === null){
