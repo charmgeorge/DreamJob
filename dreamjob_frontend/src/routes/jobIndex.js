@@ -50,7 +50,6 @@ class jobIndex extends Component {
 
   handleClick(e){
     let column = e.target.name
-    console.log(column)
     sort(column)
   }
 

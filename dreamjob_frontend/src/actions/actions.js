@@ -59,7 +59,6 @@ export function newUser(userInfo){
           type: "NEW_USER",
           user: body.user
         })
-        console.log("success!", body)
       }
       else {
         console.log("failure!", body)
@@ -85,7 +84,6 @@ export function loginUser(userInfo){
           type: "LOGIN_USER",
           user: body.user
         })
-        console.log("success!", body.user)
       }
       else {
         console.log("failure!", body.user)

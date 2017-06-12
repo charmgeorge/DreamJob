@@ -19,6 +19,16 @@ body {
 
 
 /*ROUTES*/
+/*ADDJOB*/
+.formSize {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.panel-heading {
+  font-size: 25px;
+}
+
 /*ALTERNATEVIEW*/
 .clear {
   background: rgba(0, 255, 255, 0);

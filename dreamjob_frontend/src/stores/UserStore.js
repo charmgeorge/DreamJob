@@ -46,7 +46,6 @@ class UserStore extends EventEmitter{
     this.validateEmail('email')
     this.validatePassword('password')
     // I added validatePassword to set password params
-    // console.log("the errors", this.errors)
   }
 
   validatePresence(fieldName){
@@ -86,8 +85,6 @@ class UserStore extends EventEmitter{
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
     localStorage.setItem('email', user.email);
-
-    console.log("new user set")
     this.emit('user_created')
     this.emit('login')
   }
