@@ -51,7 +51,7 @@ class jobIndex extends Component {
     return (
       <div className='container'>
         <div className='pull-left'><Link to="/job_index_alternate">Alternate Job Pipeline View</Link></div>
-        <div className="App">
+        <div>
           <h3>Current Dream Jobs</h3>
           <div className=" job-list row">
             {this.renderJobs()}

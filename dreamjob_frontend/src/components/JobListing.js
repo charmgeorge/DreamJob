@@ -32,6 +32,7 @@ class JobListing extends Component {
             <Col md={6} mdPull={6}>
               <ul className ='jobList'>
                 <li>
+                  <br />
                   <div className={this.updateClass()}>
                   </div>
                 </li>
@@ -42,6 +43,7 @@ class JobListing extends Component {
                 <li>
                   <div>
                     <Pop history={this.props.history} job={this.props.job} />
+                    <br />
                   </div>
                 </li>
               </ul>
