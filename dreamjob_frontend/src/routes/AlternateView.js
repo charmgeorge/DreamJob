@@ -45,6 +45,7 @@ class AlternateView extends Component {
   handleClick(e){
     let column = e.target.name
     sort(column)
+    // console.log('sorting');
   }
 
   render() {

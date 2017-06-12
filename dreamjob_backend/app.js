@@ -61,32 +61,31 @@ app.get('/jobs', authorization, function (request, response) {
   })
 })
 
-var direction = true
-app.get('/sort/:attribute', function (request, response) {
+var direction = true;
+app.get('/sort/:attribute', authorization, function (request, response) {
   let attribute = request.params["attribute"];
+  let id = request.currentUser.id ;
+
   if (direction === true){
     sort = 'ASC'
     direction = !direction
-  }else{
+  } else{
     sort = 'DESC'
     direction = !direction
   }
 
-  Job.findAll(
-    {
-      order: [[attribute, sort]]
-    }
-  ).then(function(jobs){
-    response.status(200)
-    response.json({
-      status:'success',
-      jobs:jobs
+  Job.findAll({where: {userId:id}, order: [[attribute, sort]] })
+    .then(function(jobs){
+      response.status(200)
+      response.json({
+        status:'success',
+        jobs:jobs
+      })
     })
-  })
-  .catch(function(error){
-    response.status(400)
-    response.json({status:'error', error:error})
-  })
+    .catch(function(error){
+      response.status(400)
+      response.json({status:'error', error:error})
+    })
 })
 
 app.get('/deleteJob/:id', function (request, response) {
@@ -134,6 +133,7 @@ app.get('/glassdoor/:company', function (request, response) {
       });
 });
 
+// nicks stuff for the research route:  will delete upon completion
 // defaultCompanyURL = `http://api.glassdoor.com/api/api.htm?t.p=5317&
 // t.k=n07aR34Lk3Y&
 // userip=0.0.0.0&

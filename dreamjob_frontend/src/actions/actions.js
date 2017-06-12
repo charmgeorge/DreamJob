@@ -7,7 +7,12 @@ export function sort(attribute){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/sort/" + attribute, params).then(function(response){
+
+  // let theUrl = "http://localhost:4000/jobs?authToken=" + currentUser.authToken
+  let currentUser = userStore.getUser()
+  let theUrl = "http://localhost:4000/sort/" + attribute + "?authToken=" + currentUser.authToken;
+
+  fetch(theUrl, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({
