@@ -4,6 +4,10 @@ var Job = require('./models').Job
 var User = require('./models').User
 var cors = require('cors')
 var app = express();
+
+var fetch = require('node-fetch');  //https://www.npmjs.com/package/node-fetch
+
+
 var Glassdoor = require('node-glassdoor').initGlassdoor({
     partnerId: 157533,
     partnerKey: "cE2dvplWMTK"
@@ -130,13 +134,54 @@ app.get('/glassdoor/:company', function (request, response) {
       });
 });
 
+// defaultCompanyURL = `http://api.glassdoor.com/api/api.htm?t.p=5317&
+// t.k=n07aR34Lk3Y&
+// userip=0.0.0.0&
+// useragent=&
+// format=json&
+// v=1&
+// action=jobs-stats&
+// q=bank&
+// l=sacramento&
+// returnStates=true&
+// admLevelRequested=1
+//
+//
+// var ip = 12.46.197.130;
+//
+// pId = 157533;
+// pKey = "cE2dvplWMTK";
+// var companyURL = `http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=web+developer&l=sacramento&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`
+
+app.get('/job_research/:job/:location', function (request, response) {
+  let job = request.params['job'];
+  let location = request.params['location'];
+
+  fetch(`http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`).then((response)=>{
+      return response.json()
+    })
+    .then((body)=>{
+      console.log("success!", body.status)
+      response.json({
+        jobs: body.response.jobTitles,
+        companies: body.response.employers
+      })
+    })
+    .catch((error) => {
+      console.log('error', error);
+      response.json({
+        error: error
+      })
+    })
+})
+
 app.get('/', function (request, response) {
   Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
-        response.json({
-          data:data
-        })
-      })
-    });
+    response.json({
+      data:data
+    })
+  })
+});
 
 app.post('/update_job_details/:id', function (request, response){
   let id = request.params['id'];

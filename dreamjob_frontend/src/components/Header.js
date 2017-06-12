@@ -39,6 +39,7 @@ class Header extends Component {
             <Nav>
               <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
               <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
+              <NavItem eventKey={3}><Link to='/job_research'>Job Research</Link></NavItem>
 
             </Nav>
             <Nav pullRight>

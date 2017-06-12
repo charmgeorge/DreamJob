@@ -12,6 +12,8 @@ import Home from './routes/Home';
 import Glassdoor from './routes/Glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
+import JobSearch from './routes/JobSearch';
+import JobSearchResults from './routes/JobSearchResults';
 import JobDetails from './routes/JobDetails';
 import AlternateView from './routes/AlternateView';
 
@@ -70,6 +72,8 @@ class App extends Component {
                 <Route exact path = '/job_details/:id' component={JobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
+                <Route exact path = '/job_research' component={JobSearch}></Route>
+                <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
