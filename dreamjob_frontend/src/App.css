@@ -7,11 +7,25 @@
   color: white;
 }
 
+p{
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 35px;
+  font-family: Roboto;
+  color: #088da5;
+}
+
 h3 {
   font-family: Roboto;
 }
 
-
+/*body {
+  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/6d/8a/c1/6d8ac1a8888d08305e9a707359099cd0.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
 
 /*ROUTES*/
 /*ADDJOB*/
