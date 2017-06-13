@@ -29,8 +29,6 @@ class App extends Component {
   }
 
   handleLogout(){
-    // debugger;
-    console.log(this.props.history);
     userLogout()
   }
 
@@ -54,7 +52,6 @@ class App extends Component {
   }
 
   handleLogoutFinal(){
-    // how do we get the history here???
     this.setState( {
       currentUser: userStore.getUser()
     })
@@ -69,7 +66,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className="message">{this.state.message}</div>
@@ -92,8 +88,8 @@ class App extends Component {
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
-                {/* <Route exact path = '/search_results' component={JobSearchResults} /> */}
-                {/* ?job=:job&location=:location */}
+                {/* leave for nick please (in development) ?job=:job&location=:location
+                  <Route exact path = '/search_results' component={JobSearchResults} /> */}
                 <Route component = {NoMatch} />
               </Switch>
             </div>

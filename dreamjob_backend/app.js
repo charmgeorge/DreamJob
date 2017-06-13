@@ -155,17 +155,13 @@ app.get('/glassdoor/:company', function (request, response) {
 // fetch("http://localhost:4000/job_research?job=" + job + "&location=" + location, params).then(function(response){
 
 app.get('/job_research/:job/:location', function (request, response) {
-// app.get('/job_research?job=:job&location=:location', function (request, response) {
-  console.log('hereeeee');
   let job = request.params['job'];
   let location = request.params['location'];
-  console.log(job, location);
 
   fetch(`http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`).then((response)=>{
       return response.json()
     })
     .then((body)=>{
-      // console.log("success!", body.status)
       response.json({
         jobs: body.response.jobTitles,
         companies: body.response.employers

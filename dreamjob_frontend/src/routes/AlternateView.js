@@ -18,7 +18,6 @@ class AlternateView extends Component {
   }
 
   componentWillMount(){
-    console.log('mounting');
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
@@ -26,8 +25,6 @@ class AlternateView extends Component {
   }
 
   componentWillUpdate(){
-    console.log(this.props);
-    console.log('logging out next');
     checkLoginRedir(this.props)
   }
 
@@ -55,23 +52,12 @@ class AlternateView extends Component {
   handleClick(e){
     let column = e.target.name
     sort(column)
-    // console.log('sorting');
   }
 
-  // handleLogout(){
-  //   debugger;
-  //   console.log(this.props.history);
-  //   userLogout()
-  // }
 
   render() {
     return (
       <div className='container'>
-        {/* <Header
-          history={this.props.history}
-          user={this.state.currentUser}
-          logout={this.handleLogout.bind(this)}
-         /> */}
         <h3 className='centerTitle'>Current Dream Jobs</h3>
 
           <Table striped bordered condensed hover>
