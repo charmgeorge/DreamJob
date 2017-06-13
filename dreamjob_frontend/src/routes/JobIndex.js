@@ -60,12 +60,14 @@ class JobIndex extends Component {
   render() {
     return (
       <div className='container'>
-        <div className='pull-left'>
-          <Button onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
-        </div>
-        <div className='pull-right'>
-          <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
-        </div>
+        <Row>
+          <div className='pull-left'>
+            <Button bsStyle='primary' onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
+          </div>
+          <div className='pull-right'>
+            <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
+          </div>
+        </Row>
         <div>
           <h3>Current Dream Jobs</h3>
           <div className=" job-list row">
