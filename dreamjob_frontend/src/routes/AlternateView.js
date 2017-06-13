@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap';
-import {updateJobs, checkLoginRedir, sort} from '../actions/actions';
+import {updateJobs, checkLoginRedir, sort, userLogout} from '../actions/actions';
 import jobStore from '../stores/JobStore';
 import Alternate from '../components/Alternate';
 import {Button} from 'react-bootstrap';
+import userStore from '../stores/UserStore';
+import Header from '../components/Header';
 
 class AlternateView extends Component {
   constructor(props){
   super(props)
   updateJobs()
   this.state = {
-    jobs: jobStore.getJobs()
+    jobs: jobStore.getJobs(),
+    currentUser: userStore.getUser()
     }
   }
 
@@ -55,9 +58,20 @@ class AlternateView extends Component {
     // console.log('sorting');
   }
 
+  handleLogout(){
+    debugger;
+    console.log(this.props.history);
+    userLogout()
+  }
+
   render() {
     return (
       <div className='container'>
+        <Header
+          history={this.props.history}
+          user={this.state.currentUser}
+          logout={this.handleLogout.bind(this)}
+         />
         <h3 className='centerTitle'>Current Dream Jobs</h3>
 
           <Table striped bordered condensed hover>

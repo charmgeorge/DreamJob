@@ -16,6 +16,7 @@ class Header extends Component {
   constructor(props){
     super(props)
   }
+
   componentWillMount(){
     userStore.on('logout', this.handleLogout.bind(this))
   }
@@ -41,10 +42,18 @@ class Header extends Component {
 
   logout(){
     if(this.props.user){
+      debugger;
       return <a onClick={this.props.logout}>Logout</a>
+      // ^^ this.props.logout =
+      // handleLogout(){
+      //     debugger;
+      //     userLogout()
+      //   }
     } else{
+      debugger;
       // send to home
       console.log('sending home');
+      // what to do here???
       return <Redirect to="/" />
       // return <Link to="/">Home</Link>
     }

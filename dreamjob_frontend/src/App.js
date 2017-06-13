@@ -27,9 +27,11 @@ class App extends Component {
     }
   }
 
-  handleLogout(){
-    userLogout()
-  }
+  // handleLogout(){
+  //   debugger;
+  //   console.log(this.props.history);
+  //   userLogout()
+  // }
 
   updateMessage(){
     this.setState({
@@ -44,10 +46,16 @@ class App extends Component {
   }
 
   componentWillMount(){
+    // userStore.on('logout', this.handleLogoutFinal.bind(this))
     jobStore.on('message', this.updateMessage.bind(this))
     userStore.on('login', this.handleLogin.bind(this))
     userStore.on('message', this.updateUserMessage.bind(this))
   }
+
+  // handleLogoutFinal(){
+  //   // how do we get the history here???
+  //   this.props.history.push("/")
+  // }
 
   handleLogin(){
     this.setState({
@@ -56,17 +64,18 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div className="message">{this.state.message}</div>
         <div>
           <Router>
             <div>
-              <Header
+              {/* <Header
                 history={this.props.history}
                 user={this.state.currentUser}
                 logout={this.handleLogout.bind(this)}
-               />
+               /> */}
               <Switch>
                 <Route exact path = "/" component={Home} />
                 <Route exact path = "/register" component={RegisterUser}></Route>
