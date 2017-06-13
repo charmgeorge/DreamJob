@@ -85,13 +85,15 @@ h3 {
 
 /*ALTERNATE, JOBLISTING, AND JOBLISTING2*/
 .GREEN {
-  color: green;
-  margin-left: 48%;
+  /*color: green;*/
+  /*margin-left: 48%;*/
+  background-image: url(https://cdn.colorlib.com/wp/wp-content/uploads/sites/2/2014/02/image.png);
 }
 
 .YELLOW {
-  color: yellow;
-  margin-left: 48%;
+  /*color: yellow;*/
+  /*margin-left: 48%;*/
+  background-image: url(http://1.bp.blogspot.com/_Sb0L_zHQ6hM/S8gxCUw9iyI/AAAAAAAAAVI/aDFjbSlKWG0/s320/06-11_slick_businesscard_duplicated_finished.jpg);
 }
 
 .indexHeader {
@@ -99,8 +101,9 @@ h3 {
 }
 
 .RED {
-  color: red;
-  margin-left: 48%;
+  /*color: red;*/
+  /*margin-left: 48%;*/
+  background-image: url(http://www.jqueryscript.net/images/Simplest-Responsive-jQuery-Image-Lightbox-Plugin-simple-lightbox.jpg);
 }
 
 /*JOBLISTING, JOBLISTING2*/
@@ -108,7 +111,6 @@ h3 {
   list-style-type: none;
   border: 1px orange solid;
   box-shadow: 2px 2px orange;
-  background-image: url(http://1.bp.blogspot.com/_Sb0L_zHQ6hM/S8gxCUw9iyI/AAAAAAAAAVI/aDFjbSlKWG0/s320/06-11_slick_businesscard_duplicated_finished.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
