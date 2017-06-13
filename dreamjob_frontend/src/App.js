@@ -17,6 +17,7 @@ import JobSearchResults from './routes/JobSearchResults';
 import JobDetails from './routes/JobDetails';
 import AlternateView from './routes/AlternateView';
 import CompanyCompare from './routes/CompanyCompare';
+import Results from './routes/Results';
 
 class App extends Component {
   constructor(props){
@@ -76,6 +77,7 @@ class App extends Component {
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route exact path = '/compare' component={CompanyCompare} />
+                <Route exact path = "/compare/results" component={Results} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
