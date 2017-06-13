@@ -16,6 +16,7 @@ import JobSearch from './routes/JobSearch';
 import JobSearchResults from './routes/JobSearchResults';
 import JobDetails from './routes/JobDetails';
 import AlternateView from './routes/AlternateView';
+import CompanyCompare from './routes/CompanyCompare';
 
 class App extends Component {
   constructor(props){
@@ -74,6 +75,7 @@ class App extends Component {
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
+                <Route exact path = '/compare' component={CompanyCompare} />
                 <Route component={NoMatch} />
               </Switch>
             </div>
