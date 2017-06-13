@@ -33,6 +33,8 @@ class JobSearch extends Component {
     let location = this.state.search.location;
     e.preventDefault()
     this.props.history.push(`/search_results/${job}/${location}`)
+    // this.props.history.push(`/search_results?job=${job}&location=${location}`)
+
   }
 
   render(){

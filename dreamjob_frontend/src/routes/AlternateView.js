@@ -58,20 +58,20 @@ class AlternateView extends Component {
     // console.log('sorting');
   }
 
-  handleLogout(){
-    debugger;
-    console.log(this.props.history);
-    userLogout()
-  }
+  // handleLogout(){
+  //   debugger;
+  //   console.log(this.props.history);
+  //   userLogout()
+  // }
 
   render() {
     return (
       <div className='container'>
-        <Header
+        {/* <Header
           history={this.props.history}
           user={this.state.currentUser}
           logout={this.handleLogout.bind(this)}
-         />
+         /> */}
         <h3 className='centerTitle'>Current Dream Jobs</h3>
 
           <Table striped bordered condensed hover>

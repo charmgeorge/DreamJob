@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import history from './history'
 import AddJob from './routes/AddJob';
 import jobStore from './stores/JobStore';
 import userStore from './stores/UserStore';
@@ -27,11 +28,11 @@ class App extends Component {
     }
   }
 
-  // handleLogout(){
-  //   debugger;
-  //   console.log(this.props.history);
-  //   userLogout()
-  // }
+  handleLogout(){
+    // debugger;
+    console.log(this.props.history);
+    userLogout()
+  }
 
   updateMessage(){
     this.setState({
@@ -46,16 +47,20 @@ class App extends Component {
   }
 
   componentWillMount(){
-    // userStore.on('logout', this.handleLogoutFinal.bind(this))
+   userStore.on('logout', this.handleLogoutFinal.bind(this))
     jobStore.on('message', this.updateMessage.bind(this))
     userStore.on('login', this.handleLogin.bind(this))
     userStore.on('message', this.updateUserMessage.bind(this))
   }
 
-  // handleLogoutFinal(){
-  //   // how do we get the history here???
-  //   this.props.history.push("/")
-  // }
+  handleLogoutFinal(){
+    // how do we get the history here???
+    this.setState( {
+      currentUser: userStore.getUser()
+    })
+
+    history.push("/")
+  }
 
   handleLogin(){
     this.setState({
@@ -69,13 +74,13 @@ class App extends Component {
       <div>
         <div className="message">{this.state.message}</div>
         <div>
-          <Router>
+          <Router history={history}>
             <div>
-              {/* <Header
-                history={this.props.history}
+              <Header
+                history={history}
                 user={this.state.currentUser}
                 logout={this.handleLogout.bind(this)}
-               /> */}
+               />
               <Switch>
                 <Route exact path = "/" component={Home} />
                 <Route exact path = "/register" component={RegisterUser}></Route>
@@ -87,6 +92,8 @@ class App extends Component {
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
+                {/* <Route exact path = '/search_results' component={JobSearchResults} /> */}
+                {/* ?job=:job&location=:location */}
                 <Route component = {NoMatch} />
               </Switch>
             </div>

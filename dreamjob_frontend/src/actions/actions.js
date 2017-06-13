@@ -36,7 +36,7 @@ export function checkLoginRedir(props){
 }
 
 export function userLogout(){
-  debugger;
+  // debugger;
   dispatcher.dispatch({
     type: "LOGOUT"
   })
@@ -240,6 +240,10 @@ export function researchJob(searchDetails){
   let location = searchDetails.location;
 
   fetch("http://localhost:4000/job_research/" + job + "/" + location, params).then(function(response){
+  // let url = "http://localhost:4000/job_research?job=" + job + "&location=" + location;
+  // console.log(url);
+  // fetch(url, params).then(function(response){
+
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({

@@ -15,15 +15,23 @@ import {
 class Header extends Component {
   constructor(props){
     super(props)
+    console.log(props);
   }
 
-  componentWillMount(){
+  // componentWillMount(){
+  //   userStore.on('logout', this.handleLogout.bind(this))
+  // }
+
+  componentWillUpdate(){
     userStore.on('logout', this.handleLogout.bind(this))
   }
 
   handleLogout(){
     // how do we get the history here???
     this.props.history.push("/")
+    // this.logout()
+
+    // userStore.userLogout()
   }
 
   email(){
@@ -42,7 +50,7 @@ class Header extends Component {
 
   logout(){
     if(this.props.user){
-      debugger;
+      // debugger;
       return <a onClick={this.props.logout}>Logout</a>
       // ^^ this.props.logout =
       // handleLogout(){
@@ -50,7 +58,7 @@ class Header extends Component {
       //     userLogout()
       //   }
     } else{
-      debugger;
+      // debugger;
       // send to home
       console.log('sending home');
       // what to do here???
