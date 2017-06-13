@@ -28,6 +28,7 @@ export function sort(attribute){
 
 export function checkLoginRedir(props){
   console.log(props);
+  // debugger;
   let currentUser = userStore.getUser()
   if(currentUser === null){
     props.history.push("/login")
