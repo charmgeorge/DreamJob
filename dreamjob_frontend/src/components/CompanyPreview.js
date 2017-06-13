@@ -10,7 +10,7 @@ function CompanyPreview (props){
           src={props.avatar}
           alt={'Image for ' + props.name }
         />
-        <h2 className='username'>{props.name}</h2>
+        <h2 className='name'>{props.name}</h2>
       </div>
       {props.children}
 
@@ -20,7 +20,7 @@ function CompanyPreview (props){
 
 CompanyPreview.propTypes = {
   avatar: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired
 }
 
 module.exports = CompanyPreview;

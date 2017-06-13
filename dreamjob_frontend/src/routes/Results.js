@@ -7,10 +7,12 @@ var CompanyPreview = require('../components/CompanyPreview');
 // var Loading = require('../components/Loading');
 
 function Profile (props){
+  console.log(props);
   var info = props.info;
   return (
-      <CompanyPreview avatar={info.avatar_url} username={info.login}>
+      <CompanyPreview avatar={info.avatar_url} name={info.login}>
         <ul className='space-list-items'>
+
           {info.name && <li>{info.name}</li>}
           {info.location && <li>{info.location}</li>}
           {info.company && <li>{info.company}</li>}
@@ -57,11 +59,11 @@ class Results extends React.Component {
   }
 
   componentDidMount(){
-    var players = queryString.parse(this.props.location.search)
-    console.log(players);
+    var companies = queryString.parse(this.props.location.search)
+    console.log(companies);
     api.battle([
-      players.playerOneName,
-      players.playerTwoName
+      companies.companyOneName,
+      companies.companyTwoName
     ])
       .then(function(results){
         if(results === null){

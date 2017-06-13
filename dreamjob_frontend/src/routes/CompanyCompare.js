@@ -114,7 +114,7 @@ class Battle extends React.Component {
           {companyOneImage !== null &&
             <CompanyPreview
               avatar={companyOneImage}
-              username={companyOneName}
+              name={companyOneName}
             >
               <button
                 className='reset'
@@ -135,7 +135,7 @@ class Battle extends React.Component {
           {companyTwoImage !== null &&
             <CompanyPreview
               avatar={companyTwoImage}
-              username={companyTwoName}
+              name={companyTwoName}
             >
               <button
                 className='reset'
