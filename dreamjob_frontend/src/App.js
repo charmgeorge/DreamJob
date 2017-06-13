@@ -9,7 +9,7 @@ import RegisterUser from './routes/RegisterUser';
 import NoMatch from './components/NoMatch';
 import Login from './routes/Login';
 import Home from './routes/Home';
-import glassdoor from './routes/Glassdoor';
+import Glassdoor from './routes/Glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
 import jobDetails from './routes/JobDetails';
@@ -58,7 +58,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <div className="message">{this.state.message}</div> */}
         <div className="App">
           <Router>
             <div>
