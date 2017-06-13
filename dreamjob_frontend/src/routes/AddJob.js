@@ -50,6 +50,12 @@ handleSubmit(e){
   createJob(this.state)
 }
 
+myFunction(){
+  let onClick = this.props.file
+}
+
+
+
   render() {
     return (
       <div>
@@ -127,19 +133,13 @@ handleSubmit(e){
 
             <FormGroup>
             <label>
-            <h4>Upload Resume</h4>
-            <input type="file" controlId="myResume"></input>
-            <Button onClick="myFunction()">Upload Resume</Button>
+            <h4>Upload Resume/Cover Letter</h4>
+            <input type="file" id="myFile"></input>
+            <Button onClick={this.myFunction.bind(this)}>Upload Resume</Button>
             </label>
           </FormGroup>
 
-          <FormGroup>
-          <label>
-          <h4>Upload Cover Letter</h4>
-          <input type="file" controlId="myCoverLetter"></input>
-          <Button onClick="myFunction()">Upload Cover Letter</Button>
-          </label>
-          </FormGroup>
+
 
             <FormGroup>
               <Col smOffset={4} sm={4}>
