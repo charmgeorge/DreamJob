@@ -1,6 +1,6 @@
 var React = require('react');
 var queryString = require('query-string');
-var api = require('../components/api');
+var api = require('../actions/api');
 var Link = ('react-router-dom').Link;
 var PropTypes = ('prop-types');
 var CompanyPreview = require('../components/CompanyPreview');
@@ -75,6 +75,7 @@ class Results extends React.Component {
             }
           });
         }
+        return results
         this.setState(function() {
           return {
             error: null,
@@ -109,7 +110,8 @@ class Results extends React.Component {
     return (
       <div>
         {/* {JSON.stringify(this.state,null,2)} */}
-        <Player
+        
+        {/* <Player
           label='Winner'
           score={winner.score}
           profile={winner.profile}
@@ -118,7 +120,7 @@ class Results extends React.Component {
           label='Loser'
           score={loser.score}
           profile={loser.profile}
-        />
+        /> */}
       </div>
     )
   }
