@@ -84,6 +84,7 @@ body {
 /*JOBLISTING, JOBLISTING2*/
 .jobList {
   list-style-type: none;
+  margin-bottom: 10px;
   border: 1px black solid;
   box-shadow: 2px 2px 2px 2px;
   background: rgba(91,192,222,.5);

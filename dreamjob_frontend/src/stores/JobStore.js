@@ -9,11 +9,16 @@ class JobStore extends EventEmitter{
     this.newJob = {}
     this.message = ""
     this.details = {}
+    // this.errors = ""
   }
 
   getJobs(){
     return this.jobs
   }
+
+  // getErrors(){
+  //   return this.errors
+  // }
 
   getDetails (){
     return this.details
@@ -69,6 +74,23 @@ class JobStore extends EventEmitter{
     this.updateMessage('Glassdoor details retrieved!')
     this.emit('glassdoor')
   }
+
+  // validate(){
+  //   this.errors = {}
+  //   this.validatePresence('company')
+  //   this.validatePresence('jobTitle')
+  //   this.validatePresence('status')
+  // }
+  //
+  // validatePresence(fieldName){
+  //   if(this.newJob[fieldName] === ''){
+  //     this.addError(fieldName, 'is Required')
+  //   }
+  // }
+  //
+  // addError(fieldName, message){
+  //   this.errors = message + '\n'
+  // }
 
   handleActions(action){
    switch(action.type){

@@ -49,6 +49,10 @@ class App extends Component {
     userStore.on('message', this.updateUserMessage.bind(this))
   }
 
+  redirect(){
+    this.props.history.push('/login')
+  }
+
   handleLogin(){
     this.setState({
       currentUser: userStore.getUser()

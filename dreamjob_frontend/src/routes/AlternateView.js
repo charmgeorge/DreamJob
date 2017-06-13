@@ -4,6 +4,7 @@ import {updateJobs, checkLoginRedir, sort} from '../actions/actions';
 import jobStore from '../stores/JobStore';
 import Alternate from '../components/Alternate';
 import {Button} from 'react-bootstrap';
+import userStore from '../stores/UserStore';
 
 class AlternateView extends Component {
   constructor(props){
@@ -18,7 +19,12 @@ class AlternateView extends Component {
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
+    userStore.on('logout', this.logout.bind(this))
     checkLoginRedir(this.props)
+  }
+
+  logout(){
+    this.props.history.push('/login')
   }
 
   componentWillUnmount(){

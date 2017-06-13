@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
-import jobStore from '../stores/JobStore'
+import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions';
+import jobStore from '../stores/JobStore';
+import userStore from '../stores/UserStore';
 
 class JobDetails extends Component {
   constructor(props){
@@ -25,7 +26,12 @@ class JobDetails extends Component {
   componentWillMount(){
     jobStore.on('jobDetails', this.updateDetails.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted', this.redirect.bind(this)) //need to listen to this emission
+    userStore.on('logout', this.logout.bind(this))
     checkLoginRedir(this.props)
+  }
+
+  logout(){
+    this.props.history.push('/login')
   }
 
   handleDelete(e){

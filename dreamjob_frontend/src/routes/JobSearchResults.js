@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {researchJob} from '../actions/actions';
 import jobResearchStore from '../stores/JobResearchStore';
 import {BrowserRouter as Link} from 'react-router-dom';
+import {Col, Grid, Row} from 'react-bootstrap';
+import userStore from '../stores/UserStore'
 
 class JobSearchResults extends Component {
   constructor(props){
@@ -17,6 +19,11 @@ class JobSearchResults extends Component {
 
   componentWillMount(){
     jobResearchStore.on('jobResearchStoreUpdated', this.updateDetails.bind(this))
+    userStore.on('logout', this.logout.bind(this))
+  }
+
+  logout(){
+    this.props.history.push('/login')
   }
 
   updateDetails(){
@@ -43,12 +50,16 @@ class JobSearchResults extends Component {
     let companyList = []
     if(companyListings.length !== 0){
       companyListings.map(function(company) {
-          return companyList.push(
-            <div key={'key' + company.id}>
-              <img src={company.squareLogo} alt={company.name} />
-              <p key={company.id}> {company.id}, {company.name}, {company.numJobs} </p>
-              <p key={'sec' + company.id}> {company.rating} out of 5 stars, <a href={company.reviewsUrl}>{`${company.name} Reviews`}</a></p>
-            </div>
+        return companyList.push(
+          <div>
+            <Col md={8} mdOffset={2}>
+              <div className ='jobList' key={'key' + company.id}>
+                <img src={company.squareLogo} alt={company.name} />
+                <p key={company.id}> {company.id}, {company.name}, {company.numJobs} </p>
+                <p key={'sec' + company.id}> {company.rating} out of 5 stars, <a href={company.reviewsUrl}>{`${company.name} Reviews`}</a></p>
+              </div>
+            </Col>
+          </div>
         )
       })
     }
@@ -58,9 +69,12 @@ class JobSearchResults extends Component {
         <h2>Results for search "{jobSearch}" in "{locationSearch}":</h2>
         <a href="/search_results">Back to Job Research</a>
         {/* <Link to="/search_results">Back to Job Research</Link> */}
-
-        {companyList}
-        <br />
+        <Grid>
+          <Row>
+            {companyList}
+            <br />
+          </Row>
+        </Grid>
         <br />
         <p style={{fontWeight:"bold"}}>Job ID, Job Title, Number of jobs in the Area</p>
         {jobList}

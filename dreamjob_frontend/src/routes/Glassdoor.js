@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import jobStore from '../stores/JobStore';
-import {glassdoorDetails} from '../actions/actions'
+import {glassdoorDetails} from '../actions/actions';
+import userStore from '../stores/UserStore'
 
 class Glassdoor extends Component {
   constructor(props){
@@ -14,6 +15,11 @@ class Glassdoor extends Component {
 
   componentWillMount(){
     jobStore.on('glassdoor', this.updateDetails.bind(this)) //need to listen to this emission
+    userStore.on('logout', this.logout.bind(this))
+  }
+
+  logout(){
+    this.props.history.push('/login')
   }
 
   updateDetails(){

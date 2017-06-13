@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import userStore from '../stores/UserStore'
 
 class JobSearch extends Component {
   constructor(props){
@@ -15,9 +16,18 @@ class JobSearch extends Component {
 
   // add the glassdoor attribution by the search https://www.glassdoor.com/developer/jobsApiActions.htm
   // add more options to search and use conditionals to see if user searched for a given field (don't make the fields required to submit the field)
-  // radius, jobType, 
+  // radius, jobType,
 
   // - nick
+
+  componentWillMount(){
+    userStore.on('logout', this.logout.bind(this))
+  }
+
+  logout(){
+    this.props.history.push('/login')
+  }
+
 
   handleChange(e){
     let target = e.target;
@@ -33,7 +43,7 @@ class JobSearch extends Component {
     let job = this.state.search.job;
     let location = this.state.search.location;
     e.preventDefault()
-    this.props.history.push(`/job_research/${job}/${location}`)
+    this.props.history.push(`/search_results/${job}/${location}`)
   }
 
   render(){
