@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, updateJobDetails, deleteJob, getDetails} from '../actions/actions'
 import jobStore from '../stores/JobStore'
+import {Link} from 'react-router-dom'
+import {updateJobs} from '../actions/actions'
 
 class JobDetails extends Component {
   constructor(props){
@@ -12,6 +14,13 @@ class JobDetails extends Component {
     }
   }
 
+  componentWillMount(){
+    // jobStore.on('jobDetailsUpdated', this.updateDetails.bind(this)) //do we need this?
+    jobStore.on('jobDeleted', this.redirect.bind(this))
+    jobStore.on('jobDetails', this.updateDetails.bind(this))
+    checkLoginRedir(this.props)
+  }
+
   updateDetails(){
     this.setState({
       job:jobStore.getDetails()
@@ -20,6 +29,10 @@ class JobDetails extends Component {
 
   redirect(){
     this.props.history.push('/job_index');
+  }
+
+  renewJobs(){
+    updateJobs()
   }
 
   componentWillMount(){

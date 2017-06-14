@@ -3,8 +3,10 @@ var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
 // var cors = require('cors')
+var path = require('path')
 var app = express();
 
+const PORT = process.env.PORT || 4000;
 var corsPrefetch = require('cors-prefetch-middleware').default
 var imagesUpload = require('images-upload-middleware').default
 
@@ -22,13 +24,12 @@ var Glassdoor = require('node-glassdoor').initGlassdoor({
 
 // app.use(cors())
 app.use(corsPrefetch)
-app.use(express.static('public'))
 app.use(bodyParser.json())
 
 app.post('/files', imagesUpload(
   './public/images',
   'http://localhost:4000/images'
-));
+app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 
 
 const authorization = function(request, response, next){
@@ -166,6 +167,8 @@ app.get('/glassdoor/:company', function (request, response) {
 // var companyURL = `http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=web+developer&l=sacramento&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`
 // fetch("http://localhost:4000/job_research?job=" + job + "&location=" + location, params).then(function(response){
 
+//     });
+
 app.get('/job_research/:job/:location', function (request, response) {
   let job = request.params['job'];
   let location = request.params['location'];
@@ -253,6 +256,10 @@ app.post('/login_user', function(request, response){
   })
 })
 
-app.listen(4000, function () {
- console.log('Todo Server listening on port 4000!');
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../dreamjob_frontend/build', 'index.html'));
+});
+
+app.listen(PORT, function () {
+ console.log(`Todo Server listening on port ${PORT}!`);
 });
