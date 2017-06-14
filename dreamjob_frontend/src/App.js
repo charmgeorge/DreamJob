@@ -13,10 +13,10 @@ import Home from './routes/Home';
 import Glassdoor from './routes/Glassdoor';
 import {checkLogin, userLogout} from './actions/actions';
 import Header from './components/Header'
+import jobDetails from './routes/JobDetails';
+import alternateView from './routes/AlternateView';
 import JobSearch from './routes/JobSearch';
 import JobSearchResults from './routes/JobSearchResults';
-import JobDetails from './routes/JobDetails';
-import AlternateView from './routes/AlternateView';
 
 class App extends Component {
   constructor(props){
@@ -69,7 +69,7 @@ class App extends Component {
     return (
       <div>
         <div className="message">{this.state.message}</div>
-        <div>
+        <div className="App">
           <Router history={history}>
             <div>
               <Header
@@ -82,8 +82,8 @@ class App extends Component {
                 <Route exact path = "/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={AddJob}></Route>
                 <Route exact path = '/job_index' component={JobIndex}></Route>
-                <Route exact path = '/job_index_alternate' component={AlternateView}></Route>
-                <Route exact path = '/job_details/:id' component={JobDetails}></Route>
+                <Route exact path = '/job_index_alternate' component={alternateView}></Route>
+                <Route exact path = '/job_details/:id' component={jobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>

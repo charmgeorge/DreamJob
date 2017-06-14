@@ -51,7 +51,7 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <Navbar inverse collapseOnSelect>
+        <Navbar collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="/">Dream Job</a>
@@ -59,7 +59,7 @@ class Header extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
+            <Nav bsStyle="pills" >
               <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
               <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
               <NavItem eventKey={3}><Link to='/job_research'>Job Research</Link></NavItem>

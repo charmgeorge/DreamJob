@@ -11,6 +11,7 @@ class JobSearch extends Component {
 
       }
     }
+
   }
 
   // add the glassdoor attribution by the search https://www.glassdoor.com/developer/jobsApiActions.htm
@@ -33,8 +34,6 @@ class JobSearch extends Component {
     let location = this.state.search.location;
     e.preventDefault()
     this.props.history.push(`/search_results/${job}/${location}`)
-    // this.props.history.push(`/search_results?job=${job}&location=${location}`)
-
   }
 
   render(){
