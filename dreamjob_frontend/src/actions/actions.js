@@ -255,3 +255,27 @@ export function researchJob(searchDetails){
       jobStore.updateMessage("There was an error: " + err)
   })
 }
+
+//
+// export function compareCompanies(searchDetails){
+//   const params = {
+//       method: 'GET',
+//       headers: {'Content-Type': 'application/json'}
+//   }
+//
+//   let companyOne = searchDetails.companyOne;
+//   let companyTwo = searchDetails.companyTwo;
+//
+//   fetch("http://localhost:4000/job_research/" + job + "/" + location, params).then(function(response){
+//     if(response.status === 200){
+//       response.json().then(function(body){
+//         dispatcher.dispatch({
+//           type: 'JOB_DETAILS',
+//           body: body
+//         })
+//       })
+//     }
+//   }).catch(function(err){
+//       jobStore.updateMessage("There was an error: " + err)
+//   })
+// }
