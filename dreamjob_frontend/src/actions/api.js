@@ -10,6 +10,7 @@ var key = "cE2dvplWMTK";
 // var ip = 0.0.0.0;
 
 var url = `http://api.glassdoor.com/api/api.htm?t.p=${id}&t.k=${key}&userip=0.0.0.0&useragent=&format=json&v=1&action=employers`
+http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=0.0.0.0&useragent=&format=json&v=1&action=employers`
 
 // app.get('/glassdoor/:company', function (request, response) {
 //   let company = request.params['company'];
@@ -29,15 +30,49 @@ var url = `http://api.glassdoor.com/api/api.htm?t.p=${id}&t.k=${key}&userip=0.0.
 //       });
 // });
 
+// function getCompanyProfile(companyName){
+//   return axios.get( url + `&q=${companyName}`, { headers: {'Content-Type': 'application/json'} })
+//     .then(function(company){
+//       console.log(company);
+//       return company;  //compnay.data??
+//     })
+// }
+
 function getCompanyProfile(companyName){
-  return axios.get( url + `&q=${companyName}`, { headers: {'Content-Type': 'application/json'} })
-    .then(function(company){
-      console.log(company);
-      return company;  //compnay.data??
-    })
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch(url + `&q=${companyName}`, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        console.log(body);
+        return body
+      })
+    }
+  })
 }
 
-//
+export function sort(attribute){
+  const params = {
+      method: 'GET',
+      headers: {'Content-Type': 'application/json'}
+  }
+  fetch("http://localhost:4000/sort/" + attribute, params).then(function(response){
+    if(response.status === 200){
+      response.json().then(function(body){
+        // dispatcher.dispatch({
+        //   type: 'SORT_JOBS',
+        //   jobs: body.jobs
+        // })
+      })
+    }
+  }).catch(function(err){
+      // jobStore.updateMessage("There was an error: " + err)
+  })
+}
+
+
 // function getProfile(username){
 //   return axios.get('https://api.github.com/users/' + username + params)
 //     .then(function(user){
@@ -94,8 +129,7 @@ function getCompanyData(company){
 // }
 
 
-module.exports = {
-  battle: function(companies) {
+export function battle(companies) {
     // console.log(players);
     return axios.all(companies.map(getCompanyData))
       // .then(sortPlayers)
@@ -114,4 +148,3 @@ module.exports = {
   //       return response.data.items
   //     })
   // }
-}

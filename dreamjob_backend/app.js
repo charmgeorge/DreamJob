@@ -175,6 +175,26 @@ app.get('/job_research/:job/:location', function (request, response) {
     })
 })
 
+app.get('/nick/:company', function (request, response) {
+  let company = request.params['company'];
+
+  fetch(`http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=0.0.0.0&useragent=&format=json&v=1&action=employers&q=${company}`).then((response)=>{
+      return response.json()
+    })
+    .then((body)=>{
+      // console.log("success!", body.response.employers[0])
+      response.json({
+        company: body.response.employers[0]
+      })
+    })
+    .catch((error) => {
+      console.log('error', error);
+      response.json({
+        error: error
+      })
+    })
+})
+
 app.get('/', function (request, response) {
   Glassdoor.findOneCompany('microsoft',{country:""}).then(function (data) {
     response.json({
