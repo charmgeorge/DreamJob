@@ -61,6 +61,15 @@ h3 {
   text-shadow: black 2px 2px;
 }
 
+.formContainer {
+  background-image: url('https://static.pexels.com/photos/47426/pexels-photo-47426.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
 .headFeature{
   text-align: center;
 }

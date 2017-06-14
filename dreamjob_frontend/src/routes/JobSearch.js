@@ -38,7 +38,7 @@ class JobSearch extends Component {
 
   render(){
     return (
-      <div className='container'>
+      <div className='container' >
         <div className='row'>
           <div className='col-xs-6 col-xs-offset-3'>
             <div className='panel panel-default'>

@@ -61,7 +61,7 @@ class JobIndex extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div  className='container'>
         <Row>
           <div className='pull-left'>
             <Button bsStyle='primary' onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
