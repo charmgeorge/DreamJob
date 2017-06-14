@@ -11,7 +11,9 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "cors": "^2.8.3",
+    "cors-prefetch-middleware": "^1.0.0",
     "express": "^4.15.3",
+    "images-upload-middleware": "^1.1.1",
     "node-fetch": "^1.7.1",
     "node-glassdoor": "^1.0.5",
     "nodemon": "^1.11.0",

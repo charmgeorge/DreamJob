@@ -2,8 +2,11 @@ var express = require('express');
 var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
-var cors = require('cors')
+// var cors = require('cors')
 var app = express();
+
+var corsPrefetch = require('cors-prefetch-middleware').default
+var imagesUpload = require('images-upload-middleware').default
 
 var fetch = require('node-fetch');  //https://www.npmjs.com/package/node-fetch
 
@@ -13,13 +16,20 @@ var Glassdoor = require('node-glassdoor').initGlassdoor({
     partnerKey: "cE2dvplWMTK"
 });
 
-const corsOptions = {
-  origin: 'http://localhost:3000'
-}
+// const corsOptions = {
+//   origin: 'http://localhost:3000'
+// }
 
-app.use(cors())
+// app.use(cors())
+app.use(corsPrefetch)
 app.use(express.static('public'))
 app.use(bodyParser.json())
+
+app.post('/files', imagesUpload(
+  './public/images',
+  'http://localhost:4000/images'
+));
+
 
 const authorization = function(request, response, next){
   const token = request.query.authToken || request.body.authToken
@@ -40,6 +50,8 @@ const authorization = function(request, response, next){
     response.json({message: 'Authorization Token Required'})
   }
 }
+
+
 
 app.get('/jobs', authorization, function (request, response) {
   let id = request.currentUser.id ;
