@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {checkLogin, userLogout} from './actions/actions';
@@ -14,8 +15,9 @@ import JobSearchResults from './routes/JobSearchResults';
 import jobStore from './stores/JobStore';
 import Login from './routes/Login';
 import NoMatch from './components/NoMatch';
-import React, { Component } from 'react';
 import RegisterUser from './routes/RegisterUser';
+import UserCP from './routes/UserCP';
+import AlternateView from './routes/AlternateView';
 import Results from './routes/Results';
 import userStore from './stores/UserStore';
 
@@ -83,14 +85,16 @@ class App extends Component {
                 <Route exact path = "/register" component={RegisterUser}></Route>
                 <Route exact path = '/add_job' component={AddJob}></Route>
                 <Route exact path = '/job_index' component={JobIndex}></Route>
-                <Route exact path = '/job_index_alternate' component={alternateView}></Route>
-                <Route exact path = '/job_details/:id' component={jobDetails}></Route>
+                <Route exact path = '/job_index_alternate' component={AlternateView}></Route>
+                <Route exact path = '/job_details/:id' component={JobDetails}></Route>
                 <Route exact path = '/login' component={Login}></Route>
                 <Route exact path = '/glassdoor/:company' component={Glassdoor}></Route>
                 <Route exact path = '/job_research' component={JobSearch}></Route>
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route exact path = '/compare' component={CompanyCompare} />
                 <Route exact path = "/compare/results" component={Results} />
+                <Route exact path = "/user" component={UserCP}/>
+
                 <Route component={NoMatch} />
               </Switch>
             </div>

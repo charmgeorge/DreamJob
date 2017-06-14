@@ -12,7 +12,8 @@ class UserStore extends EventEmitter{
       firstname: "",
       lastname: "",
       email: "",
-      password: ""
+      password: "",
+      image: "" // how to set???
     }
     this.errors = {}
   }
@@ -80,6 +81,7 @@ class UserStore extends EventEmitter{
 
 
   addUser(user){
+    // what comes in in user???
     this.user = user
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('authTokenExpiration', user.authTokenExpiration);

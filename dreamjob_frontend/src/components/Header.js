@@ -27,7 +27,16 @@ class Header extends Component {
 
   email(){
     if(this.props.user){
-      return `Welcome, ${this.props.user.email}`
+      var email = this.props.user.email
+      return (
+        <Link
+          to={{
+            pathname: "/user",
+            state: { email: {email} }
+        }}/>
+      //   Welcome, {this.props.user.email}
+      // </Link>
+    )
     }else{
       return (
         <div>
@@ -63,7 +72,6 @@ class Header extends Component {
               <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
               <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
               <NavItem eventKey={3}><Link to='/job_research'>Job Research</Link></NavItem>
-              <NavItem eventKey={4}><Link to='/compare'>Compare Companies</Link></NavItem>
 
             </Nav>
             <Nav pullRight>
