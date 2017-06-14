@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {newUser} from '../actions/actions';
 import userStore from '../stores/UserStore';
-
+import ImagesUploader from 'react-images-uploader';
+import 'react-images-uploader/styles.css';
 
 class RegisterUser extends Component {
   constructor(props){
@@ -51,6 +52,20 @@ class RegisterUser extends Component {
     return Object.keys(this.state.errors).length === 0
   }
 
+  handleImage(err, response){
+    if(err){
+      console.error('there was an error: ', err);;
+    } else {
+      let event = {
+        target: {
+          name: 'imageUrl',
+          value: response
+        }
+      }
+      this.handleChange(event)
+    }
+  }
+
   errorClass(field){
     if(this.state.errors && this.state.errors[field] && this.state.errors[field].length !== 0){
       return 'form-group has-error'
@@ -73,6 +88,13 @@ class RegisterUser extends Component {
                     </div>
                   }
                   <h3>Register</h3>
+                  <ImagesUploader
+                   url="http://localhost:4000/files"
+                   optimisticPreviews
+                   multiple={false}
+                   onLoadEnd={this.handleImage.bind(this)}
+                   label="Upload a profile picture"
+                  />
                   <form className='form'
                     onSubmit={this.handleSubmit.bind(this)}>
                     <div className='row'>
