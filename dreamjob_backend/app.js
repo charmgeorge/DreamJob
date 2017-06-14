@@ -28,7 +28,8 @@ app.use(bodyParser.json())
 
 app.post('/files', imagesUpload(
   './public/images',
-  'http://localhost:4000/images'
+  'http://localhost:4000/images'))
+
 app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 
 
