@@ -30,7 +30,6 @@ class JobSearch extends Component {
   }
 
   handleSubmit(e){
-    // console.log(this.state.search);
     let job = this.state.search.job;
     let location = this.state.search.location;
     e.preventDefault()

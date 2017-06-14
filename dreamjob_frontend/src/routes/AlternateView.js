@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap';
-import {updateJobs, checkLoginRedir, sort} from '../actions/actions';
+import {updateJobs, checkLoginRedir, sort, userLogout} from '../actions/actions';
 import jobStore from '../stores/JobStore';
 import Alternate from '../components/Alternate';
 import {Button} from 'react-bootstrap';
+import userStore from '../stores/UserStore';
+import Header from '../components/Header';
 
 class AlternateView extends Component {
   constructor(props){
   super(props)
   updateJobs()
   this.state = {
-    jobs: jobStore.getJobs()
+    jobs: jobStore.getJobs(),
+    currentUser: userStore.getUser()
     }
   }
 
@@ -18,6 +21,10 @@ class AlternateView extends Component {
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
+    checkLoginRedir(this.props)
+  }
+
+  componentWillUpdate(){
     checkLoginRedir(this.props)
   }
 
@@ -46,6 +53,7 @@ class AlternateView extends Component {
     let column = e.target.name
     sort(column)
   }
+
 
   render() {
     return (

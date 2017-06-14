@@ -61,7 +61,6 @@ class UserStore extends EventEmitter{
     }
   }
 
-
   validatePassword(fieldName){
     const filter = /\d+/
 
@@ -112,7 +111,7 @@ class UserStore extends EventEmitter{
     localStorage.setItem('authToken', null);
     localStorage.setItem('authTokenExpiration', null);
     localStorage.setItem('email', "");
-    this.emit('login')
+    this.emit('logout')
   }
 
   handleAction(action){

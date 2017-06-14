@@ -8,17 +8,19 @@ import {Grid, Row, Button} from 'react-bootstrap'
 class JobIndex extends Component {
   constructor(props){
   super(props)
-  updateJobs()
+  if(checkLoginRedir(this.props)){
+    updateJobs()
+  }
   this.state = {
     jobs: jobStore.getJobs()
     }
   }
 
   componentWillMount(){
+    checkLoginRedir(this.props)
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
-    checkLoginRedir(this.props)
   }
 
   componentWillUnmount(){

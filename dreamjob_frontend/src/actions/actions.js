@@ -7,7 +7,12 @@ export function sort(attribute){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/sort/" + attribute, params).then(function(response){
+
+  // let theUrl = "http://localhost:4000/jobs?authToken=" + currentUser.authToken
+  let currentUser = userStore.getUser()
+  let theUrl = "http://localhost:4000/sort/" + attribute + "?authToken=" + currentUser.authToken;
+
+  fetch(theUrl, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({
@@ -178,6 +183,7 @@ export function updateJobs(){
     method: 'GET',
     headers: {'Content-Type': 'application/json'}
   }
+
   let theUrl = "http://localhost:4000/jobs?authToken=" + currentUser.authToken
   fetch(theUrl, params).then(function(response){
     if(response.status === 200){
@@ -233,6 +239,10 @@ export function researchJob(searchDetails){
   let location = searchDetails.location;
 
   fetch("http://localhost:4000/job_research/" + job + "/" + location, params).then(function(response){
+  // leave for nick (in development)
+  // let url = "http://localhost:4000/job_research?job=" + job + "&location=" + location;
+  // fetch(url, params).then(function(response){
+
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({
