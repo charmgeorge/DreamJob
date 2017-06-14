@@ -19,14 +19,12 @@ class JobResearchStore extends EventEmitter{
   updateJobsAndCompanies(action){
     this.jobs = action.body.jobs;
     this.companies = action.body.companies;
-    // console.log('companies', this.companies);
     this.emit('jobResearchStoreUpdated');
   }
 
   handleActions(action){
     switch(action.type){
       case("JOB_DETAILS"):{
-        // console.log('actionssss ', action);
          this.updateJobsAndCompanies(action)
          break
       }

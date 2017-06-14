@@ -8,17 +8,19 @@ import {Grid, Row, Button} from 'react-bootstrap'
 class JobIndex extends Component {
   constructor(props){
   super(props)
-  updateJobs()
+  if(checkLoginRedir(this.props)){
+    updateJobs()
+  }
   this.state = {
     jobs: jobStore.getJobs()
     }
   }
 
   componentWillMount(){
+    checkLoginRedir(this.props)
     jobStore.on('jobsLoaded',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('jobDeleted',this.updateJobs.bind(this)) //need to listen to this emission
     jobStore.on('sorted',this.updateJobs.bind(this)) //need to listen to this emission
-    checkLoginRedir(this.props)
   }
 
   componentWillUnmount(){
@@ -60,12 +62,14 @@ class JobIndex extends Component {
   render() {
     return (
       <div className='container'>
-        <div className='pull-left'>
-          <Button onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
-        </div>
-        <div className='pull-right'>
-          <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
-        </div>
+        <Row>
+          <div className='pull-left'>
+            <Button bsStyle='primary' onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
+          </div>
+          <div className='pull-right'>
+            <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
+          </div>
+        </Row>
         <div>
           <h3>Current Dream Jobs</h3>
           <div className=" job-list row">

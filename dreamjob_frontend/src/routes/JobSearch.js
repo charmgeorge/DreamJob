@@ -11,11 +11,12 @@ class JobSearch extends Component {
 
       }
     }
+
   }
 
   // add the glassdoor attribution by the search https://www.glassdoor.com/developer/jobsApiActions.htm
   // add more options to search and use conditionals to see if user searched for a given field (don't make the fields required to submit the field)
-  // radius, jobType, 
+  // radius, jobType,
 
   // - nick
 
@@ -29,11 +30,10 @@ class JobSearch extends Component {
   }
 
   handleSubmit(e){
-    // console.log(this.state.search);
     let job = this.state.search.job;
     let location = this.state.search.location;
     e.preventDefault()
-    this.props.history.push(`/job_research/${job}/${location}`)
+    this.props.history.push(`/search_results/${job}/${location}`)
   }
 
   render(){

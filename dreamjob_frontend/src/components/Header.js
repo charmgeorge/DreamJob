@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import {Navbar, Nav, NavItem,} from 'react-bootstrap';
+// import {Link, NavLink} from 'react-router-dom';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
+import Home from '../routes/Home';
+import userStore from '../stores/UserStore';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Redirect,
+  withRouter
+} from 'react-router-dom';
 
 class Header extends Component {
+  constructor(props){
+    super(props)
+  }
+
+  componentWillUpdate(){
+    userStore.on('logout', this.handleLogout.bind(this))
+  }
+
+  handleLogout(){
+    this.props.history.push("/")
+  }
 
   email(){
     if(this.props.user){
@@ -20,15 +41,17 @@ class Header extends Component {
   logout(){
     if(this.props.user){
       return <a onClick={this.props.logout}>Logout</a>
-    }else{
-      return <Link to="/">Home</Link>
+    } else{
+      // what to do here???
+      return <Redirect to="/" />
+
     }
   }
 
   render() {
     return (
       <div>
-        <Navbar inverse collapseOnSelect>
+        <Navbar collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
               <a href="/">Dream Job</a>
@@ -36,7 +59,7 @@ class Header extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
+            <Nav bsStyle="pills" >
               <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
               <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
               <NavItem eventKey={3}><Link to='/job_research'>Job Research</Link></NavItem>

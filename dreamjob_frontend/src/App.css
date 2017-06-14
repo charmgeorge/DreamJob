@@ -7,13 +7,8 @@
   color: white;
 }
 
-body {
-  text-align: center;
-  background: url(http://blog.coachingassembly.com/wp-content/uploads/2014/12/DreamJob.jpg) no-repeat center center fixed;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
+h3 {
+  font-family: Roboto;
 }
 
 
@@ -29,41 +24,64 @@ body {
   font-size: 25px;
 }
 
+
 /*ALTERNATEVIEW*/
 .clear {
   background: rgba(0, 255, 255, 0);
   border-style: none;
 }
 
+
 /*HOME*/
 .jumbotron {
-  border: 3px solid rgb(91,192,222);
-  background: rgba(245,240,240,0.3)
+  font-family: Ubuntu;
+  text-align: center;
+  min-height: 600px;
+  background-image: url('https://static.pexels.com/photos/47426/pexels-photo-47426.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-left: 100px;
+  border-top: 3px solid rgb(91,192,222);
+  border-bottom: 3px solid rgb(91,192,222);
+  color: white;
+  text-shadow: black 2px 2px;
+}
+
+.headFeature{
+  text-align: center;
 }
 
 .jumbotron h1 {
-  padding-right: 50%;
+  text-align: center;
+  color: orange;
 }
 
 .benefits {
-  background: rgba(91,192,222,.8);
   padding-top: 15px;
 }
 
 .thumbs {
+  border: 2px solid;
+  border-radius: 25px;
   width: auto;
-  max-height: 150px
+  max-height: 300px;
+  max-width: 500px;
+  margin: 10px;
 }
 
 
+.hrstyle{
+  border-top: 1px solid orange;
+}
 
 /*COMPONENTS*/
 /*SLIDE*/
 .pictures {
   margin: auto;
   width: auto;
-  max-height: 300px
+  max-height: 300px;
 }
+
 
 /*ALTERNATE, JOBLISTING, AND JOBLISTING2*/
 .GREEN {
@@ -76,6 +94,10 @@ body {
   margin-left: 48%;
 }
 
+.indexHeader {
+  margin: 50px;
+}
+
 .RED {
   color: red;
   margin-left: 48%;
@@ -84,7 +106,11 @@ body {
 /*JOBLISTING, JOBLISTING2*/
 .jobList {
   list-style-type: none;
-  border: 1px black solid;
-  box-shadow: 2px 2px 2px 2px;
-  background: rgba(91,192,222,.5);
+  border: 1px orange solid;
+  box-shadow: 2px 2px orange;
+  background-image: url(http://1.bp.blogspot.com/_Sb0L_zHQ6hM/S8gxCUw9iyI/AAAAAAAAAVI/aDFjbSlKWG0/s320/06-11_slick_businesscard_duplicated_finished.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
 }

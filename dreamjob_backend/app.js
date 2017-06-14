@@ -73,32 +73,31 @@ app.get('/jobs', authorization, function (request, response) {
   })
 })
 
-var direction = true
-app.get('/sort/:attribute', function (request, response) {
+var direction = true;
+app.get('/sort/:attribute', authorization, function (request, response) {
   let attribute = request.params["attribute"];
+  let id = request.currentUser.id ;
+
   if (direction === true){
     sort = 'ASC'
     direction = !direction
-  }else{
+  } else{
     sort = 'DESC'
     direction = !direction
   }
 
-  Job.findAll(
-    {
-      order: [[attribute, sort]]
-    }
-  ).then(function(jobs){
-    response.status(200)
-    response.json({
-      status:'success',
-      jobs:jobs
+  Job.findAll({where: {userId:id}, order: [[attribute, sort]] })
+    .then(function(jobs){
+      response.status(200)
+      response.json({
+        status:'success',
+        jobs:jobs
+      })
     })
-  })
-  .catch(function(error){
-    response.status(400)
-    response.json({status:'error', error:error})
-  })
+    .catch(function(error){
+      response.status(400)
+      response.json({status:'error', error:error})
+    })
 })
 
 app.get('/deleteJob/:id', function (request, response) {
@@ -146,6 +145,7 @@ app.get('/glassdoor/:company', function (request, response) {
       });
 });
 
+// nicks stuff for the research route:  will delete upon completion
 // defaultCompanyURL = `http://api.glassdoor.com/api/api.htm?t.p=5317&
 // t.k=n07aR34Lk3Y&
 // userip=0.0.0.0&
@@ -164,6 +164,7 @@ app.get('/glassdoor/:company', function (request, response) {
 // pId = 157533;
 // pKey = "cE2dvplWMTK";
 // var companyURL = `http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=web+developer&l=sacramento&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`
+// fetch("http://localhost:4000/job_research?job=" + job + "&location=" + location, params).then(function(response){
 
 app.get('/job_research/:job/:location', function (request, response) {
   let job = request.params['job'];
@@ -173,7 +174,6 @@ app.get('/job_research/:job/:location', function (request, response) {
       return response.json()
     })
     .then((body)=>{
-      console.log("success!", body.status)
       response.json({
         jobs: body.response.jobTitles,
         companies: body.response.employers
