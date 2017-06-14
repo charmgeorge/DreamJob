@@ -93,7 +93,7 @@ class RegisterUser extends Component {
                    optimisticPreviews
                    multiple={false}
                    onLoadEnd={this.handleImage.bind(this)}
-                   label="Upload a profile picture"
+                   label="Upload a profile picture (optional)"
                   />
                   <form className='form'
                     onSubmit={this.handleSubmit.bind(this)}>

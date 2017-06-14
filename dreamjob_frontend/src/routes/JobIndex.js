@@ -66,9 +66,7 @@ class JobIndex extends Component {
           <div className='pull-left'>
             <Button bsStyle='primary' onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
           </div>
-          <div className='pull-right'>
-            <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
-          </div>
+
         </Row>
         <div>
           <h3>Current Dream Jobs</h3>
@@ -86,3 +84,8 @@ class JobIndex extends Component {
 }
 
 export default JobIndex
+
+
+// <div className='pull-right'>
+//   <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
+// </div>
