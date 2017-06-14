@@ -70,7 +70,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="message">{this.state.message}</div>
         <div className="App">
           <Router history={history}>
             <div>

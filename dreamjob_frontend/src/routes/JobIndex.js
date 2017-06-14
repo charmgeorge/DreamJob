@@ -61,13 +61,11 @@ class JobIndex extends Component {
 
   render() {
     return (
+      <div className='listContainer'>
       <div  className='container'>
         <Row>
           <div className='pull-left'>
             <Button bsStyle='primary' onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
-          </div>
-          <div className='pull-right'>
-            <Button bsStyle='danger' name='updatedAt' onClick={this.handleClick.bind(this)}>Heat Map</Button>
           </div>
         </Row>
         <div>
@@ -80,6 +78,7 @@ class JobIndex extends Component {
             </Grid>
           </div>
         </div>
+      </div>
       </div>
     );
   }

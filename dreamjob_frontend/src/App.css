@@ -1,10 +1,10 @@
 /*APP.JS*/
 .message {
-  background-color: #222;
   text-align: center;
   height: 30px;
   font-size: 20px;
-  color: white;
+  color: #088da5;
+  text-shadow: 1px 1px grey
 }
 
 p{
@@ -20,12 +20,6 @@ h2 {
 h3 {
   font-family: Roboto;
 }
-
-/*body {
-  background-image: url(https://s-media-cache-ak0.pinimg.com/originals/6d/8a/c1/6d8ac1a8888d08305e9a707359099cd0.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}*/
 
 /*ROUTES*/
 /*ADDJOB*/
@@ -70,6 +64,24 @@ h3 {
   padding-top: 40px;
 }
 
+.glassImg{
+  max-height: 25px;
+  border-radius: 18px;
+  padding-left: 10px;
+
+}
+
+.findJob{
+  padding-bottom: 15px;
+
+}
+
+.powered {
+  font-size: 10px;
+  padding-top:20px;
+
+}
+
 .headFeature{
   text-align: center;
 }
@@ -78,6 +90,7 @@ h3 {
   text-align: center;
   color: orange;
 }
+
 
 .benefits {
   padding-top: 15px;
@@ -88,7 +101,7 @@ h3 {
   border-radius: 25px;
   width: auto;
   max-height: 300px;
-  max-width: 500px;
+  max-width: 450px;
   margin: 10px;
 }
 
@@ -96,6 +109,7 @@ h3 {
 .hrstyle{
   border-top: 1px solid orange;
 }
+
 
 /*COMPONENTS*/
 /*SLIDE*/
