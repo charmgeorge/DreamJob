@@ -38,42 +38,48 @@ class JobSearch extends Component {
 
   render(){
     return (
-      <div className='container'>
-        <div className='row'>
-          <div className='col-xs-6 col-xs-offset-3'>
-            <div className='panel panel-default'>
-              <div className='panel-body'>
-                <h3>Research a job!</h3>
-                <form className="form" onSubmit={this.handleSubmit.bind(this)}>
-                  <div className='row'>
-                    <div className='col-xs-12'>
-                      <div>
-                        <label>Job Title</label>
-                        <br />
-                        <input
-                          type='text'
-                          name='job'
-                          value={this.state.search.job}
-                          onChange={this.handleChange.bind(this)}
-                        />
+      <div className='formContainer'>
+        <div className='container' >
+          <div className='row'>
+            <div className='col-xs-6 col-xs-offset-3'>
+              <div className='panel panel-default'>
+                <div className='panel-body'>
+                  <h3 >Find New Jobs</h3>
+                  <hr className='hrstyle' />
+                  <form className="form" onSubmit={this.handleSubmit.bind(this)}>
+                    <div className='row'>
+                      <div className='col-xs-12'>
+                        <div>
+                          <label>Job Title</label>
                           <br />
-                      </div>
-                      <div>
-                        <label>Location</label>
-                        <br />
-                        <input
-                          type='text'
-                          name='location'
-                          value={this.state.search.location}
-                          onChange={this.handleChange.bind(this)}
-                        />
-                        <br />
+                          <input
+                            type='text'
+                            name='job'
+                            value={this.state.search.job}
+                            onChange={this.handleChange.bind(this)}
+                          />
+                            <br />
+                        </div>
+                        <div>
+                          <label>Location</label>
+                          <br />
+                          <input
+                            type='text'
+                            name='location'
+                            value={this.state.search.location}
+                            onChange={this.handleChange.bind(this)}
+                          />
+                          <br />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <br />
-                  <input type='submit' value='Submit' className="btn btn-primary" />
-                </form>
+                    <br />
+                    <input type='submit' value='Submit' className="btn btn-primary" />
+                    <p className='powered' >powered by
+                      <a href='https://www.glassdoor.com/index.htm'><img className='glassImg' src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search'  /></a>
+                    </p>
+                  </form>
+                </div>
               </div>
             </div>
           </div>

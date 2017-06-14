@@ -55,7 +55,7 @@ handleSubmit(e){
       paddingTop: 25,
     };
     return (
-      <div>
+      <div className ="formContainer">
         <Panel className='formSize' header="Add a Job" bsStyle="primary">
           <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
             <FormGroup controlId="formHorizontalEmail">
