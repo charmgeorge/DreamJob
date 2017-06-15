@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 
 app.post('/files', imagesUpload(
   './public/images',
-  'http://localhost:4000/images'))
+  'http://localhost:4000/images')) // use the below (with images) to keep pics???
 
 app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 
@@ -52,8 +52,6 @@ const authorization = function(request, response, next){
     response.json({message: 'Authorization Token Required'})
   }
 }
-
-
 
 app.get('/jobs', authorization, function (request, response) {
   let id = request.currentUser.id ;
@@ -174,7 +172,8 @@ app.get('/job_research/:job/:location', function (request, response) {
   let job = request.params['job'];
   let location = request.params['location'];
 
-  fetch(`http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`).then((response)=>{
+  // took out http:// since it fails to fetch since since not secure
+  fetch(`https://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`).then((response)=>{
       return response.json()
     })
     .then((body)=>{
