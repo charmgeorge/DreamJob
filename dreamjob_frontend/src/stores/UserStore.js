@@ -18,8 +18,18 @@ class UserStore extends EventEmitter{
     this.errors = {}
   }
 
+  getFields(){
+    return this.fields;
+  }
+
   updateUser(user){
     this.user = user
+    this.fields = {
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      image: user.imageUrl
+    }
     localStorage.setItem('authToken', user.authToken);
     localStorage.setItem('authTokenExpiration', user.authTokenExpiration);
     localStorage.setItem('email', user.email);
@@ -110,6 +120,13 @@ class UserStore extends EventEmitter{
 
   logout(){
     this.user = null
+    this.fields = {
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      image: "" // how to set???
+    }
     localStorage.setItem('authToken', null);
     localStorage.setItem('authTokenExpiration', null);
     localStorage.setItem('email', "");

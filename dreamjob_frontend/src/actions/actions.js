@@ -84,6 +84,7 @@ export function loginUser(userInfo){
       return response.json()
     })
     .then((body)=>{
+      console.log(body);
       if (success){
         dispatcher.dispatch({
           type: "LOGIN_USER",

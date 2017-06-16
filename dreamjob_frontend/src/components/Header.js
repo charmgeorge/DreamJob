@@ -27,16 +27,17 @@ class Header extends Component {
 
   email(){
     if(this.props.user){
+      console.log('signed in');
       var email = this.props.user.email
       return (
-        <Link
-          to={{
-            pathname: "/user",
-            state: { email: {email} }
-        }}/>
-      //   Welcome, {this.props.user.email}
+        <Link to="/user" > Welcome, {this.props.user.email} </Link>
+        //   to={{
+        //     pathname: "/user",
+        //     state: { email: {email} }
+        // }}/>
+
       // </Link>
-    )
+      )
     }else{
       return (
         <div>
