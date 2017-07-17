@@ -26,9 +26,18 @@ var Glassdoor = require('node-glassdoor').initGlassdoor({
 app.use(corsPrefetch)
 app.use(bodyParser.json())
 
+// best way to handle the files??? eric
+var apiUrl
+if(process.env.NODE_ENV === 'production'){
+  apiUrl = "/";
+} else {
+  apiUrl = "http://localhost:4000/";
+};
+console.log('backend app.js', apiUrl);
+
 app.post('/files', imagesUpload(
   './public/images',
-  'http://localhost:4000/images'))
+  'https://localhost:4000/images'))
 
 app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 
@@ -52,8 +61,6 @@ const authorization = function(request, response, next){
     response.json({message: 'Authorization Token Required'})
   }
 }
-
-
 
 app.get('/jobs', authorization, function (request, response) {
   let id = request.currentUser.id ;

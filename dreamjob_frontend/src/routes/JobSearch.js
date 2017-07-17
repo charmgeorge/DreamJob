@@ -11,7 +11,6 @@ class JobSearch extends Component {
 
       }
     }
-
   }
 
   // add the glassdoor attribution by the search https://www.glassdoor.com/developer/jobsApiActions.htm

@@ -1,13 +1,14 @@
 import dispatcher from '../dispatchers/dispatcher';
 import userStore from '../stores/UserStore';
 import jobStore from '../stores/JobStore'
+import axios from 'axios';
 
 var apiUrl
 if(process.env.NODE_ENV === 'production'){
-  apiUrl = "/"
+  apiUrl = "/";
 } else {
-  apiUrl = "http://localhost:4000/"
-}
+  apiUrl = "http://localhost:4000/";
+};
 console.log(process.env)
 console.log('api is ', apiUrl)
 
@@ -247,8 +248,29 @@ export function researchJob(searchDetails){
   let job = searchDetails.job;
   let location = searchDetails.location;
 
-  fetch("http://localhost:4000/job_research/" + job + "/" + location, params).then(function(response){
-  // leave for nick (in development)
+//   axios.get(  `https://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`, { headers: {'Content-Type': 'application/json'}} ).then(res => {
+//     console.log(res);
+//   })
+
+  // fetch(`http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`, params).then((data)=>{
+  //     return data.json()
+  //   })
+  //   .then((body)=>{
+  //     console.log(body);
+  //     // response.json({
+  //     //   jobs: body.response.jobTitles,
+  //     //   companies: body.response.employers
+  //     // })
+  //   })
+  //   .catch((error) => {
+  //     console.log('error', error);
+  //     // response.json({
+  //     //   error: error
+  //     // })
+  //   })
+
+  fetch(apiUrl + "job_research/" + job + "/" + location, params).then(function(response){
+  // leave for nick (in development) ??? eric
   // let url = "http://localhost:4000/job_research?job=" + job + "&location=" + location;
   // fetch(url, params).then(function(response){
 
@@ -262,7 +284,7 @@ export function researchJob(searchDetails){
     }
   }).catch(function(err){
       jobStore.updateMessage("There was an error: " + err)
-  })
+  });
 }
 
 //
