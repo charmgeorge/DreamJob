@@ -9,18 +9,18 @@ class Alternate extends Component {
   }
 
   updateClass(){
-    var rightNow = new Date().getTime()
+    var rightNow = new Date().getTime();
     var updatedAt = new Date(this.props.job.updatedAt);
-    var result = rightNow-updatedAt
-    var color
-    if(result <= 30000){
-      color = "GREEN glyphicon glyphicon-arrow-up pull-left"
-    } else if(result <= 60000){
-      color = "YELLOW glyphicon glyphicon-arrow-right pull-left"
+    var result = rightNow-updatedAt;
+    var color;
+    if(result <= 30000){ // put to 3 days?
+      color = "GREEN glyphicon glyphicon-arrow-up pull-left";
+    } else if(result <= 604800){ // one week
+      color = "YELLOW glyphicon glyphicon-arrow-right pull-left";
     } else {
-      color = "RED glyphicon glyphicon-arrow-down pull-left"
+      color = "RED glyphicon glyphicon-arrow-down pull-left";
     }
-    return color
+    return color;
   }
 
   render(){

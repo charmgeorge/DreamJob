@@ -8,7 +8,6 @@ class JobSearch extends Component {
         job: "",
         location: "",
         // radius:null,
-
       }
     }
   }
@@ -73,7 +72,11 @@ class JobSearch extends Component {
                       </div>
                     </div>
                     <br />
-                    <input type='submit' value='Submit' className="btn btn-primary" />
+                    <input type='submit'
+                      value='Submit'
+                      className="btn btn-primary"
+                      disabled={!this.state.search.job || !this.state.search.location}
+                    />
                     <p className='powered' >powered by
                       <a href='https://www.glassdoor.com/index.htm'><img className='glassImg' src='https://www.glassdoor.com/static/img/api/glassdoor_logo_80.png' title='Job Search'  /></a>
                     </p>

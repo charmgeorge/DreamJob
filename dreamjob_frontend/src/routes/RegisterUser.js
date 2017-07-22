@@ -16,6 +16,7 @@ class RegisterUser extends Component {
   constructor(props){
     super(props)
     this.state={
+      currentUser: userStore.getUser(),
       user:{
         firstname:"",
         lastname:"",
@@ -28,11 +29,14 @@ class RegisterUser extends Component {
   }
 
   componentWillMount(){
+    if (this.state.currentUser) { // check if user is signed in. if so, send away from register page
+      console.log('sending away from register page');
+      this.props.history.push("/job_index");
+    }
     userStore.on('user_created', ()=> {
       this.props.history.push("/job_index")
     })
   }
-
 
   handleChange(e){
     let target = e.target

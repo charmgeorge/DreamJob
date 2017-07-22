@@ -47,7 +47,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-   userStore.on('logout', this.handleLogoutFinal.bind(this))
+    userStore.on('logout', this.handleLogoutFinal.bind(this))
     jobStore.on('message', this.updateMessage.bind(this))
     userStore.on('login', this.handleLogin.bind(this))
     userStore.on('message', this.updateUserMessage.bind(this))
@@ -57,7 +57,6 @@ class App extends Component {
     this.setState( {
       currentUser: userStore.getUser()
     })
-
     history.push("/")
   }
 
