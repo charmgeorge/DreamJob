@@ -41,9 +41,9 @@ class JobListing extends Component {
               </div>
             </li>
             <br/>
-            <li>{this.props.job.company}</li>
-            <li>{this.props.job.jobTitle}</li>
-            <li>{this.props.job.status}</li>
+            <li className='indexCompany'>{this.props.job.company}</li>
+            <li className='indexText'>{this.props.job.jobTitle}</li>
+            <li className='indexText'>{this.props.job.status}</li>
             <li>
               <div>
                 <Pop history={this.props.history} job={this.props.job} />

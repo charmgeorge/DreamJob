@@ -70,7 +70,7 @@ class UserStore extends EventEmitter{
     (!this.fields[fieldName].includes("*"))){
 
     }else{
-      this.addError(fieldName, 'is not a valid password')
+      this.addError(fieldName, 'must be alpha-numeric, have at least six characters, and neither use $ or *')
     }
   }
 

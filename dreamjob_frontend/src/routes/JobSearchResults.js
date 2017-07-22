@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {researchJob} from '../actions/actions';
 import jobResearchStore from '../stores/JobResearchStore';
 import {BrowserRouter as Link} from 'react-router-dom';
+import {Col, Grid, Row} from 'react-bootstrap';
 
 class JobSearchResults extends Component {
   constructor(props){
@@ -44,26 +45,35 @@ class JobSearchResults extends Component {
     if(companyListings.length !== 0){
       companyListings.map(function(company) {
           return companyList.push(
-            <div key={'key' + company.id}>
+            <Col sm={6} md={3}>
               <img src={company.squareLogo} alt={company.name} />
               <p key={company.id}> {company.id}, {company.name}, {company.numJobs} </p>
               <p key={'sec' + company.id}> {company.rating} out of 5 stars, <a href={company.reviewsUrl}>{`${company.name} Reviews`}</a></p>
-            </div>
-        )
+            </Col>
+          )
       })
     }
 
     return (
       <div>
-        <h2>Results for search "{jobSearch}" in "{locationSearch}":</h2>
-        <a href="/search_results">Back to Job Research</a>
+
         {/* <Link to="/search_results">Back to Job Research</Link> */}
 
-        {companyList}
+          <Grid>
+            <h2>Results for search "{jobSearch}" in "{locationSearch}":</h2>
+            <a href="/search_results">Back to Job Research</a>
+            <br />
+            <Row>
+              {companyList}
+            </Row>
+          </Grid>
+{/*
         <br />
         <br />
         <p style={{fontWeight:"bold"}}>Job ID, Job Title, Number of jobs in the Area</p>
         {jobList}
+
+*/}
 
       </div>
     )
