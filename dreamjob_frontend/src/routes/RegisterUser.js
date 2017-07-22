@@ -97,7 +97,7 @@ class RegisterUser extends Component {
                   }
                   <h3>Register</h3>
                   <ImagesUploader
-                   url={imageUrl}
+                   url={imageUrl + 'files'}
                    optimisticPreviews
                    multiple={false}
                    onLoadEnd={this.handleImage.bind(this)}
