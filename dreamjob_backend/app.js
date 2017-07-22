@@ -4,11 +4,11 @@ var Job = require('./models').Job
 var User = require('./models').User
 // var cors = require('cors')
 var path = require('path')
+var imagesUpload = require('images-upload-middleware').default;
 var app = express();
 
 const PORT = process.env.PORT || 4000;
 var corsPrefetch = require('cors-prefetch-middleware').default
-var imagesUpload = require('images-upload-middleware').default
 
 var fetch = require('node-fetch');  //https://www.npmjs.com/package/node-fetch
 
@@ -37,7 +37,8 @@ console.log('backend app.js', apiUrl);
 
 app.post('/files', imagesUpload(
   './public/images',
-  'https://localhost:4000/images'))
+  `${apiUrl}images`))
+  // 'http://localhost:4000/images'))
 
 app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 
