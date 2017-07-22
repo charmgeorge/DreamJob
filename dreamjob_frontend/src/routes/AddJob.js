@@ -42,7 +42,6 @@ handleChange(e){
   this.setState({
     job:job
   })
-  console.log(this.state.job)
 }
 
 handleSubmit(e){

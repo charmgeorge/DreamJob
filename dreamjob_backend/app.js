@@ -40,6 +40,7 @@ app.post('/files', imagesUpload(
   `${apiUrl}images`))
   // 'http://localhost:4000/images'))
 
+// error here with the path?  where is dreamjob_frontend/build ??? (got moved I think) ???nick
 app.use(express.static(path.resolve(__dirname, '../dreamjob_frontend/build')));
 
 
@@ -252,8 +253,20 @@ app.post('/create_user', function(request, response){
 app.post('/login_user', function(request, response){
   User.findOne({where: { email: request.body.user.email }}).then((user) => {
     if(user){
-      response.status(200)
-      response.json({status:'success', user: user })
+      console.log('found user');
+      // check the password and return 200 & the user if valid
+     if(user.verifyPassword(request.body.user.password)){
+       console.log('checked and passed');
+       response.status(200)
+       response.json({status: 'success', user: user})
+     } else {
+       console.log('checked and failed');
+       response.status(401)
+       response.json({status: 'error', error: 'could not log in'})
+     }
+      // console.log('user is: ', user);
+      // response.status(200)
+      // response.json({status:'success', user: user })
     } else {
       response.status(401)
       response.json({status: 'error', error: 'Could not log in' })

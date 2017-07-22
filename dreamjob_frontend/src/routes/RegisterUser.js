@@ -70,7 +70,8 @@ class RegisterUser extends Component {
           value: response
         }
       }
-      this.handleChange(event)
+      console.log('res', response);
+      this.handleChange(event);
     }
   }
 
@@ -164,8 +165,13 @@ class RegisterUser extends Component {
                         </div>
                         <div>
                           <br />
-                          <input type='submit' value='Submit' className = 'btn btn-primary' />
-
+                          <input
+                            type='submit'
+                            value='Submit'
+                            disabled={!this.state.user.password || !this.state.user.email ||
+                              !this.state.user.firstname || !this.state.user.lastname}
+                            className='btn btn-primary'
+                          />
                         </div>
                       </div>
                     </div>
