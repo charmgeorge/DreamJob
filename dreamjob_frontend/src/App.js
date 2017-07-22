@@ -19,7 +19,6 @@ import RegisterUser from './routes/RegisterUser';
 import Results from './routes/Results';
 import AlternateView from './routes/AlternateView';
 import userStore from './stores/UserStore';
-import AlternateView from './routes/AlternateView'
 
 class App extends Component {
   constructor(props){
