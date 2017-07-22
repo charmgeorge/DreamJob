@@ -54,7 +54,7 @@ class Header extends Component {
         <Navbar collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">Dream Job</a>
+              <a  href="/">Dream Job</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -63,6 +63,7 @@ class Header extends Component {
               <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
               <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
               <NavItem eventKey={3}><Link to='/job_research'>Job Research</Link></NavItem>
+
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1}>{this.email()}</NavItem>

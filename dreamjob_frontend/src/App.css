@@ -1,10 +1,10 @@
 /*APP.JS*/
 .message {
-  background-color: #222;
   text-align: center;
   height: 30px;
   font-size: 20px;
-  color: white;
+  color: #088da5;
+  text-shadow: 1px 1px grey
 }
 
 p{
@@ -80,6 +80,33 @@ h3 {
   text-shadow: black 2px 2px;
 }
 
+.formContainer {
+  background-image: url('https://static.pexels.com/photos/47426/pexels-photo-47426.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.glassImg{
+  max-height: 25px;
+  border-radius: 18px;
+  padding-left: 10px;
+
+}
+
+.findJob{
+  padding-bottom: 15px;
+
+}
+
+.powered {
+  font-size: 10px;
+  padding-top:20px;
+
+}
+
 .headFeature{
   text-align: center;
 }
@@ -88,6 +115,7 @@ h3 {
   text-align: center;
   color: orange;
 }
+
 
 .benefits {
   padding-top: 15px;
@@ -98,7 +126,7 @@ h3 {
   border-radius: 25px;
   width: auto;
   max-height: 300px;
-  max-width: 500px;
+  max-width: 450px;
   margin: 10px;
 }
 
@@ -106,6 +134,7 @@ h3 {
 .hrstyle{
   border-top: 1px solid orange;
 }
+
 
 /*COMPONENTS*/
 /*SLIDE*/

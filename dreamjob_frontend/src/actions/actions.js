@@ -1,6 +1,16 @@
 import dispatcher from '../dispatchers/dispatcher';
 import userStore from '../stores/UserStore';
 import jobStore from '../stores/JobStore'
+import axios from 'axios';
+
+var apiUrl
+if(process.env.NODE_ENV === 'production'){
+  apiUrl = "/";
+} else {
+  apiUrl = "http://localhost:4000/";
+};
+console.log(process.env)
+console.log('api is ', apiUrl)
 
 export function sort(attribute){
   const params = {
@@ -54,7 +64,7 @@ export function newUser(userInfo){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userInfo)
       }
-  fetch('http://localhost:4000/create_user', params).then((response)=>{
+  fetch(apiUrl + 'create_user', params).then((response)=>{
       success = response.ok
       return response.json()
     })
@@ -78,7 +88,7 @@ export function loginUser(userInfo){
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(userInfo)
       }
-  fetch('http://localhost:4000/login_user', params)
+  fetch(apiUrl + 'login_user', params)
     .then((response)=>{
       success = response.ok
       return response.json()
@@ -104,7 +114,7 @@ export function updateJobDetails(attributes){
     },
     body: JSON.stringify(attributes)
   }
-  fetch('http://localhost:4000/update_job_details/' + attributes.job.id, params).then((response)=>{
+  fetch(apiUrl + 'update_job_details/' + attributes.job.id, params).then((response)=>{
     if(response.ok){
       response.json().then((body)=>{
         dispatcher.dispatch({
@@ -123,7 +133,7 @@ export function deleteJob(jobId){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/deleteJob/" + jobId, params).then(function(response){
+  fetch(apiUrl + 'deleteJob/' + jobId, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({
@@ -141,7 +151,7 @@ export function glassdoorDetails(company){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/glassdoor/" + company, params).then(function(response){
+  fetch(apiUrl + 'glassdoor/' + company, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(data){
         dispatcher.dispatch({
@@ -163,7 +173,7 @@ export function getDetails(jobId){
       method: 'GET',
       headers: {'Content-Type': 'application/json'}
   }
-  fetch("http://localhost:4000/getDetails/" + jobId, params).then(function(response){
+  fetch(apiUrl + 'getDetails/' + jobId, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
         dispatcher.dispatch({
@@ -184,7 +194,7 @@ export function updateJobs(){
     headers: {'Content-Type': 'application/json'}
   }
 
-  let theUrl = "http://localhost:4000/jobs?authToken=" + currentUser.authToken
+  let theUrl = apiUrl + 'jobs?authToken=' + currentUser.authToken
   fetch(theUrl, params).then(function(response){
     if(response.status === 200){
       response.json().then(function(body){
@@ -214,7 +224,7 @@ export function createJob(attributes){
     },
     body: JSON.stringify(attributes)
   }
-  fetch('http://localhost:4000/create_job', params).then((response)=>{
+  fetch(apiUrl + 'create_job', params).then((response)=>{
     if(response.ok){
       response.json().then((body)=>{
         dispatcher.dispatch({
@@ -238,8 +248,29 @@ export function researchJob(searchDetails){
   let job = searchDetails.job;
   let location = searchDetails.location;
 
-  fetch("http://localhost:4000/job_research/" + job + "/" + location, params).then(function(response){
-  // leave for nick (in development)
+//   axios.get(  `https://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`, { headers: {'Content-Type': 'application/json'}} ).then(res => {
+//     console.log(res);
+//   })
+
+  // fetch(`http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=${job}&l=${location}&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1`, params).then((data)=>{
+  //     return data.json()
+  //   })
+  //   .then((body)=>{
+  //     console.log(body);
+  //     // response.json({
+  //     //   jobs: body.response.jobTitles,
+  //     //   companies: body.response.employers
+  //     // })
+  //   })
+  //   .catch((error) => {
+  //     console.log('error', error);
+  //     // response.json({
+  //     //   error: error
+  //     // })
+  //   })
+
+  fetch(apiUrl + "job_research/" + job + "/" + location, params).then(function(response){
+  // leave for nick (in development) ??? eric
   // let url = "http://localhost:4000/job_research?job=" + job + "&location=" + location;
   // fetch(url, params).then(function(response){
 
@@ -253,7 +284,7 @@ export function researchJob(searchDetails){
     }
   }).catch(function(err){
       jobStore.updateMessage("There was an error: " + err)
-  })
+  });
 }
 
 //

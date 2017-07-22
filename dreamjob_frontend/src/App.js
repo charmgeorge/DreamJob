@@ -19,6 +19,7 @@ import RegisterUser from './routes/RegisterUser';
 import Results from './routes/Results';
 import AlternateView from './routes/AlternateView';
 import userStore from './stores/UserStore';
+import AlternateView from './routes/AlternateView'
 
 class App extends Component {
   constructor(props){
@@ -70,7 +71,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className="message">{this.state.message}</div>
         <div className="App">
           <Router history={history}>
             <div>

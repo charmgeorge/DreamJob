@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dreamjob_backend/app.js",
+    "heroku-postbuild": "cd dreamjob_backend/ && sequelize db:migrate && cd .. && cd dreamjob_frontend/ && yarn install && yarn build"
   },
   "author": "",
   "license": "ISC",

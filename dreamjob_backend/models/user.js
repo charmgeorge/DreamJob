@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true  // <-- Code level validations
       }
     },
+    imageUrl: DataTypes.STRING,
     encryptedPassword: {
       type: DataTypes.STRING,
       allowNull: false
@@ -63,6 +64,7 @@ module.exports = function(sequelize, DataTypes) {
           firstname: this.get('firstname'),
           lastname: this.get('lastname'),
           email: this.get('email'),
+          imageUrl: this.get('imageUrl'),
           authToken: this.get('authToken'),
           authTokenExpiration: this.get('authTokenExpiration')
         }

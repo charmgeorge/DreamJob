@@ -76,7 +76,7 @@ class RegisterUser extends Component {
 
   render() {
     return (
-      <div>
+      <div className='formContainer'>
         <div className='container'>
           <div className='row'>
             <div className='col-xs-6 col-xs-offset-3'>

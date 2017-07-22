@@ -15,7 +15,7 @@ class JobListing extends Component {
     var result = rightNow-updatedAt
     var color
     if(result <= 30000){
-      color = "GREEN glyphicon glyphicon-arrow-up pull-left"
+      color = "GREEN glyphicon glyphicon-arrow-up pull-left "
     } else if(result <= 60000){
       color = "YELLOW glyphicon glyphicon-arrow-right pull-left"
     } else {

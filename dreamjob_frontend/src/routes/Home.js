@@ -50,7 +50,7 @@ class Home extends Component {
             </Col>
 
             <Col md={6} >
-              <img className='thumbs' alt='insider' src="http://talghin.sellfile.ir/prod-images/577168.jpg" />
+              <img className='thumbs' alt='insider' src="https://talghin.sellfile.ir/prod-images/577168.jpg" />
               <br />
             </Col>
           </Row>
