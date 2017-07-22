@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import jobStore from '../stores/JobStore';
 import {glassdoorDetails} from '../actions/actions'
+import { Link } from 'react-router-dom';
 
 class Glassdoor extends Component {
   constructor(props){
@@ -8,18 +9,26 @@ class Glassdoor extends Component {
     glassdoorDetails(this.props.match.params.company)
     this.state={
       data: jobStore.getDetails(),
-      error:""
+      error:"",
+      err: ""
     }
   }
 
   componentWillMount(){
     jobStore.on('glassdoor', this.updateDetails.bind(this)) //need to listen to this emission
+    jobStore.on('glassdoor_404', this.updateGlassdoor404.bind(this));
   }
 
   updateDetails(){
     this.setState({
       data:jobStore.getDetails()
     })
+  }
+  updateGlassdoor404(){
+    this.setState({
+      err: jobStore.get404Details()
+    })
+    console.log('logging', this.state.err);
   }
 
   renderCompany(){
@@ -114,10 +123,16 @@ class Glassdoor extends Component {
 
   render() {
     let companyView
-    if(Object.keys(this.state.data).length > 0){
+    if(Object.keys(this.state.data).length > 0  && !this.state.err){
       companyView = this.renderCompany()
     } else {
-      companyView = <img src="/hourglass.svg" alt='hourglass' />
+      companyView = (
+        <div>
+          <h3>Company not found on Glassdoor</h3>
+          <br />
+          <Link to={`/job_index`}>Back</Link>
+        </div>
+      )
     }
 
     return(

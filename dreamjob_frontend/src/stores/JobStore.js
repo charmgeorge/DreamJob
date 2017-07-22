@@ -9,6 +9,7 @@ class JobStore extends EventEmitter{
     this.newJob = {}
     this.message = ""
     this.details = {}
+    this.err = ""
   }
 
   getJobs(){
@@ -17,6 +18,10 @@ class JobStore extends EventEmitter{
 
   getDetails (){
     return this.details
+  }
+
+  get404Details (){
+    return this.err;
   }
 
   getMessage(){
@@ -66,8 +71,16 @@ class JobStore extends EventEmitter{
 
   updateGlassdoor(alldata){
     this.details = alldata.data
+    console.log(alldata.data); // see what it brings when it fails
     this.updateMessage('Glassdoor details retrieved!')
     this.emit('glassdoor')
+  }
+
+  updateGlassdoorError(err) {
+    this.err = err;
+    console.log(err);
+    this.emit('glassdoor_404');
+    // console.log(this.err);
   }
 
   handleActions(action){
@@ -100,6 +113,10 @@ class JobStore extends EventEmitter{
      case("GLASSDOOR"):{
        this.updateGlassdoor(action.data)
        break
+     }
+     case("GLASSDOOR_NOTFOUND") : {
+       this.updateGlassdoorError(action.err)
+       break;
      }
      case("SORT_JOBS"):{
        this.sortJobs(action.jobs)

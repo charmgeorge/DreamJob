@@ -160,6 +160,10 @@ export function glassdoorDetails(company){
         })
       })
     }else{
+      dispatcher.dispatch({
+        type: 'GLASSDOOR_NOTFOUND',
+        err: 'Company not found on Glassdoor'
+      })
       jobStore.updateMessage("Couldn't find the company in Glassdoor")
     }
   })

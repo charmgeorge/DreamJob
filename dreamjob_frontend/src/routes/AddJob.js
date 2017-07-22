@@ -122,7 +122,7 @@ handleSubmit(e){
               <Col componentClass={ControlLabel} sm={3}>
                 Notes
               </Col>
-              <Col sm={6}>
+              <Col sm={5}>
                 <FormControl componentClass="textarea" name='notes' placeholder="Notes" value={this.state.job.notes} onChange={this.handleChange.bind(this)} />
               </Col>
             </FormGroup>
