@@ -4,6 +4,14 @@ import userStore from '../stores/UserStore';
 import ImagesUploader from 'react-images-uploader';
 import 'react-images-uploader/styles.css';
 
+let imageUrl; // need to just put this in an environment vars file...
+if(process.env.NODE_ENV === 'production'){
+  imageUrl = "/";
+} else {
+  imageUrl = "http://localhost:4000/";
+};
+console.log('imageUrl is: ', imageUrl);
+
 class RegisterUser extends Component {
   constructor(props){
     super(props)
@@ -89,7 +97,7 @@ class RegisterUser extends Component {
                   }
                   <h3>Register</h3>
                   <ImagesUploader
-                   url="http://localhost:4000/files"
+                   url={imageUrl}
                    optimisticPreviews
                    multiple={false}
                    onLoadEnd={this.handleImage.bind(this)}

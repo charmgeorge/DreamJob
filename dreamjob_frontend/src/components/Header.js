@@ -32,7 +32,7 @@ class Header extends Component {
       return (
         <div>
           <Link to="/login">Login</Link> |
-          <Link to="/Register">Register</Link>
+          <Link to="/register">Register</Link>
         </div>
       )
     }
