@@ -104,7 +104,28 @@ export function loginUser(userInfo){
         console.log("failure!", body.user)
       }
     })
-}
+  }
+
+  export function getUserDetails(email){
+    const params = {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+    }
+    fetch(apiUrl + 'user_data/' + email, params).then(function(response){
+      console.log('email here', email);
+      if(response.status === 200){
+        response.json().then(function(body){
+          console.log('in getUserDetails', body.user);
+          dispatcher.dispatch({
+            type: 'USER_DATA_FOUND',
+            user: body.user
+          })
+        })
+      }
+    }).catch(function(err){
+        userStore.updateMessage("There was an error: " + err)
+    })
+  }
 
 export function updateJobDetails(attributes){
   const params = {
@@ -214,7 +235,6 @@ export function updateJobs(){
 }
 
 export function createJob(attributes){
-
   let currentUser = userStore.getUser()
   if(currentUser){
     attributes.authToken = currentUser.authToken

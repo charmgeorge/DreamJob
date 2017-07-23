@@ -14,6 +14,7 @@ class UserStore extends EventEmitter{
       email: "",
       password: ""
     }
+    this.userData = null
     this.errors = {}
   }
 
@@ -27,6 +28,16 @@ class UserStore extends EventEmitter{
 
   getUser(){
     return this.user
+  }
+
+  updateUserData(user){
+    console.log('user aqui', user);
+    this.userData = user;
+    console.log('now..', this.userData);
+  }
+
+  getUserData(){
+    return this.userData;
   }
 
   getErrors(){
@@ -131,6 +142,10 @@ class UserStore extends EventEmitter{
       case("CHECK_LOGIN"):{
         this.setUserFromLocal()
         break
+      }
+      case("USER_DATA_FOUND"):{
+        this.updateUserData(action.user);
+        break;
       }
       default:{}
     }

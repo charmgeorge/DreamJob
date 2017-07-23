@@ -12,6 +12,7 @@ class Home extends Component {
           <h1>find your why.</h1>
           <p>A SIMPLE, EASY APP TO STREAMLINE THE JOB SEARCH </p>
           <Link to='/register'><Button bsStyle='primary' bsSize='large'>Register Now</Button></Link>
+        <Link to='/user'><Button bsStyle='primary' bsSize='large'>to user cp</Button></Link>
         </Jumbotron>
         <br />
         <div className='container benefits'>

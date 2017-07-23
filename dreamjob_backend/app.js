@@ -250,6 +250,21 @@ app.post('/create_user', function(request, response){
   })
 })
 
+app.get('/user_data/:email', function(req, res){
+  const email = req.params.email;
+  // console.log('this', email);
+  User.findOne({ where: { email: email }}).then((user) => {
+    if (user) {
+      res.status(200);
+      // console.log('user_data', user);
+      res.json({ user: user });
+    } else {
+      res.status(404);
+      res.json({ status: 'error', error: 'could not find user' })
+    }
+  })
+})
+
 app.post('/login_user', function(request, response){
   User.findOne({where: { email: request.body.user.email }}).then((user) => {
     if(user){
