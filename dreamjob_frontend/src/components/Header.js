@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
 // import {Link, NavLink} from 'react-router-dom';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
-import Home from '../routes/Home';
+// import Home from '../routes/Home';
 import userStore from '../stores/UserStore';
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  NavLink,
-  Redirect,
-  withRouter
+  BrowserRouter as Redirect, Link //Router,Route,,NavLink,,withRouter
 } from 'react-router-dom';
 
 class Header extends Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
   componentWillUpdate(){
     userStore.on('logout', this.handleLogout.bind(this))
@@ -44,7 +39,6 @@ class Header extends Component {
     } else{
       // what to do here???
       return <Redirect to="/" />
-
     }
   }
 
@@ -63,7 +57,7 @@ class Header extends Component {
               <NavItem eventKey={1}><Link to='/add_job'>Add a Job</Link></NavItem>
               <NavItem eventKey={2}><Link to='/job_index'>Job Pipeline</Link></NavItem>
               <NavItem eventKey={3}><Link to='/job_research'>Job Research</Link></NavItem>
-
+              <NavItem eventKey={4}><Link to='/about'>About</Link></NavItem>
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1}>{this.email()}</NavItem>

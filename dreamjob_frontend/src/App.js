@@ -19,6 +19,7 @@ import RegisterUser from './routes/RegisterUser';
 import Results from './routes/Results';
 import AlternateView from './routes/AlternateView';
 import userStore from './stores/UserStore';
+import AboutUs from './routes/AboutUs';
 
 class App extends Component {
   constructor(props){
@@ -90,6 +91,7 @@ class App extends Component {
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route exact path = '/compare' component={CompanyCompare} />
                 <Route exact path = "/compare/results" component={Results} />
+                <Route exact path = "/about" component={AboutUs} />
                 <Route component={NoMatch} />
               </Switch>
             </div>

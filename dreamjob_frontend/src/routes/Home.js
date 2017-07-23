@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {Grid, Row, Col, Clearfix, Jumbotron, Button} from 'react-bootstrap';
-import Slide from '../components/Slide'
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {Jumbotron, Row, Col, Button /*Clearfix, Grid, */} from 'react-bootstrap';
+// import Slide from '../components/Slide'
+import {BrowserRouter as Link, /*Router, Route, Switch, Link*/} from 'react-router-dom';
 
 
 class Home extends Component {

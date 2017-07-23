@@ -61,7 +61,7 @@ class JobSearchResults extends Component {
 
           <Grid>
             <h2>Results for search "{jobSearch}" in "{locationSearch}":</h2>
-            <a href="/search_results">Back to Job Research</a>
+            <a href="/job_research">Back to Job Research</a>
             <br />
             <Row>
               {companyList}
