@@ -20,7 +20,7 @@ class PlayerInput extends React.Component {
       }
     })
   }
-
+sdfg
   handleSubmit(event){
     event.preventDefault();
 

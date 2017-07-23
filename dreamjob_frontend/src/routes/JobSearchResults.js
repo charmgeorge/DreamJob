@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {researchJob} from '../actions/actions';
 import jobResearchStore from '../stores/JobResearchStore';
 import {BrowserRouter as Link} from 'react-router-dom';
-import {Col, Grid, Row} from 'react-bootstrap';
+import {Col, Grid, Row, Image} from 'react-bootstrap';
 
 class JobSearchResults extends Component {
   constructor(props){
@@ -58,9 +58,13 @@ class JobSearchResults extends Component {
       <div>
 
         {/* <Link to="/search_results">Back to Job Research</Link> */}
-
           <Grid>
             <h2>Results for search "{jobSearch}" in "{locationSearch}":</h2>
+            <Row>
+              <Col sm={8} md={8} smOffset={2} mdOffset={2}>
+                <Image src={`https://maps.googleapis.com/maps/api/staticmap?center=${locationSearch}&zoom=13&size=600x350&key=AIzaSyCgbhKeMQhm9PH7fT5rKbcBdHhhDoOQ8pU`} alt={`${locationSearch}`} responsive />
+              </Col>
+            </Row>
             <a href="/job_research">Back to Job Research</a>
             <br />
             <Row>
