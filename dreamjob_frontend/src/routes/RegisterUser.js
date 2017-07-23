@@ -21,7 +21,8 @@ class RegisterUser extends Component {
         firstname:"",
         lastname:"",
         email:"",
-        password:""
+        password:"",
+        confirmPassword: ""
       },
       message: '',
       errors: {}
@@ -44,9 +45,10 @@ class RegisterUser extends Component {
     user[target.name]= target.value
     this.setState({
       user: user
-    })
+    });
+    console.log(this.state);
   }
-//cg
+
   validate(){
     userStore.validate(this.state.user)
     this.setState({errors: userStore.getErrors()})
@@ -61,6 +63,7 @@ class RegisterUser extends Component {
   }
 
   isValid(){
+    console.log('error count', Object.keys(this.state.errors).length);
     return Object.keys(this.state.errors).length === 0
   }
 
@@ -167,13 +170,27 @@ class RegisterUser extends Component {
                           {this.state.errors.password}
                             </label>
                         </div>
+                        <div className={this.errorClass('password')}>
+                          <label className='control-label' htmlFor='confirmPassword'>
+                            Confirm your Password
+                          <br />
+                          <input
+                            type='password'
+                            name='confirmPassword'
+                            value={this.state.user.confirmPassword}
+                            onChange={this.handleChange.bind(this)}
+                            className='form-control'
+                          />
+                          {this.state.errors.password}
+                            </label>
+                        </div>
                         <div>
                           <br />
                           <input
                             type='submit'
                             value='Submit'
-                            disabled={!this.state.user.password || !this.state.user.email ||
-                              !this.state.user.firstname || !this.state.user.lastname}
+                            disabled={(!this.state.user.password || !this.state.user.email ||
+                              !this.state.user.firstname || !this.state.user.lastname || !this.state.user.confirmPassword) || (this.state.user.password != this.state.user.confirmPassword)}
                             className='btn btn-primary'
                           />
                         </div>
