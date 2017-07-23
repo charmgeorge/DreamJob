@@ -4,7 +4,8 @@ import {checkLogin, userLogout} from './actions/actions';
 import AddJob from './routes/AddJob';
 import CompanyCompare from './routes/CompanyCompare';
 import Glassdoor from './routes/Glassdoor';
-import Header from './components/Header'
+import Header from './components/Header';
+import Footer from './components/Footer'
 import history from './history'
 import Home from './routes/Home';
 import JobDetails from './routes/JobDetails';
@@ -20,6 +21,7 @@ import Results from './routes/Results';
 import AlternateView from './routes/AlternateView';
 import userStore from './stores/UserStore';
 import AboutUs from './routes/AboutUs';
+import AboutProject from './routes/AboutProject';
 
 class App extends Component {
   constructor(props){
@@ -92,8 +94,10 @@ class App extends Component {
                 <Route exact path = '/compare' component={CompanyCompare} />
                 <Route exact path = "/compare/results" component={Results} />
                 <Route exact path = "/about" component={AboutUs} />
+                <Route exact path = "/project" component={AboutProject} />
                 <Route component={NoMatch} />
               </Switch>
+              <Footer />
             </div>
           </Router>
         </div>
