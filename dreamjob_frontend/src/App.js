@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch /*, PropsRoute*/} from 'react-router-dom';
 import {checkLogin, userLogout} from './actions/actions';
 import AddJob from './routes/AddJob';
 import CompanyCompare from './routes/CompanyCompare';
@@ -91,7 +91,8 @@ class App extends Component {
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route exact path = '/compare' component={CompanyCompare} />
                 <Route exact path = "/compare/results" component={Results} />
-                <Route exact path = "/user" component={UserCP} />
+                <Route exact path = {"/user"} component={() => <UserCP something="nick" user={this.state.currentUser}/>} />
+                {/* <PropsRoute exact path = "/user" component={UserCP} something="nick" user={this.state.currentUser} /> */}
                 <Route component={NoMatch} />
               </Switch>
             </div>
