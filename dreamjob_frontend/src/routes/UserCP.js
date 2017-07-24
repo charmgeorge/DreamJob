@@ -63,7 +63,7 @@ class UserCP extends Component {
     return (
       <div className="container">
         {/* <p>{this.userData}</p> */}
-        <p>Welcome to your user control panel</p>
+        <h3>Welcome to your user control panel:</h3>
         {/* <p>First Name: {this.state.userData && this.state.userData.firstname} </p> */}
         <p>Email: {this.state.currentUser && this.state.currentUser.email}</p>
       </div>
