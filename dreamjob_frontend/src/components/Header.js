@@ -44,7 +44,6 @@ class Header extends Component {
     } else{
       // what to do here???
       return <Redirect to="/" />
-
     }
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {checkLoginRedir, createJob} from '../actions/actions';
 import jobStore from '../stores/JobStore';
-import {Form, Panel, FormGroup, Col, ControlLabel, FormControl, Checkbox, Button} from 'react-bootstrap';
+import {Form, Panel, FormGroup, Col, ControlLabel, FormControl,/* Checkbox*/ Button} from 'react-bootstrap';
 
 class AddJob extends Component {
   constructor(props){

@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": null,
+    "username": null, 
     "password": null,
     "database": "dreamjob_backend_development",
     "host": "127.0.0.1",
