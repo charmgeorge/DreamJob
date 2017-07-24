@@ -1,7 +1,7 @@
 import dispatcher from '../dispatchers/dispatcher';
 import userStore from '../stores/UserStore';
 import jobStore from '../stores/JobStore'
-import axios from 'axios';
+// import axios from 'axios';
 
 var apiUrl
 if(process.env.NODE_ENV === 'production'){

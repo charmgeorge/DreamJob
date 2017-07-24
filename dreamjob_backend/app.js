@@ -12,6 +12,8 @@ var corsPrefetch = require('cors-prefetch-middleware').default
 
 var fetch = require('node-fetch');  //https://www.npmjs.com/package/node-fetch
 
+// pam AIzaSyB7eSxUSTleTHCiujx3iuXXvIwiuWc1jEQ
+
 
 var Glassdoor = require('node-glassdoor').initGlassdoor({
     partnerId: 157533,
@@ -178,6 +180,11 @@ app.get('/glassdoor/:company', function (request, response) {
 // fetch("http://localhost:4000/job_research?job=" + job + "&location=" + location, params).then(function(response){
 
 //     });
+
+/*
+  make "almost duplicate" route as below (or make a general that can work for both companies/jobs)
+  http://api.glassdoor.com/api/api.htm?t.p=157533&t.k=cE2dvplWMTK&userip=12.46.197.130&useragent=&format=json&v=1&action=jobs-stats&q=engineer&l=memphis&returnStates=true&returnJobTitles=true&returnEmployers=true&admLevelRequested=1
+*/
 
 app.get('/job_research/:job/:location', function (request, response) {
   let job = request.params['job'];
