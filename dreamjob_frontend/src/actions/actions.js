@@ -112,10 +112,8 @@ export function loginUser(userInfo){
         headers: {'Content-Type': 'application/json'}
     }
     fetch(apiUrl + 'user_data/' + email, params).then(function(response){
-      console.log('email here', email);
       if(response.status === 200){
         response.json().then(function(body){
-          console.log('in getUserDetails', body.user);
           dispatcher.dispatch({
             type: 'USER_DATA_FOUND',
             user: body.user

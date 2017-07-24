@@ -27,8 +27,6 @@ class Header extends Component {
 
   email(){
     if(this.props.user){
-      console.log('userdata', this.props.user);
-      console.log('history', this.props.history);
       return (
         <Link
           to="/user"

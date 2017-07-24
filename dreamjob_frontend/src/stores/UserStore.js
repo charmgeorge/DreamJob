@@ -31,9 +31,7 @@ class UserStore extends EventEmitter{
   }
 
   updateUserData(user){
-    console.log('user aqui', user);
     this.userData = user;
-    console.log('now..', this.userData);
   }
 
   getUserData(){

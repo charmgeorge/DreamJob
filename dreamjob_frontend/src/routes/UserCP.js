@@ -13,15 +13,14 @@ class UserCP extends Component {
     }
     //
     // getUserDetails(this.state.currentUser.email);
-    console.log('this user is', this.state.currentUser.email);
-    console.log('the props here', this.props);
+    // console.log('this user is', this.state.currentUser.email);
+    // console.log('the props here', this.props);
   }
   // check if user
   componentDidMount(){
     if (!this.state.currentUser) { // probably won't happen
       this.props.history.push("/");
     } else {
-      console.log('updating state here');
       this.setState({
         userData: getUserDetails(this.props.user.email)
       }, this.getInfo)
@@ -32,7 +31,7 @@ class UserCP extends Component {
     this.setState({
       userInfo: userStore.getUserData()
     })
-    console.log('info is', this.state.userInfo);
+    // console.log('info is', this.state.userInfo);
   }
 
     // if (this.state.currentUser) { // probably won't happen
@@ -60,12 +59,12 @@ class UserCP extends Component {
     // const obj =  userStore.getUserData();
     // console.log('coffee', obj);
     // const obj = this.getData();
-    console.log('final userData', this.state.userData);
+    // console.log('final userData', this.state.userData);
     return (
-      <div>
+      <div className="container">
         {/* <p>{this.userData}</p> */}
-        <p>hey user // firstName, lastname, email, pic, email</p>
-        <p>First Name: {this.state.userData && this.state.userData.firstname} </p>
+        <p>Welcome to your user control panel</p>
+        {/* <p>First Name: {this.state.userData && this.state.userData.firstname} </p> */}
         <p>Email: {this.state.currentUser && this.state.currentUser.email}</p>
       </div>
     );
