@@ -13,7 +13,7 @@ Get Your Dream Job Today!
     - [Backend](#backend)
     - [Database](#database)
 - [Built with ](#built-with)
-- [Contributing ](#development)
+- [Contribute ](#development)
     - [Report Bugs and Request Features](#typo3-extension-repository)
     - [Developing](#composer)
 - [Team ](#team)
@@ -26,9 +26,12 @@ This repository contains the final group project completed at LEARN Academy by t
 
 ## Key Features
 
-* Job seekers are able to keep track of their job application process
-  - Gives the ability to manage jobs that are of interest, jobs that have completed the application process, jobs that have been interviewed for, and finally jobs that have resulted in an offer.
-* Research jobs using the Glassdoor API
+* Job seekers are able to manage their job application process. Keep track of:
+  - Jobs that are of interest.
+  - Jobs that have completed the application process.
+  - Jobs that have been interviewed for.
+  - Jobs that have resulted in an offer.
+* Research jobs using the Glassdoor API.
 
 ## Installation
 <!-- Do we need to npm install in the frontend too?? -->
@@ -46,8 +49,9 @@ This repository contains the final group project completed at LEARN Academy by t
 - Run the server (`nodemon app.js`)
 - Go to http://localhost:3000
 ### Database
+-
 
-## Contributing
+## Contribute
 
 #### Report Bugs and Request Features
 
@@ -69,20 +73,17 @@ This application was created using:
 * [Express](https://expressjs.com/)
   - Node.js web application framework for the backend.
 * [PostgresSQL](https://www.postgresql.org/)
-  - Database
+  - Database.
 * [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
 * [Bootstrap](http://getbootstrap.com/)
   - For styling.
 
 ## Team
-
-
-<!-- ALL-CONTRIBUTORS-LIST:START  -->
-| [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Nick Bouldien</sub>](https://github.com/nickbouldien)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Brady Espinosa</sub>](https://github.com/brady-espinosa)<br /> | [<img src="https://cdn2.iconfinder.com/data/icons/people-groups/512/Woman_Avatar-512.png" width="100px;"/><br /><sub>Charmaine George</sub>](https://github.com/charmgeorge)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Antonio Navarro</sub>](https://github.com/aln4e)<br /> |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://cdn2.iconfinder.com/data/icons/people-groups/512/Woman_Avatar-512.png" width="100px;"/><br /><sub> Melissa Nuñez </sub>](https://github.com/DataIsMeta)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Teddy Reece</sub>](https://github.com/TeddyReece)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Miran Romick</sub>](https://github.com/miranromick)<br /> |
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
+<!-- !False TEAM -LIST:START  -->
+| [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Nick Bouldien</sub>](https://github.com/nickbouldien)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Brady Espinosa</sub>](https://github.com/brady-espinosa)<br /> | [<img src="https://cdn2.iconfinder.com/data/icons/people-groups/512/Woman_Avatar-512.png" width="100px;"/><br /><sub>Charmaine George</sub>](https://github.com/charmgeorge)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Antonio Navarro</sub>](https://github.com/aln4e)<br />
+| :---: | :---: | :---: | :---: |
+| [<img src="https://cdn2.iconfinder.com/data/icons/people-groups/512/Woman_Avatar-512.png" width="100px;"/><br /><sub> Melissa Nuñez </sub>](https://github.com/DataIsMeta)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Teddy Reece</sub>](https://github.com/TeddyReece)<br /> | [<img src="https://cdn1.iconfinder.com/data/icons/business-charts/512/customer-512.png" width="100px;"/><br /><sub>Miran Romick</sub>](https://github.com/miranromick)<br />
+<!-- !FALSE TEAM-LIST:END -->
 
 ## Acknowledgements
 [<br />Rob Kaufman ](https://github.com/orangewolf)- Guidance and help.</br>
