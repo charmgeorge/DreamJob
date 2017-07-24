@@ -8,8 +8,8 @@ class UserCP extends Component {
     super(props)
     this.state = {
       currentUser: this.props.user, // userStore.getUser(),
-      userData: getUserDetails(this.props.user.email), // call to userStore here and get name, etc
-      userInfo: null
+      // userData: getUserDetails(this.props.user.email), // call to userStore here and get name, etc
+      // userInfo: null
     }
     //
     // getUserDetails(this.state.currentUser.email);
@@ -17,22 +17,22 @@ class UserCP extends Component {
     // console.log('the props here', this.props);
   }
   // check if user
-  componentDidMount(){
-    if (!this.state.currentUser) { // probably won't happen
-      this.props.history.push("/");
-    } else {
-      this.setState({
-        userData: getUserDetails(this.props.user.email)
-      }, this.getInfo)
-    }
-  }
-
-  getInfo() {
-    this.setState({
-      userInfo: userStore.getUserData()
-    })
-    // console.log('info is', this.state.userInfo);
-  }
+  // componentDidMount(){
+  //   if (!this.state.currentUser) { // probably won't happen
+  //     this.props.history.push("/");
+  //   } else {
+  //     this.setState({
+  //       userData: getUserDetails(this.props.user.email)
+  //     }, this.getInfo)
+  //   }
+  // }
+  //
+  // getInfo() {
+  //   this.setState({
+  //     userInfo: userStore.getUserData()
+  //   })
+  //   // console.log('info is', this.state.userInfo);
+  // }
 
     // if (this.state.currentUser) { // probably won't happen
     //   // console.log('nick', this.props.history);
