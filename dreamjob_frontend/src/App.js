@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch /*, PropsRoute*/} from 'react-router-dom';
 import {checkLogin, userLogout} from './actions/actions';
 import AddJob from './routes/AddJob';
 import CompanyCompare from './routes/CompanyCompare';
@@ -20,6 +20,7 @@ import RegisterUser from './routes/RegisterUser';
 import Results from './routes/Results';
 import AlternateView from './routes/AlternateView';
 import userStore from './stores/UserStore';
+import UserCP from './routes/UserCP';
 import AboutUs from './routes/AboutUs';
 import AboutProject from './routes/AboutProject';
 
@@ -93,6 +94,8 @@ class App extends Component {
                 <Route exact path = '/search_results/:job/:location' component={JobSearchResults} />
                 <Route exact path = '/compare' component={CompanyCompare} />
                 <Route exact path = "/compare/results" component={Results} />
+                <Route exact path = {"/user"} component={() => <UserCP something="nick" user={this.state.currentUser}/>} />
+                {/* <PropsRoute exact path = "/user" component={UserCP} something="nick" user={this.state.currentUser} /> */}
                 <Route exact path = "/about" component={AboutUs} />
                 <Route exact path = "/project" component={AboutProject} />
                 <Route component={NoMatch} />

@@ -27,7 +27,13 @@ class Header extends Component {
 
   email(){
     if(this.props.user){
-      return `Welcome, ${this.props.user.email}`
+      return (
+        <Link
+          to="/user"
+          >
+            Welcome, {this.props.user.email}
+        </Link>
+      )
     }else{
       return (
         <div>
