@@ -26,7 +26,7 @@ This repository contains the final group project completed at LEARN Academy by t
 
 ## Key Features
 
-* Job seekers are able to manage their job application process. Keep track of:
+* Job seekers are able to manage their job application process. They can keep track of:
   - Jobs that are of interest.
   - Jobs that have completed the application process.
   - Jobs that have been interviewed for.
@@ -38,14 +38,14 @@ This repository contains the final group project completed at LEARN Academy by t
 <!-- Do we need to npm install in the frontend too?? -->
 
 - Clone the repository (`git clone https://github.com/charmgeorge/DreamJob.git`)
-- CD into the file (`cd DreamJob`)
+- Change directory into the project (`cd DreamJob`)
 ### Frontend
-- CD into the React application (`cd dreamjob_frontend`)
+- Change directory into the React application (`cd dreamjob_frontend`)
 - Install yarn (`yarn install`)
 - Start yarn (`yarn start`)
 ### Backend
 - Open a new terminal window
-- CD into the Express application (`cd dreamjob_backend`)
+- Change directory into the Express application (`cd dreamjob_backend`)
 - Install all the dependencies (`npm install`)
 - Run the server (`nodemon app.js`)
 - Go to http://localhost:3000
@@ -87,7 +87,7 @@ This application was created using:
 <!-- !FALSE TEAM-LIST:END -->
 
 ## Acknowledgements
-[<br />Rob Kaufman ](https://github.com/orangewolf)- Thank you for your help.</br>
+[<br />Rob Kaufman ](https://github.com/orangewolf)- Thank you for your help!</br>
 
 ## License
 
