@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 // import {Link, NavLink} from 'react-router-dom';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
-// import Home from '../routes/Home';
+import Home from '../routes/Home';
 import userStore from '../stores/UserStore';
 import {
-  BrowserRouter as Redirect, Link //Router,Route,,NavLink,,withRouter
-} from 'react-router-dom';
+  BrowserRouter as Redirect, Link, Router, Route, NavLink, withRouter } from 'react-router-dom';
 
 class Header extends Component {
   // constructor(props){
