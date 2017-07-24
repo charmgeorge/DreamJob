@@ -3,7 +3,7 @@ Dream Job
 
 Get Your Dream Job Today!
 
-<!-- [![Dream Job site](JPG OF DREAM JOB SCREEN SHOT HERE )](https://bangfalse.herokuapp.com//) -->
+[![Dream Job site](dreamjob_frontend\public\dreamjob_snapshot.JPG)](https://bangfalse.herokuapp.com//)
 
 ## Table of contents
 - [Basic Overview](#basic-overview)
@@ -31,12 +31,13 @@ This repository contains the final group project completed at LEARN Academy by t
   - Jobs that have completed the application process.
   - Jobs that have been interviewed for.
   - Jobs that have resulted in an offer.
-* Research jobs using the Glassdoor API.
+* Ability to research jobs using the Glassdoor API.
+<!-- * Job Pipeline --how to explain what this does? -->
 
 ## Installation
 <!-- Do we need to npm install in the frontend too?? -->
 
-- Clone the repo (`git clone https://github.com/charmgeorge/DreamJob.git`)
+- Clone the repository (`git clone https://github.com/charmgeorge/DreamJob.git`)
 - CD into the file (`cd DreamJob`)
 ### Frontend
 - CD into the React application (`cd dreamjob_frontend`)
@@ -55,14 +56,14 @@ This repository contains the final group project completed at LEARN Academy by t
 
 #### Report Bugs and Request Features
 
-Report any bugs and/or request a feature by useing the [issue tracker](https://github.com/charmgeorge/dreamjob/issues).
+Report any bugs and/or request a feature by using the [issue tracker](https://github.com/charmgeorge/dreamjob/issues).
 
 #### Developing
 You can begin to run this application from your command line:
 - Create a new branch (`git checkout -b [NAME OF BRANCH HERE]`)
 - Make your changes and contributions
 - Add changes (`git add .`) or (`git add [NAME OF FILES CHANGED]`)
-- Commit changes (`git commit -m ""[NOTE OF YOUR CHANGES HERE]"`)
+- Commit changes (`git commit -m "[NOTE OF YOUR CHANGES HERE]"`)
 - Push to your branch (`git push origin [NAME OF BRANCH HERE]`)
 - Create a Pull Request
 
@@ -86,7 +87,7 @@ This application was created using:
 <!-- !FALSE TEAM-LIST:END -->
 
 ## Acknowledgements
-[<br />Rob Kaufman ](https://github.com/orangewolf)- Guidance and help.</br>
+[<br />Rob Kaufman ](https://github.com/orangewolf)- Thank you for your help.</br>
 
 ## License
 
