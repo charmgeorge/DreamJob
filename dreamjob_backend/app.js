@@ -3,6 +3,7 @@ var bodyParser = require('body-parser')
 var Job = require('./models').Job
 var User = require('./models').User
 // var cors = require('cors')
+const nodemailer = require('nodemailer');  //https://nodemailer.com/about/
 var path = require('path')
 var imagesUpload = require('images-upload-middleware').default;
 var app = express();
@@ -65,6 +66,14 @@ const authorization = function(request, response, next){
     response.json({message: 'Authorization Token Required'})
   }
 }
+
+let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'welcome.dreamjob@gmail.com',
+        pass: 'bangfalse'
+    }
+});
 
 app.get('/jobs', authorization, function (request, response) {
   let id = request.currentUser.id ;
@@ -246,6 +255,22 @@ app.post('/create_job', authorization, function (request, response){
 
 app.post('/create_user', function(request, response){
   User.create(request.body.user).then((user) => {
+    // send email
+    let mailOptions = {
+        from: '"Dream Job" <welcome.dreamjob+100@gmail.com>',
+        to: `${request.body.user.email}`,
+        subject: 'Welcome to Dream Job!',
+        text: 'Hello and welcome from the team at DreamJob!',
+        html: '<h1>Welcome!</h1><p>Thanks for joining our site <a href="https://bangfalse.herokuapp.com/">Dream Job</a>.</p><We hope you enjoy the application we built!</p></br><p>Thanks,</p></br><p> Your friends at Dream Job</p>'
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message %s sent: %s', info.messageId, info.response);
+    });
+
     response.status(200)
     response.json({status:'success', user: user})
   })
@@ -305,5 +330,5 @@ app.get('*', function(request, response) {
 });
 
 app.listen(PORT, function () {
- console.log(`Todo Server listening on port ${PORT}!`);
+ console.log(`Server listening on port ${PORT}!`);
 });
