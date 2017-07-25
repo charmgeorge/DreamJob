@@ -2,35 +2,34 @@ Dream Job
 ======================
 
 Get Your Dream Job Today!
-
-[![Dream Job site](dreamjob_frontend\public\dreamjob_snapshot.JPG)](https://bangfalse.herokuapp.com//)
+[<img src="dreamjob_frontend\public\dreamjob_snapshot.JPG"/><br />](https://bangfalse.herokuapp.com/)<br />
 
 ## Table of contents
 - [Basic Overview](#basic-overview)
 - [Key Features](#key-features)
 - [Installation](#installation)
-    - [Frontend](#frontend)    
-    - [Backend](#backend)
+    - [Front-end](#front-end)    
+    - [Back-end](#back-end)
     - [Database](#database)
 - [Built with ](#built-with)
-- [Contribute ](#development)
-    - [Report Bugs and Request Features](#typo3-extension-repository)
-    - [Developing](#composer)
+- [Contribute ](#contribute)
+    - [Report Bugs and Request Features](#report-bugs-and-request-features)
+    - [Developing](#developing)
 - [Team ](#team)
 - [Acknowledgements ](#acknowledgements)
 - [License](#license)
 - [Links](#links)
 
 ## Basic Overview
-This repository contains the final group project completed at LEARN Academy by the group Bang-False (!false). DreamJob is a full stack web application that uses React for the frontend, Express for the backend, and PostgresSQL for the database. Our site aims to give job seekers greater control in managing their job searching process.
+This repository contains the final group project completed at LEARN Academy by the group Bang-False (!false). DreamJob is a full stack web application that uses React for the front-end, Express for the back-end, and PostgreSQL for the database. Our site aims to give job seekers greater control in managing their job searching process.
 
 ## Key Features
 
 * Job seekers are able to manage their job application process. They can keep track of:
-  - Jobs that are of interest.
-  - Jobs that have completed the application process.
-  - Jobs that have been interviewed for.
-  - Jobs that have resulted in an offer.
+  - Jobs openings that are of interest.
+  - Jobs openings that they have applied to.
+  - Jobs openings that they have interviewed for.
+  - Jobs openings that have resulted in an offer.
 * Ability to research jobs using the Glassdoor API.
 <!-- * Job Pipeline --how to explain what this does? -->
 
@@ -39,11 +38,11 @@ This repository contains the final group project completed at LEARN Academy by t
 
 - Clone the repository (`git clone https://github.com/charmgeorge/DreamJob.git`)
 - Change directory into the project (`cd DreamJob`)
-### Frontend
+### Front-end
 - Change directory into the React application (`cd dreamjob_frontend`)
 - Install yarn (`yarn install`)
 - Start yarn (`yarn start`)
-### Backend
+### Back-end
 - Open a new terminal window
 - Change directory into the Express application (`cd dreamjob_backend`)
 - Install all the dependencies (`npm install`)
@@ -59,7 +58,7 @@ This repository contains the final group project completed at LEARN Academy by t
 Report any bugs and/or request a feature by using the [issue tracker](https://github.com/charmgeorge/dreamjob/issues).
 
 #### Developing
-You can begin to run this application from your command line:
+You can begin to run this application from your command line (do not include the  brackets [ ] in your commands):
 - Create a new branch (`git checkout -b [NAME OF BRANCH HERE]`)
 - Make your changes and contributions
 - Add changes (`git add .`) or (`git add [NAME OF FILES CHANGED]`)
@@ -70,14 +69,15 @@ You can begin to run this application from your command line:
 ## Built with
 This application was created using:
 * [React](https://facebook.github.io/react/y)
-  - JavaScript library for the frontend.
+  - JavaScript library for the front-end.
 * [Express](https://expressjs.com/)
-  - Node.js web application framework for the backend.
-* [PostgresSQL](https://www.postgresql.org/)
-  - Database.
+  - Node.js web application framework for the back-end.
+* [PostgreSQL](https://www.postgresql.org/)
+  - Database management system.
 * [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
+  - Provides access to the Glassdoor data. 
 * [Bootstrap](http://getbootstrap.com/)
-  - For styling.
+  - JavScript framework for styling and developing a responsive website.
 
 ## Team
 <!-- !False TEAM -LIST:START  -->
@@ -94,7 +94,7 @@ This application was created using:
 ## Links
 
 * [Web site](https://bangfalse.herokuapp.com/)
-<!-- * [Documentation](#) -->
-<!-- * [Forum](#) -->
 * [Issue tracker](https://github.com/charmgeorge/dreamjob/issues)
 * [Source code](https://github.com/charmgeorge/DreamJob)
+<!-- * [Documentation](#) -->
+<!-- * [Forum](#) -->
