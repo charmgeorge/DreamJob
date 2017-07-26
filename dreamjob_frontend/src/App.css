@@ -70,7 +70,7 @@ h3 {
   font-family: Ubuntu;
   text-align: center;
   min-height: 600px;
-  background-image: url('https://static.pexels.com/photos/47426/pexels-photo-47426.jpeg');
+  background-image: url('http://i65.tinypic.com/4kfluo.jpg');
   background-repeat: no-repeat;
   background-position: center;
   padding-left: 100px;
@@ -81,7 +81,7 @@ h3 {
 }
 
 .formContainer {
-  background-image: url('https://static.pexels.com/photos/47426/pexels-photo-47426.jpeg');
+  background-image: url('http://i65.tinypic.com/4kfluo.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
