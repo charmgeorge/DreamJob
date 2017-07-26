@@ -1,7 +1,5 @@
 Dream Job
 ======================
-
-Get Your Dream Job Today!
 [<img src="dreamjob_frontend\public\dreamjob_snapshot.JPG"/><br />](https://bangfalse.herokuapp.com/)<br />
 
 ## Table of contents
@@ -21,7 +19,7 @@ Get Your Dream Job Today!
 - [Links](#links)
 
 ## Basic Overview
-This repository contains the final group project completed at LEARN Academy by the group Bang-False (!false). DreamJob is a full stack web application that uses React for the front-end, Express for the back-end, and PostgreSQL for the database. Our site aims to give job seekers greater control in managing their job searching process.
+This repository contains the final group project completed at LEARN Academy by the group Bang-False (!false). Dream Job is a full stack web application that uses React for the front-end, Express for the back-end, and PostgreSQL for the database. Our site aims to give job seekers greater control in managing their job searching process.
 
 ## Key Features
 
@@ -75,9 +73,9 @@ This application was created using:
 * [PostgreSQL](https://www.postgresql.org/)
   - Database management system.
 * [Glassdoor API](https://www.glassdoor.com/developer/index.htm)
-  - Provides access to the Glassdoor data. 
+  - Provides access to the Glassdoor data.
 * [Bootstrap](http://getbootstrap.com/)
-  - JavScript framework for styling and developing a responsive website.
+  - JavaScript framework for styling and developing a responsive website.
 
 ## Team
 <!-- !False TEAM -LIST:START  -->
@@ -87,14 +85,12 @@ This application was created using:
 <!-- !FALSE TEAM-LIST:END -->
 
 ## Acknowledgements
-[<br />Rob Kaufman ](https://github.com/orangewolf)- Thank you for your help!</br>
+[<br />Rob Kaufman ](https://github.com/orangewolf)- Thank you for all your help!</br>
 
 ## License
 
 ## Links
 
-* [Web site](https://bangfalse.herokuapp.com/)
+* [Website](https://bangfalse.herokuapp.com/)
 * [Issue tracker](https://github.com/charmgeorge/dreamjob/issues)
 * [Source code](https://github.com/charmgeorge/DreamJob)
-<!-- * [Documentation](#) -->
-<!-- * [Forum](#) -->
