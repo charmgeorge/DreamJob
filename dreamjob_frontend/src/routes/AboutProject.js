@@ -39,10 +39,23 @@ const AboutProject = () => (
     </div>
 
     <div>
-      <h3>TODOs:</h3>
+      <h3>TODOs/Features to add:</h3>
       <p>Things we would like to do, but haven't worked on/finished yet:</p>
       <ul>
-        <li>TODO</li>
+        <li>Fix the bugs...</li>
+        <li>Add more search options for the  <a href="http://localhost:3000/job_research">job research section</a> </li>
+        <li>Add 'sign in with google' feature</li>
+        <li>Add 'company compare' feature that allows users to search for two companies, and then shows the comparison (star rating differences? scores?) between the two</li>
+
+      </ul>
+    </div>
+
+    <div>
+      <h3>Shoutouts/Thanks</h3>
+      <ul>
+        <li>Thanks to Rob Kaufman and Learn for the help and support</li>
+        <li>And a shoutout to Adam Bedford of <a href="https://www.jobtrack.io/">jobtrack.io</a> that served as the influence to make this app.</li>
+
       </ul>
     </div>
 
