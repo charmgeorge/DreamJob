@@ -48,6 +48,10 @@ const AboutProject = () => (
         <li>Add more search options for the  <a href="http://localhost:3000/job_research">job research section</a> </li>
         <li>Add 'sign in with google' feature</li>
         <li>Add 'company compare' feature that allows users to search for two companies, and then shows the comparison (star rating differences? scores?) between the two.</li>
+        <li>Feedback to/for the user! (flashes, messages, etc)</li>
+        <li>Make more secure (protect better agains SQLi and XSS) (use Joi/Dompurify/etc)</li>
+        <li>Change email criteria to be less strict</li>
+        <li>Use more loading spinners</li>
       </ul>
     </div>
 
