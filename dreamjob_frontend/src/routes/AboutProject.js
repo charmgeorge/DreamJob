@@ -43,10 +43,11 @@ const AboutProject = () => (
       <p>Things we would like to do, but haven't worked on/finished yet:</p>
       <ul>
         <li>Fix the bugs...</li>
+        <li>Fix file/image upload</li>
+        <li>Add more functionality to <a href="http://localhost:3000/user">userCP</a> (can change email/password)</li>
         <li>Add more search options for the  <a href="http://localhost:3000/job_research">job research section</a> </li>
         <li>Add 'sign in with google' feature</li>
-        <li>Add 'company compare' feature that allows users to search for two companies, and then shows the comparison (star rating differences? scores?) between the two</li>
-
+        <li>Add 'company compare' feature that allows users to search for two companies, and then shows the comparison (star rating differences? scores?) between the two.</li>
       </ul>
     </div>
 
