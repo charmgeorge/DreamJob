@@ -9,8 +9,8 @@ if(process.env.NODE_ENV === 'production'){
 } else {
   apiUrl = "http://localhost:4000/";
 };
-console.log(process.env)
-console.log('api is ', apiUrl)
+// console.log(process.env)
+console.log('. .. . ... . ...  . ..  ... .  . ..   . . .   . .  .... . .. .  .  . ... . . .. ... .. .. . .   . .. ..  . . ..  . . . . .', apiUrl)
 
 export function sort(attribute){
   const params = {

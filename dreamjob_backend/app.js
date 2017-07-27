@@ -300,14 +300,14 @@ app.get('/user_data/:email', function(req, res){
 app.post('/login_user', function(request, response){
   User.findOne({where: { email: request.body.user.email }}).then((user) => {
     if(user){
-      console.log('found user');
+      // console.log('found user');
       // check the password and return 200 & the user if valid
      if(user.verifyPassword(request.body.user.password)){
-       console.log('checked and passed');
+      //  console.log('checked and passed');
        response.status(200)
        response.json({status: 'success', user: user})
      } else {
-       console.log('checked and failed');
+      //  console.log('checked and failed');
        response.status(401)
        response.json({status: 'error', error: 'could not log in'})
      }

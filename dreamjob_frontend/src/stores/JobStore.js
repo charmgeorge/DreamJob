@@ -71,14 +71,14 @@ class JobStore extends EventEmitter{
 
   updateGlassdoor(alldata){
     this.details = alldata.data
-    console.log(alldata.data); // see what it brings when it fails
+    // console.log(alldata.data); // see what it brings when it fails
     this.updateMessage('Glassdoor details retrieved!')
     this.emit('glassdoor')
   }
 
   updateGlassdoorError(err) {
     this.err = err;
-    console.log(err);
+    // console.log(err);
     this.emit('glassdoor_404');
     // console.log(this.err);
   }

@@ -7,7 +7,7 @@ var CompanyPreview = require('../components/CompanyPreview');
 // var Loading = require('../components/Loading');
 
 function Profile (props){
-  console.log(props);
+  // console.log(props);
   var info = props.info;
   return (
       <CompanyPreview avatar={info.avatar_url} name={info.login}>
@@ -30,7 +30,7 @@ function Profile (props){
 // }
 
 function Player (props) {
-  console.log('props,' , props);
+  // console.log('props,' , props);
   return (
     <div>
       <h1 className='header'>{props.label}</h1>
@@ -60,7 +60,7 @@ class Results extends React.Component {
 
   componentDidMount(){
     var companies = queryString.parse(this.props.location.search)
-    console.log(companies);
+    // console.log(companies);
     api.battle([
       companies.companyOneName,
       companies.companyTwoName
@@ -110,7 +110,7 @@ class Results extends React.Component {
     return (
       <div>
         {/* {JSON.stringify(this.state,null,2)} */}
-        
+
         {/* <Player
           label='Winner'
           score={winner.score}

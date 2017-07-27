@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'production'){
 } else {
   imageUrl = "http://localhost:4000/";
 };
-console.log('imageUrl is: ', imageUrl);
+// console.log('imageUrl is: ', imageUrl);
 
 class RegisterUser extends Component {
   constructor(props){
@@ -31,7 +31,7 @@ class RegisterUser extends Component {
 
   componentWillMount(){
     if (this.state.currentUser) { // check if user is signed in. if so, send away from register page
-      console.log('sending away from register page');
+      // console.log('sending away from register page');
       this.props.history.push("/job_index");
     }
     userStore.on('user_created', ()=> {
@@ -46,7 +46,7 @@ class RegisterUser extends Component {
     this.setState({
       user: user
     });
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   validate(){
@@ -63,7 +63,7 @@ class RegisterUser extends Component {
   }
 
   isValid(){
-    console.log('error count', Object.keys(this.state.errors).length);
+    // console.log('error count', Object.keys(this.state.errors).length);
     return Object.keys(this.state.errors).length === 0
   }
 
@@ -77,7 +77,7 @@ class RegisterUser extends Component {
           value: response
         }
       }
-      console.log('res', response);
+      // console.log('res', response);
       this.handleChange(event);
     }
   }
