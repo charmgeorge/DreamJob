@@ -58,6 +58,9 @@ class JobIndex extends Component {
   redirect(){
     this.props.history.push('job_index_alternate')
   }
+  jobRedirect(){
+    this.props.history.push('add_job')
+  }
 
   render() {
     return (
@@ -65,6 +68,9 @@ class JobIndex extends Component {
       <div  className='container'>
         <Row>
           <div className='pull-left'>
+            <Button bsStyle='primary' onClick={this.jobRedirect.bind(this)}>Add a Job</Button>
+          </div>
+          <div className='pull-right'>
             <Button bsStyle='primary' onClick={this.redirect.bind(this)}>Alternate Job Pipeline View</Button>
           </div>
 
