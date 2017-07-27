@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import userStore from '../stores/UserStore';
 import { getUserDetails} from '../actions/actions';
+import { Image } from 'react-bootstrap';
 
 class UserCP extends Component {
   constructor(props){
@@ -66,6 +67,8 @@ class UserCP extends Component {
         <h3>Welcome to your user control panel:</h3>
         {/* <p>First Name: {this.state.userData && this.state.userData.firstname} </p> */}
         <p>Email: {this.state.currentUser && this.state.currentUser.email}</p>
+
+        <Image src="placeholder_female.png" alt={"profile_image"} responsive />
       </div>
     );
   }
