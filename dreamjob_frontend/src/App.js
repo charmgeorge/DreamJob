@@ -32,7 +32,7 @@ class App extends Component {
       message:jobStore.getMessage(),
       currentUser: userStore.getUser()
     }
-  }
+  } 
 
   handleLogout(){
     userLogout()
